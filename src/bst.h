@@ -7,15 +7,15 @@ void* bst_alloc( size_t n );
 
 /**
  * @brief bst_compute
- * @param root
- * @param p
- * @param q
- * @param n
- * @return
+ * @param _bst_obj an internal data structure
+ * @param p array containing probabilities of the key (lengh n)
+ * @param q array containing probabilities of the dummy keys (length n+1)
+ * @param n size of p
+ * @return expected propability of the entire tree
  */
-double bst_compute( int* root, double* p, double* q, size_t n, void*_mem );
+double bst_compute( void *_bst_obj, double* p, double* q, size_t n );
 
-double bst_root_get( double* root, size_t i, size_t j );
+int bst_get_root( void* _bst_obj, size_t i, size_t j );
 
 void bst_free( void* _mem );
 
