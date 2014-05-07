@@ -1,7 +1,7 @@
 #ifndef BST_H
 #define BST_H
 
-#include <stdint.h>
+#include <stdlib.h>
 
 void* bst_alloc( size_t n );
 
