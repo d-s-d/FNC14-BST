@@ -14,9 +14,7 @@ typedef struct {
 // #include "matrix_test.h"
 
 /*
- * Returning an empty string means success. Any non-empty string means failure.
- * In case of a failure, the test function is supposed to return a string
- * describing the reason of failure.
+ * success = true, failure = false
  *
  */
 bool dummy_success( ) {
