@@ -5,6 +5,7 @@
 #include <stdarg.h>
 
 #include "bst.h"
+#include "perf/perfmon_wrapper.h"
 
 struct {
     // Test Setup
@@ -17,10 +18,11 @@ struct {
     // Logging Setup
     char   *logfile; ///< name of logfile
 
-    // derived values
+    // Determined at runtime
     double *p;
     double *q;
     FILE   *fd;      ///< handle for logfile
+    struct perf_data *perf_data;
 } config;
 
 bst_impl_t implementations[] = {
@@ -71,14 +73,6 @@ void log_cleanup()
     }
 }
 
-void log_int(char *name, int v)
-{
-    if (config.fd) {
-        log_do_indent();
-        fprintf(config.fd, "'%s' : %d\n", name, v);
-    }
-}
-
 void log_fmt(char *name, char *fmt, ...)
 {
     if (config.fd) {
@@ -92,6 +86,16 @@ void log_fmt(char *name, char *fmt, ...)
 
         fprintf(config.fd, "\n");
     }
+}
+
+void log_int(char *name, int v)
+{
+    log_fmt(name, "%d", v);
+}
+
+void log_idouble(char *name, double v)
+{
+    log_fmt(name, "%.0lf", v);
 }
 
 void log_part(char *name, char delim)
@@ -174,7 +178,10 @@ int run_test(size_t n, bst_impl_t *impl,
         return -1;
     }
 
+    perf_reset(config.perf_data);
+    perf_start(config.perf_data);
     double e = impl->compute(bst_data, config.p, config.q, n);
+    perf_stop(config.perf_data);
 
     printf("Cost is: %lf. Root is %d.\n", e, impl->root(bst_data, 1, n));
     traverse(1, n, 0, bst_data, impl->root);
@@ -187,6 +194,12 @@ int run_test(size_t n, bst_impl_t *impl,
             RUN_TEST_ERR("Wrong result: %lf (diff: %lf)\n", e, e-ref);
         }
     }
+
+    // log performance
+    perf_update_values(config.perf_data);
+    log_idouble("cycles",           config.perf_data[0].value);
+    log_idouble("cache-references", config.perf_data[1].value);
+    log_idouble("cache-misses",     config.perf_data[2].value);
 
     impl->free(bst_data);
     return pass;
@@ -265,9 +278,27 @@ int main(int argc, char *argv[])
 
     // log_fmt("some crazy double", "%08.1lf", 2.0);
 
+    // Initialize perfmon -------------------------------------------------
+    char *events[] = {
+        // on Haswell, can use at most 4, otherwise '0' results
+        "PERF_COUNT_HW_CPU_CYCLES",
+        "CACHE-REFERENCES",
+        "CACHE-MISSES",
+        "DTLB-LOAD-MISSES",
+        NULL
+    };
+
+    ret = perf_init(events, &config.perf_data);
+    if (ret < 0) {
+        fprintf(stderr, "Could not initialize perfmon.\n");
+        perf_cleanup(config.perf_data);
+        return 0;
+    }
+
     run_configuration();
 
     log_cleanup();
+    perf_cleanup(config.perf_data);
 
     return 0;
 }
