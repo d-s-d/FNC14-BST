@@ -6,47 +6,48 @@
 static FILE *fd = NULL;
 
 static int log_indent  = 0;
-#define log_do_indent() \
-    {for (int i=0; i<log_indent; ++i) fprintf(fd, "  ");}
+static int log_level_first[100];
 
-int log_setup(char *filename)
-{
-    if (filename) {
-        fd = fopen(filename, "w");
-    }
-
-    if (fd) {
-        fprintf(fd, "{\n");
-        log_indent++;
-    } else {
-
-    }
-
-    return (fd != NULL);
+static void log_go_in() {
+    log_indent++;
+    log_level_first[log_indent] = 1;
 }
 
-void log_cleanup()
-{
-    if (fd) {
-        fprintf(fd, "}\n");
-        fclose(fd);
+static void log_go_out() {
+    fprintf(fd, "\n");
+    log_indent--;
+}
+
+static void log_do_indent() {
+    for (int i=0; i<log_indent; ++i) fprintf(fd, "  ");
+}
+
+static void log_do_comma() {
+    if (!log_level_first[log_indent]) {
+        fprintf(fd, ",\n");
+    } else {
+        fprintf(fd, "\n");
+        log_level_first[log_indent] = 0;
     }
+}
+
+static void log_new_entry() {
+    log_do_comma();
+    log_do_indent();
 }
 
 void log_fmt(char *name, char *fmt, ...)
 {
     if (fd) {
-        log_do_indent();
+        log_new_entry();
         if (name) {
-            fprintf(fd, "'%s' : ", name);
+            fprintf(fd, "\"%s\" : ", name);
         }
 
         va_list argptr;
         va_start(argptr, fmt);
         vfprintf(fd, fmt, argptr);
         va_end(argptr);
-
-        fprintf(fd, "\n");
     }
 }
 
@@ -67,28 +68,28 @@ void log_size(char *name, size_t v)
 
 void log_str(char *name, char *str)
 {
-    log_fmt(name, "'%s'", str);
+    log_fmt(name, "\"%s\"", str);
 }
 
 static void log_part(char *name, char delim)
 {
     if (fd) {
-        log_do_indent();
+        log_new_entry();
         if (name) {
-            fprintf(fd, "'%s' : %c\n", name, delim);
+            fprintf(fd, "\"%s\" : %c", name, delim);
         } else {
-            fprintf(fd, "%c\n", delim);
+            fprintf(fd, "%c", delim);
         }
-        log_indent++;
+        log_go_in();
     }
 }
 
 static void log_part_end(char delim)
 {
     if (fd) {
-        log_indent--;
+        log_go_out();
         log_do_indent();
-        fprintf(fd, "%c\n", delim);
+        fprintf(fd, "%c", delim);
     }
 }
 
@@ -110,4 +111,33 @@ void log_array(char *name)
 void log_array_end()
 {
     log_part_end(']');
+}
+
+int log_setup(char *filename)
+{
+    if (filename) {
+        fd = fopen(filename, "w");
+    }
+
+    if (fd) {
+        fprintf(fd, "{");
+        log_go_in();
+    } else {
+
+    }
+
+    return (fd != NULL);
+}
+
+void log_cleanup()
+{
+    if (fd) {
+        log_go_out();
+        fprintf(fd, "}\n");
+        fclose(fd);
+    }
+
+    if (log_indent != 0) {
+        fprintf(stderr, "LOGERR: Indent level not 0 at end. Called array/struct_end?\n");
+    }
 }
