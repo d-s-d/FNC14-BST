@@ -6,8 +6,9 @@
 
 #include "bst.h"
 #include "perf/perfmon_wrapper.h"
+#include "driver_log.h"
 
-#define def_str(s) _def_str(s)
+#define def_str(s) _def_str((s)) // for some reason, need (s)
 #define _def_str(s) #s
 
 struct {
@@ -44,112 +45,6 @@ bst_impl_t implementations[] = {
     }
 };
 #define impl_size (sizeof(implementations)/sizeof(bst_impl_t))
-
-static int log_indent  = 0;
-#define log_do_indent() \
-    {for (int i=0; i<log_indent; ++i) fprintf(config.fd, "  ");}
-int log_setup()
-{
-    config.fd = NULL;
-
-    if (config.logfile) {
-        config.fd = fopen(config.logfile, "w");
-    }
-
-    if (config.fd) {
-        fprintf(config.fd, "{\n");
-        log_indent++;
-    } else {
-
-    }
-
-    return (config.fd != NULL);
-}
-
-void log_cleanup()
-{
-    if (config.fd) {
-        fprintf(config.fd, "}\n");
-        fclose(config.fd);
-    }
-}
-
-void log_fmt(char *name, char *fmt, ...)
-{
-    if (config.fd) {
-        log_do_indent();
-        fprintf(config.fd, "'%s' : ", name);
-
-        va_list argptr;
-        va_start(argptr, fmt);
-        vfprintf(config.fd, fmt, argptr);
-        va_end(argptr);
-
-        fprintf(config.fd, "\n");
-    }
-}
-
-void log_int(char *name, int v)
-{
-    log_fmt(name, "%d", v);
-}
-
-void log_idouble(char *name, double v)
-{
-    log_fmt(name, "%.0lf", v);
-}
-
-void log_size(char *name, size_t v)
-{
-    log_fmt(name, "%zu", v);
-}
-
-void log_str(char *name, char *str)
-{
-    log_fmt(name, "'%s'", str);
-}
-
-void log_part(char *name, char delim)
-{
-    if (config.fd) {
-        log_do_indent();
-        if (name) {
-            fprintf(config.fd, "'%s' : %c\n", name, delim);
-        } else {
-            fprintf(config.fd, "%c\n", delim);
-        }
-        log_indent++;
-    }
-}
-
-void log_part_end(char delim)
-{
-    if (config.fd) {
-        log_indent--;
-        log_do_indent();
-        fprintf(config.fd, "%c\n", delim);
-    }
-}
-
-void log_struct(char *name)
-{
-    log_part(name, '{');
-}
-
-void log_struct_end()
-{
-    log_part_end('}');
-}
-
-void log_array(char *name)
-{
-    log_part(name, '[');
-}
-
-void log_array_end()
-{
-    log_part_end(']');
-}
 
 #define LOG(...) printf(__VA_ARGS__)
 
@@ -353,7 +248,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    ret = log_setup();
+    ret = log_setup(config.logfile);
     if (!ret) {
         printf("Error opening log.\n");
         return -1;
