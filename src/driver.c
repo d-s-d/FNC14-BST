@@ -1,28 +1,142 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
+#include <stdarg.h>
 
 #include "bst.h"
 
 struct {
-    char   *input_file; ///< name of input file for data
-    char   *log_name;   ///< name of logfile
+    // Test Setup
+    size_t from;     ///< minimum N
+    size_t to;       ///< maximum N
+    size_t step;     ///< stepsize for N
+    char   **tests;  ///< NULL-terminated list of implementations to test
+    unsigned int seed; ///< seed for random number generator
+
+    // Logging Setup
+    char   *logfile; ///< name of logfile
 
     // derived values
     double *p;
     double *q;
-    size_t max_n;     ///< max N supported by p, q
-    FILE   log_fd;    ///< handle for logfile
-    int    log_valid; ///< true iff logfile open for writes
+    FILE   *fd;      ///< handle for logfile
 } config;
 
-bst_impl_t reference = {
-    .name    = "reference",
-    .alloc   = bst_alloc,
-    .compute = bst_compute,
-    .root    = bst_get_root,
-    .free    = bst_free
+bst_impl_t implementations[] = {
+    {
+        .name    = "ref/bst_ref.c",
+        .alloc   = bst_alloc,
+        .compute = bst_compute,
+        .root    = bst_get_root,
+        .free    = bst_free
+    }, {
+        .name    = "ref/bst_ref.c_dummy",
+        .alloc   = bst_alloc,
+        .compute = bst_compute,
+        .root    = bst_get_root,
+        .free    = bst_free
+    }
 };
+#define impl_size (sizeof(implementations)/sizeof(bst_impl_t))
+
+static int log_indent  = 0;
+#define log_do_indent() \
+    {for (int i=0; i<log_indent; ++i) fprintf(config.fd, "  ");}
+int log_setup()
+{
+    config.fd = NULL;
+
+    if (config.logfile) {
+        printf("opening...\n");
+        config.fd = fopen(config.logfile, "w");
+    }
+
+    if (config.fd) {
+        fprintf(config.fd, "{\n");
+        log_indent++;
+    } else {
+
+    }
+
+    return (config.fd != NULL);
+}
+
+void log_cleanup()
+{
+    if (config.fd) {
+        fprintf(config.fd, "}\n");
+        printf("closing...\n");
+        fclose(config.fd);
+    }
+}
+
+void log_int(char *name, int v)
+{
+    if (config.fd) {
+        log_do_indent();
+        fprintf(config.fd, "'%s' : %d\n", name, v);
+    }
+}
+
+void log_fmt(char *name, char *fmt, ...)
+{
+    if (config.fd) {
+        log_do_indent();
+        fprintf(config.fd, "'%s' : ", name);
+
+        va_list argptr;
+        va_start(argptr, fmt);
+        vfprintf(config.fd, fmt, argptr);
+        va_end(argptr);
+
+        fprintf(config.fd, "\n");
+    }
+}
+
+void log_part(char *name, char delim)
+{
+    if (config.fd) {
+        log_do_indent();
+        if (name) {
+            fprintf(config.fd, "'%s' : %c\n", name, delim);
+        } else {
+            fprintf(config.fd, "%c\n", delim);
+        }
+        log_indent++;
+    }
+}
+
+void log_part_end(char delim)
+{
+    if (config.fd) {
+        log_indent--;
+        log_do_indent();
+        fprintf(config.fd, "%c\n", delim);
+    }
+}
+
+void log_struct(char *name)
+{
+    log_part(name, '{');
+}
+
+void log_struct_end()
+{
+    log_part_end('}');
+}
+
+void log_array(char *name)
+{
+    log_part(name, '[');
+}
+
+void log_array_end()
+{
+    log_part_end(']');
+}
+
+#define LOG(...) printf(__VA_ARGS__)
 
 void traverse(size_t i, size_t j, size_t indent, void *_bst_obj,
         bst_get_root_fn root_fn)
@@ -78,32 +192,82 @@ int run_test(size_t n, bst_impl_t *impl,
     return pass;
 }
 
-void sweep_tests(size_t from, size_t to, size_t step)
+void run_configuration()
 {
-    for (size_t n=from; n<=to; n+=step) {
-        if (run_test(n, &reference, 2.75, 1) < 0) {
-            printf("Test failed.\n");
-        } else {
-            printf("Test passed.\n");
+    LOG("%d implementations available:\n", impl_size);
+    for (size_t i=0; i<impl_size; ++i) {
+        LOG("  %s\n", implementations[i].name);
+    }
+
+    // run over all implementations in config.tests
+    for (char **impl_name=config.tests; *impl_name; ++impl_name) {
+
+        // See if implementation available
+        LOG("Evaluating implementation '%s'.\n", *impl_name);
+
+        bst_impl_t *impl;
+        int found = 0;
+        for (size_t i=0; i<impl_size && !found; ++i) {
+            if (strncmp(implementations[i].name, *impl_name, 100) == 0) {
+                found = 1;
+                impl = &implementations[i];
+            }
         }
+
+        if (!found) {
+            LOG("ERROR: Implementation not found.\n");
+            return ;
+        }
+
+        // Sweep through the tests
+        log_array(impl->name);
+        for (size_t n=config.from; n<=config.to; n+=config.step) {
+            LOG("N = %zu\n", n);
+            log_struct(NULL);
+            log_int("N", n);
+            if (run_test(n, impl, 2.75, 0) < 0) {
+                LOG("ERROR: Test failed.\n");
+                return ;
+            }
+            log_struct_end();
+        }
+        log_array_end();
+
     }
 }
 
+
 int main(int argc, char *argv[])
 {
-    // size_t n = 10;
-    // double p[n];
-    // double q[n+1];
+    int ret;
 
     size_t n = 5;
     double p[] = {     .15, .1 , .05, .1 , .2};
     double q[] = {.05, .1 , .05, .05, .05, .1};
 
-    config.max_n = n;
     config.p     = p;
     config.q     = q;
 
-    sweep_tests(1, 5, 1);
+    // config
+    char *tests[] = {"ref/bst_ref.c", "ref/bst_ref.c_dummy", "ref/bst_ref.c", NULL};
+    config.tests = tests;
+
+    config.from    = 1;
+    config.to      = 5;
+    config.step    = 2;
+    config.logfile = "test.log";
+
+    ret = log_setup();
+    if (!ret) {
+        printf("Error opening log.\n");
+        return -1;
+    }
+
+    // log_fmt("some crazy double", "%08.1lf", 2.0);
+
+    run_configuration();
+
+    log_cleanup();
 
     return 0;
 }
