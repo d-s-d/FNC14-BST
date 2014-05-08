@@ -69,10 +69,11 @@ double bst_compute( void*_bst_obj, double* p, double* q, size_t n ) {
 
 size_t bst_get_root( void* _bst_obj, size_t i, size_t j )
 {
+    // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
     size_t n = mem->n;
     int *root = mem->r;
-    return (size_t) root[i*(n+1)+j];
+    return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
 void bst_free( void* _mem ) {

@@ -5,6 +5,7 @@
 
 void traverse(size_t i, size_t j, size_t indent, void *_bst_obj)
 {
+    // printf("DBG: i=%zu, j=%zu\n", i, j);
     size_t root = bst_get_root(_bst_obj, i, j);
 
     for (size_t k=0; k<indent; ++k) printf(" ");
