@@ -50,7 +50,6 @@ int log_setup()
     config.fd = NULL;
 
     if (config.logfile) {
-        printf("opening...\n");
         config.fd = fopen(config.logfile, "w");
     }
 
@@ -68,7 +67,6 @@ void log_cleanup()
 {
     if (config.fd) {
         fprintf(config.fd, "}\n");
-        printf("closing...\n");
         fclose(config.fd);
     }
 }
@@ -183,8 +181,10 @@ int run_test(size_t n, bst_impl_t *impl,
     double e = impl->compute(bst_data, config.p, config.q, n);
     perf_stop(config.perf_data);
 
+#ifdef DEBUG
     printf("Cost is: %lf. Root is %d.\n", e, impl->root(bst_data, 1, n));
     traverse(1, n, 0, bst_data, impl->root);
+#endif
 
     int pass = 0;
 
@@ -249,26 +249,83 @@ void run_configuration()
     }
 }
 
+int data_setup()
+{
+    size_t n = config.to;
+    config.p = NULL;
+    config.q = NULL;
+
+    // allocate memory
+    config.p = malloc(n*sizeof(double));
+    if (!config.p) {
+        return 0;
+    }
+
+    config.q = malloc((n+1)*sizeof(double));
+    if (!config.q) {
+        free(config.p);
+        return 0;
+    }
+
+    // generate data
+    double total = 0.0;
+    srand(config.seed);
+
+    for (size_t i=0; i<n; ++i) {
+        double v = rand();
+        config.p[i] = v;
+        total += v;
+    }
+    for (size_t i=0; i<(n+1); ++i) {
+        double v = rand();
+        config.q[i] = v;
+        total += v;
+    }
+
+    // normalize data
+    for (size_t i=0; i<n; ++i)     config.p[i] /= total;
+    for (size_t i=0; i<(n+1); ++i) config.q[i] /= total;
+
+#ifdef DEBUG
+    for (size_t i=0; i<n; ++i)     printf("%lf ", config.p[i]);
+    for (size_t i=0; i<(n+1); ++i) printf("%lf ", config.q[i]);
+#endif
+
+    return 1;
+}
+
+void data_cleanup()
+{
+    if (config.p) free(config.p);
+    if (config.q) free(config.q);
+}
 
 int main(int argc, char *argv[])
 {
     int ret;
 
-    size_t n = 5;
-    double p[] = {     .15, .1 , .05, .1 , .2};
-    double q[] = {.05, .1 , .05, .05, .05, .1};
+    // size_t n = 5;
+    // double p[] = {     .15, .1 , .05, .1 , .2};
+    // double q[] = {.05, .1 , .05, .05, .05, .1};
 
-    config.p     = p;
-    config.q     = q;
+    // config.p     = p;
+    // config.q     = q;
 
     // config
     char *tests[] = {"ref/bst_ref.c", "ref/bst_ref.c_dummy", "ref/bst_ref.c", NULL};
     config.tests = tests;
 
-    config.from    = 1;
-    config.to      = 5;
-    config.step    = 2;
+    config.from    = 20;
+    config.to      = 100;
+    config.step    = 20;
     config.logfile = "test.log";
+    config.seed    = 42;
+
+    ret = data_setup();
+    if (!ret) {
+        printf("Error allocating data.\n");
+        return -1;
+    }
 
     ret = log_setup();
     if (!ret) {
@@ -299,6 +356,7 @@ int main(int argc, char *argv[])
 
     log_cleanup();
     perf_cleanup(config.perf_data);
+    data_cleanup();
 
     return 0;
 }

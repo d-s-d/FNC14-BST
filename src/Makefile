@@ -5,7 +5,8 @@ OBJ    = $(patsubst %.c, %.o, $(SRC))
 CC     = gcc
 LIBS   = -lm -lpfm
 INC    = -I.
-CF     = -g -std=c99 $(INC)
+#DEF    = -DDEBUG
+CF     = -g -std=c99 $(INC) $(DEF)
 
 .PHONY: all clean
 
