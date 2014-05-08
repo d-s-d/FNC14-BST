@@ -32,7 +32,7 @@ void* bst_alloc( size_t n ) {
     mem->e = (double*) malloc( sz * sizeof(double) );
     mem->w = (double*) malloc( sz * sizeof(double) );
     mem->r = (int*)    malloc( sz * sizeof(int) );
-    memset( mem->r, -1, sz );
+    memset( mem->r, -1, sz * sizeof(int) );
     return mem;
 }
 
