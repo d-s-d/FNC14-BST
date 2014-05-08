@@ -7,6 +7,9 @@
 #include "bst.h"
 #include "perf/perfmon_wrapper.h"
 
+#define def_str(s) _def_str(s)
+#define _def_str(s) #s
+
 struct {
     // Test Setup
     size_t from;     ///< minimum N
@@ -94,6 +97,16 @@ void log_int(char *name, int v)
 void log_idouble(char *name, double v)
 {
     log_fmt(name, "%.0lf", v);
+}
+
+void log_size(char *name, size_t v)
+{
+    log_fmt(name, "%zu", v);
+}
+
+void log_str(char *name, char *str)
+{
+    log_fmt(name, "'%s'", str);
 }
 
 void log_part(char *name, char delim)
@@ -207,6 +220,17 @@ int run_test(size_t n, bst_impl_t *impl,
 
 void run_configuration()
 {
+    // some output log
+    log_size("from", config.from);
+    log_size("to",   config.to);
+    log_size("step", config.step);
+    log_fmt("seed", "%u", config.seed);
+    log_str("userflags", def_str(M_ENV_USERFLAGS));
+    log_str("git-revision", def_str(M_ENV_GITREV));
+
+    log_struct("runs");
+
+    // debug output
     LOG("%d implementations available:\n", impl_size);
     for (size_t i=0; i<impl_size; ++i) {
         LOG("  %s\n", implementations[i].name);
@@ -247,6 +271,8 @@ void run_configuration()
         log_array_end();
 
     }
+
+    log_struct_end();
 }
 
 int data_setup()
