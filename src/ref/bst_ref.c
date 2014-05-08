@@ -23,6 +23,7 @@ typedef struct {
     double* e;
     double* w;
     int* r;
+    size_t n;
 } segments_t;
 
 void* bst_alloc( size_t n ) {
@@ -42,6 +43,7 @@ double bst_compute( void*_bst_obj, double* p, double* q, size_t n ) {
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
     // initialization
+    mem->n = n;
     for( i = 0; i < n+1; i++ ) {
         e[IDX(i,i)] = q[i];
         w[IDX(i,i)] = q[i];
@@ -63,6 +65,14 @@ double bst_compute( void*_bst_obj, double* p, double* q, size_t n ) {
         }
     }
     return e[IDX(0,n)];
+}
+
+size_t bst_get_root( void* _bst_obj, size_t i, size_t j )
+{
+    segments_t *mem = _bst_obj;
+    size_t n = mem->n;
+    int *root = mem->r;
+    return (size_t) root[i*(n+1)+j];
 }
 
 void bst_free( void* _mem ) {

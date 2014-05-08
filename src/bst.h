@@ -15,8 +15,8 @@ void* bst_alloc( size_t n );
  */
 double bst_compute( void *_bst_obj, double* p, double* q, size_t n );
 
-int bst_get_root( void* _bst_obj, size_t i, size_t j );
+size_t bst_get_root( void* _bst_obj, size_t i, size_t j );
 
-void bst_free( void* _mem );
+void bst_free( void* _bst_obj );
 
 #endif // BST_H
