@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdarg.h>
 
+#include "variants.h"
 #include "bst.h"
 #include "perf/perfmon_wrapper.h"
 #include "driver_log.h"
@@ -42,6 +43,12 @@ bst_impl_t implementations[] = {
         .compute = bst_compute,
         .root    = bst_get_root,
         .free    = bst_free
+    }, {
+        .name    = "opt/bst_001_transposed.c",
+        .alloc   = bst_alloc_001_transposed,
+        .compute = bst_compute_001_transposed,
+        .root    = bst_get_root_001_transposed,
+        .free    = bst_free_001_transposed
     }
 };
 #define impl_size (sizeof(implementations)/sizeof(bst_impl_t))
@@ -126,7 +133,7 @@ void run_configuration()
     log_struct("runs");
 
     // debug output
-    LOG("%d implementations available:\n", impl_size);
+    LOG("%zd implementations available:\n", impl_size);
     for (size_t i=0; i<impl_size; ++i) {
         LOG("  %s\n", implementations[i].name);
     }
@@ -233,7 +240,9 @@ int main(int argc, char *argv[])
     // config.q     = q;
 
     // config
-    char *tests[] = {"ref/bst_ref.c", "ref/bst_ref.c_dummy", "ref/bst_ref.c", NULL};
+    char *tests[] = {"ref/bst_ref.c", "ref/bst_ref.c_dummy", "ref/bst_ref.c",
+                     "opt/bst_001_transposed.c",
+                     NULL};
     config.tests = tests;
 
     config.from    = 20;

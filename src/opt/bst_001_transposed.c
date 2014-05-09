@@ -26,7 +26,7 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc( size_t n ) {
+void* bst_alloc_001_transposed( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
     size_t sz = (n+1)*(n+1);
     mem->e = (double*) malloc( sz * sizeof(double) );
@@ -36,10 +36,13 @@ void* bst_alloc( size_t n ) {
     return mem;
 }
 
-double bst_compute_001_transposed( void*_bst_obj, double* p, double* q, size_t n ) {
+double bst_compute_001_transposed( void*_bst_obj, double* p, double* q,
+                                   size_t n ) {
     segments_t* mem = (segments_t*) _bst_obj;
     size_t i, l, r, j;
     double t;
+    double t_min;
+    int r_min;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
     // initialization
@@ -54,21 +57,24 @@ double bst_compute_001_transposed( void*_bst_obj, double* p, double* q, size_t n
             j = i+l;
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
+            t_min = e[IDX(i,j)];
             for( r = i; r < j; r++ ) { // l many iterations
                 // TODO: check these indices
                 t = e[IDX(i,r)] + e[IDX(j,r+1)] + w[IDX(i,j)];
-                if( t < e[IDX(i,j)] ) {
-                    e[IDX(i,j)] = t;
-                    root[IDX(i,j)] = r;
+                if( t < t_min ) {
+                    t_min = t; // e[IDX(i,j)] = t;
+                    r_min = r; // root[IDX(i,j)] = r;
                 }
             }
-            e[IDX(j,i)] = t;
+            e[IDX(i,j)] = t_min;
+            e[IDX(j,i)] = t_min;
+            root[IDX(i,j)] = r_min;
         }
     }
     return e[IDX(0,n)];
 }
 
-size_t bst_get_root( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_001_transposed( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -77,7 +83,7 @@ size_t bst_get_root( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-void bst_free( void* _mem ) {
+void bst_free_001_transposed( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
     free( mem->e );
     free( mem->w );
