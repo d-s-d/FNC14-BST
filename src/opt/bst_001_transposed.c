@@ -40,8 +40,7 @@ double bst_compute_001_transposed( void*_bst_obj, double* p, double* q,
                                    size_t n ) {
     segments_t* mem = (segments_t*) _bst_obj;
     size_t i, l, r, j;
-    double t;
-    double t_min;
+    double t, t_min, w_cur;
     int r_min;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
@@ -55,17 +54,17 @@ double bst_compute_001_transposed( void*_bst_obj, double* p, double* q,
     for( l = 1; l < n+1; l++ ) {
         for( i = 0; i < n-l+1; i++ ) {
             j = i+l;
-            e[IDX(i,j)] = INFINITY;
-            w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
-            t_min = e[IDX(i,j)];
+            t_min = INFINITY;
+            w_cur = w[IDX(i,j-1)] + p[j-1] + q[j];
             for( r = i; r < j; r++ ) { // l many iterations
                 // TODO: check these indices
-                t = e[IDX(i,r)] + e[IDX(j,r+1)] + w[IDX(i,j)];
+                t = e[IDX(i,r)] + e[IDX(j,r+1)] + w_cur;
                 if( t < t_min ) {
                     t_min = t; // e[IDX(i,j)] = t;
                     r_min = r; // root[IDX(i,j)] = r;
                 }
             }
+            w[IDX(i,j)] = w_cur;
             e[IDX(i,j)] = t_min;
             e[IDX(j,i)] = t_min;
             root[IDX(i,j)] = r_min;
