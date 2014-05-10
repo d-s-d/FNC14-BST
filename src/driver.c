@@ -3,7 +3,10 @@
 #include <assert.h>
 #include <string.h>
 #include <stdarg.h>
+#include <getopt.h>
+#include <stdbool.h>
 
+#include "urange.h"
 #include "variants.h"
 #include "bst.h"
 #include "perf/perfmon_wrapper.h"
@@ -14,9 +17,7 @@
 
 struct {
     // Test Setup
-    size_t from;     ///< minimum N
-    size_t to;       ///< maximum N
-    size_t step;     ///< stepsize for N
+    urange_t N;
     char   **tests;  ///< NULL-terminated list of implementations to test
     unsigned int seed; ///< seed for random number generator
 
@@ -54,6 +55,7 @@ bst_impl_t implementations[] = {
 #define impl_size (sizeof(implementations)/sizeof(bst_impl_t))
 
 #define LOG(...) printf(__VA_ARGS__)
+#define ERROR_MSG(...) fprintf(stderr, __VA_ARGS__)
 
 void traverse(size_t i, size_t j, size_t indent, void *_bst_obj,
         bst_get_root_fn root_fn)
@@ -123,9 +125,9 @@ int run_test(size_t n, bst_impl_t *impl,
 void run_configuration()
 {
     // some output log
-    log_size("from", config.from);
-    log_size("to",   config.to);
-    log_size("step", config.step);
+    log_size("from", config.N.start);
+    log_size("to",   config.N.stop);
+    log_size("step", config.N.step);
     log_fmt("seed", "%u", config.seed);
     log_str("userflags", def_str(M_ENV_USERFLAGS));
     log_str("git-revision", def_str(M_ENV_GITREV));
@@ -160,7 +162,7 @@ void run_configuration()
 
         // Sweep through the tests
         log_array(impl->name);
-        for (size_t n=config.from; n<=config.to; n+=config.step) {
+        for (size_t n=config.N.start; n<=config.N.stop; n+=config.N.step) {
             LOG("N = %zu\n", n);
             log_struct(NULL);
             log_int("N", n);
@@ -179,7 +181,7 @@ void run_configuration()
 
 int data_setup()
 {
-    size_t n = config.to;
+    size_t n = config.N.start;
     config.p = NULL;
     config.q = NULL;
 
@@ -228,38 +230,94 @@ void data_cleanup()
     if (config.q) free(config.q);
 }
 
+const char* usage_str =
+"\nUSAGE:\n"
+"./bst_driver [options] <input_sizes> <implementations>\n"
+"  options:\n\n"
+"  --logfile <path>\n"
+"    writes log messages to <path> (default: test.log)\n\n"
+"  --seed <seed>\n"
+"    sets the random number seed to <seed> (default: 42 ;)\n\n"
+" <input_sizes>: matlab-like range definition (start:step:stop)\n"
+"\n"
+" Example:"
+" $ ./bst_driver 10:10:100 ref/bst_ref.c\n\n"
+"   Executes the reference implementation with inputs sizes 10,20,..,100\n";
+
+void print_usage_and_exit() {
+    printf("%s", usage_str);
+    exit(1);
+}
+
 int main(int argc, char *argv[])
 {
     int ret;
 
-    // size_t n = 5;
-    // double p[] = {     .15, .1 , .05, .1 , .2};
-    // double q[] = {.05, .1 , .05, .05, .05, .1};
-
-    // config.p     = p;
-    // config.q     = q;
-
-    // config
-    char *tests[] = {"ref/bst_ref.c", "ref/bst_ref.c_dummy", "ref/bst_ref.c",
-                     "opt/bst_001_transposed.c",
-                     NULL};
-    config.tests = tests;
-
-    config.from    = 20;
-    config.to      = 100;
-    config.step    = 20;
+    // set defaults
     config.logfile = "test.log";
     config.seed    = 42;
 
+    int c;
+    while (true) {
+        static struct option long_options[] = {
+            {"logfile", required_argument, 0, 'l'},
+            {"seed",    required_argument, 0, 's'},
+            {0,0,0,0}
+        };
+
+        int option_index = 0;
+        c = getopt_long(argc, argv, "t", long_options, &option_index);
+        if (c == -1) { // -1 indicates end of options reached
+            break;
+        }
+        switch (c) {
+        case 0:
+            // the long option with name long_options[option_index].name is
+            // found
+            ERROR_MSG("getopt error on long option %s\n",
+                   long_options[option_index].name);
+            break;
+
+        case 'l':
+            config.logfile = optarg;
+            break;
+        case 's':
+            config.seed = atoi(optarg);
+            break;
+        case '?':
+            printf("getopt: error on character %c\n", optopt);
+            break;
+        default:
+            printf("getopt: general error\n");
+            abort();
+        }
+    }
+
+    int argc_remain = argc - optind;
+    int tmp_optind = optind;
+    // check whether enough input arguments were provided.
+    if( argc_remain < 2 ) {
+        ERROR_MSG("Too few arguments.\n");
+        print_usage_and_exit();
+    }
+
+    // read the test range from the cli
+    if( read_urange( &config.N, argv[tmp_optind++] ) < 0 ) {
+        ERROR_MSG("Error parsing argument: %s\n", argv[1] );
+        print_usage_and_exit();
+    }
+
+    config.tests = &argv[tmp_optind];
+
     ret = data_setup();
     if (!ret) {
-        printf("Error allocating data.\n");
+        ERROR_MSG("Error allocating data.\n");
         return -1;
     }
 
     ret = log_setup(config.logfile);
     if (!ret) {
-        printf("Error opening log.\n");
+        ERROR_MSG("Error opening log.\n");
         return -1;
     }
 
@@ -277,7 +335,7 @@ int main(int argc, char *argv[])
 
     ret = perf_init(events, &config.perf_data);
     if (ret < 0) {
-        fprintf(stderr, "Could not initialize perfmon.\n");
+        ERROR_MSG("Could not initialize perfmon.\n");
         perf_cleanup(config.perf_data);
         return 0;
     }
