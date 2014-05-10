@@ -21,6 +21,9 @@ struct {
     char   **tests;  ///< NULL-terminated list of implementations to test
     unsigned int seed; ///< seed for random number generator
 
+    // Validation
+    bst_impl_t validation;
+
     // Logging Setup
     char   *logfile; ///< name of logfile
 
@@ -82,8 +85,7 @@ void traverse(size_t i, size_t j, size_t indent, void *_bst_obj,
     fprintf(stderr, "ERROR[run_test, impl=%s, n=%zu]: ", impl->name, n); \
     fprintf(stderr, __VA_ARGS__);
 
-int run_test(size_t n, bst_impl_t *impl,
-        double ref, int verify)
+int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 {
     assert(impl);
 
@@ -122,6 +124,16 @@ int run_test(size_t n, bst_impl_t *impl,
     return pass;
 }
 
+bst_impl_t* get_implementation(char* name) {
+    bst_impl_t *impl = NULL;
+    for (size_t i=0; i<impl_size && !impl; ++i) {
+        if (strncmp(implementations[i].name, *impl_name, 100) == 0) {
+            impl = &implementations[i];
+        }
+    }
+    return impl;
+}
+
 void run_configuration()
 {
     // some output log
@@ -146,16 +158,9 @@ void run_configuration()
         // See if implementation available
         LOG("Evaluating implementation '%s'.\n", *impl_name);
 
-        bst_impl_t *impl;
-        int found = 0;
-        for (size_t i=0; i<impl_size && !found; ++i) {
-            if (strncmp(implementations[i].name, *impl_name, 100) == 0) {
-                found = 1;
-                impl = &implementations[i];
-            }
-        }
+        impl = get_implementation(*impl_name);
 
-        if (!found) {
+        if (!impl) {
             LOG("ERROR: Implementation not found.\n");
             return ;
         }
@@ -260,8 +265,9 @@ int main(int argc, char *argv[])
     int c;
     while (true) {
         static struct option long_options[] = {
-            {"logfile", required_argument, 0, 'l'},
-            {"seed",    required_argument, 0, 's'},
+            {"logfile",  required_argument, 0, 'l'},
+            {"seed",     required_argument, 0, 's'},
+            {"validate", required_argument, 0, 'v'},
             {0,0,0,0}
         };
 
@@ -283,6 +289,9 @@ int main(int argc, char *argv[])
             break;
         case 's':
             config.seed = atoi(optarg);
+            break;
+        case 'v':
+            config.validation = get_implementation(optarg);
             break;
         case '?':
             printf("getopt: error on character %c\n", optopt);
