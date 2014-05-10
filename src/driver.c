@@ -181,7 +181,7 @@ void run_configuration()
 
 int data_setup()
 {
-    size_t n = config.N.start;
+    size_t n = config.N.stop;
     config.p = NULL;
     config.q = NULL;
 
