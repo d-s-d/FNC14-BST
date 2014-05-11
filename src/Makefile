@@ -1,6 +1,6 @@
 TARGET  = bst_driver
 USERCFG = config.make
-SRC     = opt/bst_001_transposed.c driver.c driver_log.c ref/bst_ref.c urange.c 
+SRC     = $(wildcard opt/bst_*.c) driver.c driver_log.c ref/bst_ref.c urange.c 
 OBJ     = $(patsubst %.c, %.o, $(SRC))
 
 include $(USERCFG) # for DEFINES and FLAGS

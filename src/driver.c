@@ -21,6 +21,10 @@ struct {
     char   **tests;  ///< NULL-terminated list of implementations to test
     unsigned int seed; ///< seed for random number generator
 
+    // Validation
+    bst_impl_t* validation;
+    double* valid_values;
+
     // Logging Setup
     char   *logfile; ///< name of logfile
 
@@ -82,8 +86,7 @@ void traverse(size_t i, size_t j, size_t indent, void *_bst_obj,
     fprintf(stderr, "ERROR[run_test, impl=%s, n=%zu]: ", impl->name, n); \
     fprintf(stderr, __VA_ARGS__);
 
-int run_test(size_t n, bst_impl_t *impl,
-        double ref, int verify)
+int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 {
     assert(impl);
 
@@ -122,6 +125,16 @@ int run_test(size_t n, bst_impl_t *impl,
     return pass;
 }
 
+bst_impl_t* get_implementation(char* name) {
+    bst_impl_t *impl = NULL;
+    for (size_t i=0; i<impl_size && !impl; ++i) {
+        if (strncmp(implementations[i].name, name, 100) == 0) {
+            impl = &implementations[i];
+        }
+    }
+    return impl;
+}
+
 void run_configuration()
 {
     // some output log
@@ -146,34 +159,64 @@ void run_configuration()
         // See if implementation available
         LOG("Evaluating implementation '%s'.\n", *impl_name);
 
-        bst_impl_t *impl;
-        int found = 0;
-        for (size_t i=0; i<impl_size && !found; ++i) {
-            if (strncmp(implementations[i].name, *impl_name, 100) == 0) {
-                found = 1;
-                impl = &implementations[i];
-            }
-        }
+        bst_impl_t* impl = get_implementation(*impl_name);
 
-        if (!found) {
+        if (!impl) {
             LOG("ERROR: Implementation not found.\n");
             return ;
         }
 
+        int validate = config.validation!=NULL;
+        // precalculate validation results
+        if( validate ) {
+            bst_impl_t* val_impl = config.validation;
+            int i = 0;
+            config.valid_values = (double*) malloc(
+                        urange_get_size(&config.N) * sizeof(double) );
+            if( config.valid_values ) {
+                for (size_t n=config.N.start; n<=config.N.stop;
+                     n+=config.N.step) {
+                    void* bst_data = val_impl->alloc(n);
+                    if( !bst_data ) {
+                        LOG("ERROR: could not allocate memory for bst_data."
+                            "\n");
+                        config.validation = NULL;
+                        break;
+                    }
+                    config.valid_values[i++] =
+                            val_impl->compute(bst_data, config.p, config.q, n);
+                    val_impl->free(bst_data);
+#ifdef DEBUG
+                    printf("Calculated value %lf for input size %zu.\n",
+                           config.valid_values[i-1], n);
+#endif
+                }
+            } else {
+                LOG("ERROR: could not allocate memory for valid_values.\n");
+                config.validation = NULL;
+            }
+        }
+
         // Sweep through the tests
         log_array(impl->name);
-        for (size_t n=config.N.start; n<=config.N.stop; n+=config.N.step) {
+        int i = 0;
+        int test_ret = 0;
+        for (size_t n=config.N.start; n<=config.N.stop && !test_ret;
+             n+=config.N.step) {
             LOG("N = %zu\n", n);
             log_struct(NULL);
             log_int("N", n);
-            if (run_test(n, impl, 2.75, 0) < 0) {
-                LOG("ERROR: Test failed.\n");
-                return ;
-            }
+            test_ret = run_test(n, impl, validate ? config.valid_values[i] :
+                                                    0.0, validate);
             log_struct_end();
+            i++;
         }
+        if( test_ret )
+            LOG("ERROR: Test failed.\n");
         log_array_end();
 
+        if( config.valid_values )
+            free(config.valid_values);
     }
 
     log_struct_end();
@@ -238,6 +281,8 @@ const char* usage_str =
 "    writes log messages to <path> (default: test.log)\n\n"
 "  --seed <seed>\n"
 "    sets the random number seed to <seed> (default: 42 ;)\n\n"
+"  --validate <implementation>\n"
+"    validate against <implementation>."
 " <input_sizes>: matlab-like range definition (start:step:stop)\n"
 "\n"
 " Example:"
@@ -260,8 +305,9 @@ int main(int argc, char *argv[])
     int c;
     while (true) {
         static struct option long_options[] = {
-            {"logfile", required_argument, 0, 'l'},
-            {"seed",    required_argument, 0, 's'},
+            {"logfile",  required_argument, 0, 'l'},
+            {"seed",     required_argument, 0, 's'},
+            {"validate", required_argument, 0, 'v'},
             {0,0,0,0}
         };
 
@@ -283,6 +329,9 @@ int main(int argc, char *argv[])
             break;
         case 's':
             config.seed = atoi(optarg);
+            break;
+        case 'v':
+            config.validation = get_implementation(optarg);
             break;
         case '?':
             printf("getopt: error on character %c\n", optopt);
