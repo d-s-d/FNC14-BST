@@ -23,6 +23,7 @@ struct {
 
     // Validation
     bst_impl_t validation;
+    double* valid_values;
 
     // Logging Setup
     char   *logfile; ///< name of logfile
@@ -127,7 +128,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 bst_impl_t* get_implementation(char* name) {
     bst_impl_t *impl = NULL;
     for (size_t i=0; i<impl_size && !impl; ++i) {
-        if (strncmp(implementations[i].name, *impl_name, 100) == 0) {
+        if (strncmp(implementations[i].name, name, 100) == 0) {
             impl = &implementations[i];
         }
     }
@@ -158,27 +159,59 @@ void run_configuration()
         // See if implementation available
         LOG("Evaluating implementation '%s'.\n", *impl_name);
 
-        impl = get_implementation(*impl_name);
+        bst_impl_t impl = get_implementation(*impl_name);
 
         if (!impl) {
             LOG("ERROR: Implementation not found.\n");
             return ;
         }
 
+        // precalculate validation results
+        if( config.validation ) {
+            bst_impl_t val_impl = config.validation;
+            int i = 0;
+            config.valid_values = (double*) malloc(
+                        urange_get_size(config.N) * sizeof(double) );
+            if( config.valid_values ) {
+                for (size_t n=config.N.start; n<=config.N.stop;
+                     n+=config.N.step) {
+                    void* bst_data = val_impl.alloc(n);
+                    if( !bst_data ) {
+                        LOG("ERROR: could not allocate memory for bst_data."
+                            "\n");
+                        config.validation = NULL;
+                        break;
+                    }
+                    config.valid_values[i++] =
+                            val_impl.compute(bst_data, config.p, config.q, n);
+                    val_impl.free(bst_data);
+                }
+            } else {
+                LOG("ERROR: could not allocate memory for valid_values.\n");
+                config.validation = NULL;
+            }
+        }
+
         // Sweep through the tests
         log_array(impl->name);
+        int i = 0;
         for (size_t n=config.N.start; n<=config.N.stop; n+=config.N.step) {
             LOG("N = %zu\n", n);
             log_struct(NULL);
             log_int("N", n);
-            if (run_test(n, impl, 2.75, 0) < 0) {
+            int validate = config.validation!=NULL;
+            if (run_test(n, impl, validate ? config.valid_values[i++] : 0.0,
+                         validate) < 0) {
                 LOG("ERROR: Test failed.\n");
                 return ;
             }
             log_struct_end();
+            i++;
         }
         log_array_end();
 
+        if( config.valid_values )
+            free(config.valid_values);
     }
 
     log_struct_end();

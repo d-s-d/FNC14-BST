@@ -1,8 +1,10 @@
 #include"urange.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include<assert.h>
 
 size_t urange_get_max_val( urange_t* urange ) {
+    assert( urange != NULL );
     size_t diff = urange->stop - urange->start;
     size_t q = diff/urange->step;
     return urange->start + q*(urange->step);
@@ -27,4 +29,10 @@ int read_urange( urange_t* urange, char* str ) {
     if ( **endptr != '\0' )
         return -1;
     return 0;
+}
+
+size_t urange_get_size( urange_t* urange ) {
+    assert( urange != NULL );
+    if( urange->start > urange->stop ) return 0;
+    return ((urange->stop - urange->start)/urange->step)+1;
 }
