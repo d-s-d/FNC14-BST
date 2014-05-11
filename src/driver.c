@@ -35,27 +35,6 @@ struct {
     struct perf_data *perf_data;
 } config;
 
-bst_impl_t implementations[] = {
-    {
-        .name    = "ref/bst_ref.c",
-        .alloc   = bst_alloc,
-        .compute = bst_compute,
-        .root    = bst_get_root,
-        .free    = bst_free
-    }, {
-        .name    = "ref/bst_ref.c_dummy",
-        .alloc   = bst_alloc,
-        .compute = bst_compute,
-        .root    = bst_get_root,
-        .free    = bst_free
-    }, {
-        .name    = "opt/bst_001_transposed.c",
-        .alloc   = bst_alloc_001_transposed,
-        .compute = bst_compute_001_transposed,
-        .root    = bst_get_root_001_transposed,
-        .free    = bst_free_001_transposed
-    }
-};
 #define impl_size (sizeof(implementations)/sizeof(bst_impl_t))
 
 #define LOG(...) printf(__VA_ARGS__)
