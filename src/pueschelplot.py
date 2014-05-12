@@ -44,7 +44,8 @@ def main():
     plt.gca().tick_params(direction='out', length=0, color='k')
 
     for implName, results in cycles.iteritems():
-        plt.plot(N, results, 'o-', linewidth=2)
+        plt.plot(N, results, 'o-', linewidth=2, label=implName)
+    plt.legend(loc=2)
     
 
     plt.gca().set_axisbelow(True)
