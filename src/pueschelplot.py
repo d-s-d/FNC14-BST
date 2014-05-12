@@ -1,30 +1,57 @@
 #!/usr/bin/env python
+__doc__="""
+""";
 
+import json, sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-xvals = (112, 224, 336, 448, 560, 672, 784, 896, 1008, 1120, 1232, 1344, 1456)
-yvals1 = (1.918499, 1.580462, 1.813013, 1.808579, 1.729736, 1.729384, 1.715734, 1.386305, 1.729841, 1.696438, 1.616113, 1.705391, 1.720684)
-yvals2 =  (0.618573, 0.545513, 0.574069, 0.459962, 0.567306, 0.519556, 0.557664, 0.417062, 0.566603, 0.523055, 0.558473, 0.479710, 0.561821)
+def usage():
+    print __doc__
 
-yprops = dict(rotation=0, y=1.05, horizontalalignment='left')
-
-plt.subplot(111,axisbg='#BBBBBB',alpha=0.1)
-plt.grid(color='white', alpha=0.5, linewidth=2, linestyle='-', axis='y')
-
-for spine_name in ['top', 'left', 'right']:
-    plt.gca().spines[spine_name].set_color('none')
+def main():
+    try:
+        logfile = open(sys.argv[1])
+    except KeyError:
+        usage()
+        sys.exit(1)
     
-plt.ylabel('Performance [flops/cycle]', **yprops)
-plt.xlabel('N [doubles]')
+    try:
+        jsonLog = json.load(logfile)
+    except Exception as e:
+        print( "exception type: %s, message: %s" % (type(e), e))
+        sys.exit(1)
+    
+    cycles = {}
+    runs = jsonLog['runs']
+    if len(runs) > 0:
+        N = [int(x['N']) for x in runs[runs.keys()[0]]]
+        for implName, results in runs.iteritems():
+             if [int(x['N']) for x in results] == N:
+                 cycles[implName] = [int(x['cycles']) for x in results]
 
-plt.gca().tick_params(direction='out', length=0, color='k')
+    yprops = dict(rotation=0, y=1.05, horizontalalignment='left')
 
-plt.plot(xvals, yvals1, 'bo-', linewidth=2)
-plt.plot(xvals, yvals2, 'go-', linewidth=2)
-plt.gca().set_axisbelow(True)
+    plt.subplot(111,axisbg='#BBBBBB',alpha=0.1)
+    plt.grid(color='white', alpha=0.5, linewidth=2, linestyle='-', axis='y')
 
-plt.savefig('test.png', dpi=300)
+    for spine_name in ['top', 'left', 'right']:
+        plt.gca().spines[spine_name].set_color('none')
+    
+    plt.ylabel('Runtime [cycles]', **yprops)
+    plt.xlabel('N [doubles]')
 
-plt.show()
+    plt.gca().tick_params(direction='out', length=0, color='k')
 
+    for implName, results in cycles.iteritems():
+        plt.plot(N, results, 'o-', linewidth=2)
+    
+
+    plt.gca().set_axisbelow(True)
+    
+    plt.savefig('pueschelplot.png', dpi=300)
+    
+    plt.show()
+
+if __name__=="__main__":
+    main()
