@@ -1,6 +1,6 @@
 TARGET  = bst_driver
 USERCFG = config.make
-SRC     = $(wildcard opt/bst_*.c) driver.c driver_log.c ref/bst_ref.c urange.c 
+SRC     = $(wildcard opt/bst_*.c) driver.c driver_log.c ref/bst_ref.c urange.c
 OBJ     = $(patsubst %.c, %.o, $(SRC))
 
 include $(USERCFG) # for DEFINES and FLAGS
@@ -22,7 +22,7 @@ clean:
 	rm -f $(OBJ)
 	rm -f $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJ) variants.h
 	$(CC) $^ $(LIBS) -o $@
 
 %.o: %.c $(USERCFG)
