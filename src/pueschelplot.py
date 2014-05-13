@@ -80,7 +80,7 @@ def main():
          c_miss[implName] = [int(x['cache-misses']) for x in results]
          c_read[implName] = [int(x['cache-references']) for x in results]
 
-         performance[implName] = [c/fl for (c,fl) in zip(cycles[implName],fl_add)]
+         performance[implName] = [fl/c for (c,fl) in zip(cycles[implName],fl_add)]
          hit_rate[implName] = [1-float(m)/float(r) if r > 0 else 1 for (m,r) in zip(c_miss[implName], c_read[implName])]
 
     # data plotting
