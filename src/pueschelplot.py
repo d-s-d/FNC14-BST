@@ -7,12 +7,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def usage():
-    print __doc__
+    print("Usage: %s logfile") % sys.argv[0]
+    #print __doc__
 
 def main():
     try:
         logfile = open(sys.argv[1])
-    except KeyError:
+    except (KeyError, IndexError):
         usage()
         sys.exit(1)
     
