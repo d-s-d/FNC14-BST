@@ -10,6 +10,7 @@
 #include "variants.h"
 #include "bst.h"
 #include "perf/perfmon_wrapper.h"
+#include "perf/rdtsc.h"
 #include "driver_log.h"
 
 #define def_str(s) _def_str(s) // for some reason, need (s)
@@ -20,6 +21,7 @@ struct {
     urange_t N;
     char   **tests;  ///< NULL-terminated list of implementations to test
     unsigned int seed; ///< seed for random number generator
+    int      callibrate;
 
     // Validation
     bst_impl_t* validation;
@@ -65,6 +67,7 @@ void traverse(size_t i, size_t j, size_t indent, void *_bst_obj,
     fprintf(stderr, "ERROR[run_test, impl=%s, n=%zu]: ", impl->name, n); \
     fprintf(stderr, __VA_ARGS__);
 
+#define CYCLES_REQUIRED 1e8
 int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 {
     assert(impl);
@@ -75,10 +78,41 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
         return -1;
     }
 
-    perf_reset(config.perf_data);
-    perf_start(config.perf_data);
-    double e = impl->compute(bst_data, config.p, config.q, n);
-    perf_stop(config.perf_data);
+    double e;
+    int num_runs = 1;
+    if (config.callibrate) {
+        // warm up cache
+        impl->compute(bst_data, config.p, config.q, n);
+
+        // calibrate
+        tsc_counter start, end;
+        while (num_runs < (1<<14)) {
+            CPUID(); RDTSC(start);
+            for (int i=0; i<num_runs; ++i) {
+                impl->compute(bst_data, config.p, config.q, n);
+            }
+            RDTSC(end); CPUID();
+
+            double cycles = (double)(COUNTER_DIFF(end, start));
+            if (cycles >= CYCLES_REQUIRED) break;
+
+            num_runs *=2;
+        }
+
+        log_int("average-rounds", num_runs);
+
+        perf_reset(config.perf_data);
+        perf_start(config.perf_data);
+        for (int i=0; i<num_runs; ++i) {
+            e = impl->compute(bst_data, config.p, config.q, n);
+        }
+        perf_stop(config.perf_data);
+    } else {
+        perf_reset(config.perf_data);
+        perf_start(config.perf_data);
+        e = impl->compute(bst_data, config.p, config.q, n);
+        perf_stop(config.perf_data);
+    }
 
 #ifdef DEBUG
     printf("Cost is: %lf. Root is %d.\n", e, impl->root(bst_data, 1, n));
@@ -96,7 +130,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 
     // log performance
     perf_update_values(config.perf_data);
-    log_idouble("cycles",           config.perf_data[0].value);
+    log_idouble("cycles",           config.perf_data[0].value / num_runs);
     log_idouble("cache-references", config.perf_data[1].value);
     log_idouble("cache-misses",     config.perf_data[2].value);
 
@@ -121,6 +155,7 @@ void run_configuration()
     log_size("to",   config.N.stop);
     log_size("step", config.N.step);
     log_fmt("seed", "%u", config.seed);
+    log_str("callibration", config.callibrate ? "on" : "off");
     //log_str("userflags", def_str(M_ENV_USERFLAGS));
     //log_str("git-revision", def_str(M_ENV_GITREV));
     // cannot use log_str for these strings
@@ -289,7 +324,8 @@ int main(int argc, char *argv[])
         static struct option long_options[] = {
             {"logfile",  required_argument, 0, 'l'},
             {"seed",     required_argument, 0, 's'},
-            {"validate", required_argument, 0, 'v'},
+            {"validate",   required_argument, 0, 'v'},
+            {"callibrate", required_argument, 0, 'c'},
             {0,0,0,0}
         };
 
@@ -314,6 +350,9 @@ int main(int argc, char *argv[])
             break;
         case 'v':
             config.validation = get_implementation(optarg);
+            break;
+        case 'c':
+            config.callibrate = atoi(optarg);
             break;
         case '?':
             printf("getopt: error on character %c\n", optopt);

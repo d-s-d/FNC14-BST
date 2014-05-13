@@ -37,7 +37,8 @@ def plot(title, xlabel, ylabel, data, log, filename):
     plt.subplots_adjust(bottom=0.2)
     plt.figtext(0.1, 0.02,
             "N = %s:%s:%s; " % (log['from'], log['step'], log['to']) +
-            "Seed = %s;\n" % log['seed'] +
+            "Seed = %s; " % log['seed'] +
+            "Callibration = %s;\n" % log['callibration'] +
             "CFLAGS: %s\n" % log['userflags'] +
             "Git Revision: %s" % log['git-revision'])
     
@@ -67,6 +68,8 @@ def main():
     # data extraction
     N = range(jsonLog['from'], jsonLog['to']+1, jsonLog['step'])
     fl_add = [(1/3.0*(n**3 + 3*n**2 + 2*n)) for n in N] 
+    fl_cmp = [(1/6.0*(n**3 - n)) for n in N] 
+    flops  = fl_add + fl_cmp
 
     cycles = {}
     c_miss = {}
@@ -80,7 +83,7 @@ def main():
          c_miss[implName] = [int(x['cache-misses']) for x in results]
          c_read[implName] = [int(x['cache-references']) for x in results]
 
-         performance[implName] = [fl/c for (c,fl) in zip(cycles[implName],fl_add)]
+         performance[implName] = [fl/c for (c,fl) in zip(cycles[implName],flops)]
          hit_rate[implName] = [1-float(m)/float(r) if r > 0 else 1 for (m,r) in zip(c_miss[implName], c_read[implName])]
 
     # data plotting
