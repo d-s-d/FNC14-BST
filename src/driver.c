@@ -12,7 +12,7 @@
 #include "perf/perfmon_wrapper.h"
 #include "driver_log.h"
 
-#define def_str(s) _def_str((s)) // for some reason, need (s)
+#define def_str(s) _def_str(s) // for some reason, need (s)
 #define _def_str(s) #s
 
 struct {
@@ -121,8 +121,11 @@ void run_configuration()
     log_size("to",   config.N.stop);
     log_size("step", config.N.step);
     log_fmt("seed", "%u", config.seed);
-    log_str("userflags", def_str(M_ENV_USERFLAGS));
-    log_str("git-revision", def_str(M_ENV_GITREV));
+    //log_str("userflags", def_str(M_ENV_USERFLAGS));
+    //log_str("git-revision", def_str(M_ENV_GITREV));
+    // cannot use log_str for these strings
+    log_fmt("userflags", "%s", def_str(M_ENV_USERFLAGS));
+    log_fmt("git-revision", "%s", def_str(M_ENV_GITREV));
 
     log_struct("runs");
 
