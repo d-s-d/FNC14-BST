@@ -10,9 +10,45 @@ def usage():
     print("Usage: %s logfile") % sys.argv[0]
     #print __doc__
 
+def plot(title, xlabel, ylabel, data, log, filename):
+    yprops = dict(rotation=0, y=1.05, horizontalalignment='left')
+
+    plt.clf()
+    plt.subplot(111,axisbg='#BBBBBB',alpha=0.1)
+    plt.grid(color='white', alpha=0.5, linewidth=2, linestyle='-', axis='y')
+
+    for spine_name in ['top', 'left', 'right']:
+        plt.gca().spines[spine_name].set_color('none')
+
+    plt.gca().tick_params(direction='out', length=0, color='k')
+    plt.gca().set_axisbelow(True)
+    
+    #plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel, **yprops)
+
+    N = range(log['from'], log['to']+1, log['step'])
+
+    for implName, results in data.iteritems():
+        plt.plot(N, results, 'o-', linewidth=2, label=implName)
+    plt.legend(loc=2)
+
+    # some space on the bottom for comments
+    plt.subplots_adjust(bottom=0.2)
+    plt.figtext(0.1, 0.02,
+            "N = %s:%s:%s; " % (log['from'], log['step'], log['to']) +
+            "Seed = %s;\n" % log['seed'] +
+            "CFLAGS: %s\n" % log['userflags'] +
+            "Git Revision: %s" % log['git-revision'])
+    
+    plt.savefig(filename, dpi=75)
+    print("Graph generated: %s" % filename)
+
 def main():
+    # input parsing
+    filename = sys.argv[1]
     try:
-        logfile = open(sys.argv[1])
+        logfile = open(filename)
     except (KeyError, IndexError):
         usage()
         sys.exit(1)
@@ -23,37 +59,37 @@ def main():
         print( "exception type: %s, message: %s" % (type(e), e))
         sys.exit(1)
     
-    cycles = {}
     runs = jsonLog['runs']
-    if len(runs) > 0:
-        N = [int(x['N']) for x in runs[runs.keys()[0]]]
-        for implName, results in runs.iteritems():
-             if [int(x['N']) for x in results] == N:
-                 cycles[implName] = [int(x['cycles']) for x in results]
+    if len(runs) == 0:
+        print("No data in logfile.")
+        sys.exit(1)
 
-    yprops = dict(rotation=0, y=1.05, horizontalalignment='left')
+    # data extraction
+    N = range(jsonLog['from'], jsonLog['to']+1, jsonLog['step'])
+    fl_add = [(1/3.0*(n**3 + 3*n**2 + 2*n)) for n in N] 
 
-    plt.subplot(111,axisbg='#BBBBBB',alpha=0.1)
-    plt.grid(color='white', alpha=0.5, linewidth=2, linestyle='-', axis='y')
+    cycles = {}
+    c_miss = {}
+    c_read = {}
 
-    for spine_name in ['top', 'left', 'right']:
-        plt.gca().spines[spine_name].set_color('none')
-    
-    plt.ylabel('Runtime [cycles]', **yprops)
-    plt.xlabel('N [doubles]')
+    performance = {}
+    hit_rate    = {}
 
-    plt.gca().tick_params(direction='out', length=0, color='k')
+    for implName, results in runs.iteritems():
+         cycles[implName] = [int(x['cycles']) for x in results]
+         c_miss[implName] = [int(x['cache-misses']) for x in results]
+         c_read[implName] = [int(x['cache-references']) for x in results]
 
-    for implName, results in cycles.iteritems():
-        plt.plot(N, results, 'o-', linewidth=2, label=implName)
-    plt.legend(loc=2)
-    
+         performance[implName] = [c/fl for (c,fl) in zip(cycles[implName],fl_add)]
+         hit_rate[implName] = [1-float(m)/float(r) for (m,r) in zip(c_miss[implName], c_read[implName])]
 
-    plt.gca().set_axisbelow(True)
-    
-    plt.savefig('pueschelplot.png', dpi=300)
-    
-    plt.show()
+    # data plotting
+    plot('Runtime', 'N [doubles]', 'Runtime [cycles]',
+            cycles, jsonLog, filename + '.cycles.png')
+    plot('Performance', 'N [doubles]', 'Performance [flops/cycles]',
+            performance, jsonLog, filename + '.performance.png')
+    plot('Cache Hit Rate', 'N [doubles]', 'Cache Hit Rate',
+            hit_rate, jsonLog, filename + '.cache.png')
 
 if __name__=="__main__":
     main()
