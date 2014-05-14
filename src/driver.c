@@ -122,7 +122,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
     int pass = 0;
 
     if (verify) {
-        if (abs(e - ref) > 1e-5) {
+        if (fabs(e - ref) > 1e-5) {
             pass = -2;
             RUN_TEST_ERR("Wrong result: %lf (diff: %lf)\n", e, e-ref);
         }
