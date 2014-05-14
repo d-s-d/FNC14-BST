@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <getopt.h>
 #include <stdbool.h>
+#include <math.h>
 
 #include "urange.h"
 #include "variants.h"
