@@ -6,6 +6,7 @@
 #include <getopt.h>
 #include <stdbool.h>
 #include <math.h>
+#include <time.h>
 
 #include "urange.h"
 #include "variants.h"
@@ -16,6 +17,8 @@
 
 #define def_str(s) _def_str(s) // for some reason, need (s)
 #define _def_str(s) #s
+
+#define TS_FMT "%Y-%m-%d_%H-%M-%S"
 
 struct {
     // Test Setup
@@ -298,7 +301,9 @@ const char* usage_str =
 "./bst_driver [options] <input_sizes> <implementations>\n"
 "  options:\n\n"
 "  --logfile <path>\n"
-"    writes log messages to <path> (default: test.log)\n\n"
+"    writes log messages to <path>\n"
+"    (default: <Timestamp>.log, where Timestamp has the format:\n"
+"    "TS_FMT")\n\n"
 "  --seed <seed>\n"
 "    sets the random number seed to <seed> (default: 42 ;)\n\n"
 "  --validate <implementation>\n"
@@ -314,13 +319,24 @@ void print_usage_and_exit() {
     exit(1);
 }
 
+size_t generate_logfn( char* logfn, size_t max ) {
+    time_t t;
+    struct tm* lt;
+    time( &t );
+    lt = localtime( &t );
+    return strftime( logfn, max, TS_FMT".log", lt );
+}
+
 int main(int argc, char *argv[])
 {
+#define LOGFN_LEN 32
     int ret;
+    char logfn[LOGFN_LEN];
+    config.logfile = logfn;
 
     // set defaults
-    config.logfile = "test.log";
-    config.seed    = 42;
+    generate_logfn( config.logfile, LOGFN_LEN );
+   config.seed    = 42;
 
     int c;
     while (true) {
