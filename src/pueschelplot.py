@@ -2,9 +2,14 @@
 __doc__="""
 """;
 
-import json, sys
-import matplotlib.pyplot as plt
+import sys
+import json
 import numpy as np
+
+#import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg') # for pyplot to work without X, e.g. SSH session
+from matplotlib import pyplot as plt
 
 def usage():
     print("Usage: %s logfile") % sys.argv[0]
