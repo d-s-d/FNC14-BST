@@ -36,7 +36,8 @@ def plot(title, xlabel, ylabel, data, log, filename):
 
     for implName, results in data.iteritems():
         plt.plot(N, results, 'o-', linewidth=2, label=implName)
-    plt.legend(loc=2)
+    #plt.legend(loc=2)
+    plt.legend(loc=3, prop={'size':10})
 
     # some space on the bottom for comments
     plt.subplots_adjust(bottom=0.2)

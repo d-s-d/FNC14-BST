@@ -1,2 +1,2 @@
 DEFINES = -DNDEBUG
-FLAGS   = -fno-tree-vectorize
+FLAGS   = -fno-tree-vectorize -O2
