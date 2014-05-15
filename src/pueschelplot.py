@@ -44,7 +44,7 @@ def plot(title, xlabel, ylabel, data, log, filename):
     plt.figtext(0.1, 0.02,
             "N = %s:%s:%s; " % (log['from'], log['step'], log['to']) +
             "Seed = %s; " % log['seed'] +
-            "Callibration = %s;\n" % log['callibration'] +
+            "Calibration = %s;\n" % log['calibration'] +
             "CFLAGS: %s\n" % log['userflags'] +
             "Git Revision: %s" % log['git-revision'])
     

@@ -22,7 +22,7 @@ struct {
     urange_t N;
     char   **tests;  ///< NULL-terminated list of implementations to test
     unsigned int seed; ///< seed for random number generator
-    int      callibrate;
+    int      calibrate;
 
     // Validation
     bst_impl_t* validation;
@@ -81,7 +81,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 
     double e;
     int num_runs = 1;
-    if (config.callibrate) {
+    if (config.calibrate) {
         // warm up cache
         impl->compute(bst_data, config.p, config.q, n);
 
@@ -126,6 +126,8 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
         if (fabs(e - ref) > 1e-5) {
             pass = -2;
             RUN_TEST_ERR("Wrong result: %lf (diff: %lf)\n", e, e-ref);
+        } else {
+            printf("Verified result: %.3lf (diff: %.3lf)\n", e, e-ref);
         }
     }
 
@@ -156,7 +158,7 @@ void run_configuration()
     log_size("to",   config.N.stop);
     log_size("step", config.N.step);
     log_fmt("seed", "%u", config.seed);
-    log_str("callibration", config.callibrate ? "on" : "off");
+    log_str("calibration", config.calibrate ? "on" : "off");
     //log_str("userflags", def_str(M_ENV_USERFLAGS));
     //log_str("git-revision", def_str(M_ENV_GITREV));
     // cannot use log_str for these strings
@@ -326,7 +328,7 @@ int main(int argc, char *argv[])
             {"logfile",  required_argument, 0, 'l'},
             {"seed",     required_argument, 0, 's'},
             {"validate",   required_argument, 0, 'v'},
-            {"callibrate", required_argument, 0, 'c'},
+            {"calibrate", required_argument, 0, 'c'},
             {0,0,0,0}
         };
 
@@ -353,7 +355,7 @@ int main(int argc, char *argv[])
             config.validation = get_implementation(optarg);
             break;
         case 'c':
-            config.callibrate = atoi(optarg);
+            config.calibrate = atoi(optarg);
             break;
         case '?':
             printf("getopt: error on character %c\n", optopt);
