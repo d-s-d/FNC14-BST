@@ -2,9 +2,6 @@
 #include<math.h>
 #include<string.h>
 
-//#define DIAG_NUM(j,i) (j-i+1)
-//#define EULER_SUM(n,d) ((n-d+1)*(n-d+2)/2)
-//#define IDX(n,j,i) (EULER_SUM(n,0) - EULER_SUM(n,DIAG_NUM(j,i)) - 1 + i)
 
 /*
  * Disclaimer: The indices differ from the high-level pseudo-code description
@@ -14,6 +11,11 @@
  * since the first key is p_0 and not p_1 as in the book. w[.,.] and root[.,.]
  * are defined similarly.
  *
+ */
+
+/*
+ * This implementation differs from the reference by traversing the e table
+ * row by row bottom up rather than diagonal by diagonal.
  */
 
 #define STRIDE (n+1)
@@ -26,7 +28,7 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc( size_t n ) {
+void* bst_alloc_100_ref_bottomup( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
     size_t sz = (n+1)*(n+1);
     mem->e = (double*) malloc( sz * sizeof(double) );
@@ -36,9 +38,10 @@ void* bst_alloc( size_t n ) {
     return mem;
 }
 
-double bst_compute( void*_bst_obj, double* p, double* q, size_t n ) {
+#include <stdio.h>
+double bst_compute_100_ref_bottomup( void*_bst_obj, double* p, double* q, size_t n ) {
     segments_t* mem = (segments_t*) _bst_obj;
-    size_t i, l, r, j;
+    int i, l, r, j;
     double t;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
@@ -49,25 +52,24 @@ double bst_compute( void*_bst_obj, double* p, double* q, size_t n ) {
         w[IDX(i,i)] = q[i];
     }
 
-    for( l = 1; l < n+1; l++ ) {
-        for( i = 0; i < n-l+1; i++ ) {
-            j = i+l;
+    for (i = n-1; i >= 0; --i) {
+        for (j = i+1; j < n+1; ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
-            for( r = i; r < j; r++ ) { // l many iterations
-                // TODO: check these indices
+            for (r=i; r<j; ++r) {
                 t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
-                if( t < e[IDX(i,j)] ) {
+                if (t < e[IDX(i,j)]) {
                     e[IDX(i,j)] = t;
                     root[IDX(i,j)] = r;
                 }
             }
         }
     }
+
     return e[IDX(0,n)];
 }
 
-size_t bst_get_root( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_100_ref_bottomup( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -76,20 +78,8 @@ size_t bst_get_root( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-//#include <stdio.h>
-void bst_free( void* _mem ) {
+void bst_free_100_ref_bottomup( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
-
-    /*
-    size_t n = mem->n;
-    for (size_t i=0; i<=n; ++i) {
-        for (size_t j=0; j<=n; ++j) {
-            printf(" %.3lf", mem->e[i*(n+1)+j]);
-        }
-        printf("\n");
-    }
-    */
-
     free( mem->e );
     free( mem->w );
     free( mem->r );
