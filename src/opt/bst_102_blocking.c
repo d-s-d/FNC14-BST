@@ -38,38 +38,27 @@ void* bst_alloc_102_blocking( size_t n ) {
     return mem;
 }
 
-#define NB 4
-double bst_compute_102_blocking( void*_bst_obj, double* p, double* q, size_t n ) {
+#define NB 16
+double bst_compute_102_blocking( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
+    int n;
     int i, l, r, j;
     double t, t_min, w_cur;
     int r_min;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
     // initialization
-    mem->n = n;
+    mem->n = nn;
+    n = nn; // subtractions with n potentially negative. say hello to all the bugs
     for( i = 0; i < n+1; i++ ) {
         e[IDX(i,i)] = q[i];
         w[IDX(i,i)] = q[i];
     }
 
-    // for (i = n-1; i >= 0; --i) {
-    //     for (j = i+1; j < n+1; ++j) {
-    //         e[IDX(i,j)] = INFINITY;
-    //         w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
-    //         for (r=i; r<j; ++r) {
-    //             t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
-    //             if (t < e[IDX(i,j)]) {
-    //                 e[IDX(i,j)] = t;
-    //                 root[IDX(i,j)] = r;
-    //             }
-    //         }
-    //     }
-    // }
+    int ib;
 
-    int i2, j2;
-    // bottom right triangle
-    for (i = n-1; (i >= 0) && (i > (n-NB-1)); --i) {
+    // compute bottom right triangle NBxNB (i.e. bottom NB rows)
+    for (i = n-1; (i >= 0) && (i > (n-NB)); --i) {
         for (j = i+1; j < n+1; ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
@@ -83,12 +72,11 @@ double bst_compute_102_blocking( void*_bst_obj, double* p, double* q, size_t n )
         }
     }
 
-    // rest of rows
+    // compute the remaining rows
     // printf("Rest of rows: i=%d\n", i);
     for (; i >= 0; --i) {
-        // First row procedure ------------------------------------------------
-
-        // fill up row until NBxNB triangle rooted in (i,i) is computed.
+        // First, the starting NB values in this row are computed.
+        // This corresponds to completing the NBxNB triangle right down from (i,i)
         for (j = i+1; j < (i+NB); ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
@@ -101,9 +89,12 @@ double bst_compute_102_blocking( void*_bst_obj, double* p, double* q, size_t n )
             }
         }
 
-        // now we compute the rest of the row, but do updates in chunk of NB's.
-        // that is, first, we initialize every e-value and do the first NB
-        // comparisions for each element in the row.
+        // Now we compute the rest of the row, but do updates in chunk of NB's.
+        // Since we now have the first NB values in this row, we can compute
+        // the first NB iterations of the r-loop for all the remaining values
+        // in this row.
+        // (this needs to be seperated from the loop afterwards since we also do
+        //  initialization to INFINITY))
         for (; j < (n+1); ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
@@ -116,58 +107,45 @@ double bst_compute_102_blocking( void*_bst_obj, double* p, double* q, size_t n )
             }
         }
 
-        // further rows procedure --------------------------------------------
-
-        // now we can complete the updates in further chunks of NB
-        for (j = i+NB; j < (n+1-NB); j += NB) {
+        // We now continue to update the values in this row in chunks of NB
+        // as long as possible.
+        for (ib = i+NB; (ib+NB) < (n+1); ib += NB) {
             //printf("got in here for i=%d\n", i);
 
-            // complete starting triangle
-            for (j2 = (j+1); j2 < (j+NB); ++j2) {
-                for (r=j; r<j2; ++r) {
-                    t = e[IDX(i,r)] + e[IDX(r+1,j2)] + w[IDX(i,j2)];
-                    if (t < e[IDX(i,j2)]) {
-                        e[IDX(i,j2)] = t;
-                        root[IDX(i,j2)] = r;
+            // Again we start by finishing computing the next NB values of
+            // row 'i'. The last values needed for that are from the triangle
+            // in down right from (ib,ib).
+            for (j = (ib+1); j < (ib+NB); ++j) {
+                for (r=ib; r<j; ++r) {
+                    t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
+                    if (t < e[IDX(i,j)]) {
+                        e[IDX(i,j)] = t;
+                        root[IDX(i,j)] = r;
                     }
                 }
             }
 
-            // complete the blocks in this row
-            for (; j2 < (n+1); ++j2) {
-                // update (i,j2)
-                for (r=j; r<(j+NB); ++r) {
-                    t = e[IDX(i,r)] + e[IDX(r+1,j2)] + w[IDX(i,j2)];
-                    if (t < e[IDX(i,j2)]) {
-                        e[IDX(i,j2)] = t;
-                        root[IDX(i,j2)] = r;
+            // Now, having NB new values in row 'i', we compute the next NB
+            // r-iterations for the remaining values in row 'i'.
+            for (; j < (n+1); ++j) {
+                for (r=ib; r<(ib+NB); ++r) {
+                    t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
+                    if (t < e[IDX(i,j)]) {
+                        e[IDX(i,j)] = t;
+                        root[IDX(i,j)] = r;
                     }
                 }
             }
         }
 
-        // non-NBxNB cleanup for the end --------------------------------------
-
-        // this is a triangle
-        // complete starting triangle
-        for (j2 = (j+1); j2 < (j+NB); ++j2) {
-            for (r=j; r<j2; ++r) {
-                t = e[IDX(i,r)] + e[IDX(r+1,j2)] + w[IDX(i,j2)];
-                if (t < e[IDX(i,j2)]) {
-                    e[IDX(i,j2)] = t;
-                    root[IDX(i,j2)] = r;
-                }
-            }
-        }
-
-        // complete the blocks in this row
-        for (; j2 < (n+1); ++j2) {
-            // update (i,j2)
-            for (r=j; r<(j+NB); ++r) {
-                t = e[IDX(i,r)] + e[IDX(r+1,j2)] + w[IDX(i,j2)];
-                if (t < e[IDX(i,j2)]) {
-                    e[IDX(i,j2)] = t;
-                    root[IDX(i,j2)] = r;
+        // There are less than NB elements remaining in row 'i'. The values
+        // missing come from the triangle down right of (ib,ib)
+        for (j = (ib+1); j < (n+1); ++j) {
+            for (r=ib; r<j; ++r) {
+                t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
+                if (t < e[IDX(i,j)]) {
+                    e[IDX(i,j)] = t;
+                    root[IDX(i,j)] = r;
                 }
             }
         }
