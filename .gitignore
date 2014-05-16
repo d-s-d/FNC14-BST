@@ -26,11 +26,16 @@
 *.*~
 \#.#
 
+# report
 doc/report.pdf
 doc/report.aux
 doc/report.log
 
+# variants
 src/variants.h
 
+# ctags
 tags
 
+# config.make
+config.make
