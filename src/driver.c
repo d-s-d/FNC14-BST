@@ -303,7 +303,7 @@ const char* usage_str =
 "  --logfile <path>\n"
 "    writes log messages to <path>\n"
 "    (default: <Timestamp>.log, where Timestamp has the format:\n"
-"    "TS_FMT")\n\n"
+"    "LOG_PREFIX TS_FMT")\n\n"
 "  --seed <seed>\n"
 "    sets the random number seed to <seed> (default: 42 ;)\n\n"
 "  --validate <implementation>\n"
@@ -324,7 +324,7 @@ size_t generate_logfn( char* logfn, size_t max ) {
     struct tm* lt;
     time( &t );
     lt = localtime( &t );
-    return strftime( logfn, max, TS_FMT".log", lt );
+    return strftime( logfn, max, "log/"LOG_PREFIX TS_FMT".log", lt );
 }
 
 int main(int argc, char *argv[])
