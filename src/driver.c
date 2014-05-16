@@ -154,8 +154,31 @@ bst_impl_t* get_implementation(char* name) {
     return impl;
 }
 
+// escape strings from start to stop
+size_t escape_character( char *restrict trgt_str, const char *restrict str,
+        char chr, size_t start, size_t stop ) {
+    size_t str_len = strlen(str);
+    size_t i, j = 0;
+    // count occurences
+    for( i = 0; i < str_len+1; i++ ) {
+        if( (str[i] == chr) && (i>=start) && (i<=stop) ) trgt_str[j++] = '\\';
+        trgt_str[j++] = str[i];
+    }
+    return i;
+}
+
 void run_configuration()
 {
+    size_t ENV_USERFLAGS_LEN =
+        sizeof(def_str(M_ENV_USERFLAGS))/sizeof(def_str(M_ENV_USERFLAGS)[0]);
+    size_t ENV_GITREV_LEN =
+        sizeof(def_str(M_ENV_GITREV))/sizeof(def_str(M_ENV_GITREV)[0]);
+    char str_env_userflags[2*ENV_USERFLAGS_LEN];
+    char str_env_gitrev[2*ENV_GITREV_LEN];
+    escape_character( str_env_userflags, def_str(M_ENV_USERFLAGS), '"', 
+        1, ENV_USERFLAGS_LEN-3 );
+    escape_character( str_env_gitrev, def_str(M_ENV_GITREV), '"',
+        1, ENV_GITREV_LEN-3 );
     // some output log
     log_size("from", config.N.start);
     log_size("to",   config.N.stop);
@@ -165,8 +188,8 @@ void run_configuration()
     //log_str("userflags", def_str(M_ENV_USERFLAGS));
     //log_str("git-revision", def_str(M_ENV_GITREV));
     // cannot use log_str for these strings
-    log_fmt("userflags", "%s", def_str(M_ENV_USERFLAGS));
-    log_fmt("git-revision", "%s", def_str(M_ENV_GITREV));
+    log_fmt("userflags", "%s", str_env_userflags);
+    log_fmt("git-revision", "%s", str_env_gitrev);
 
     log_struct("runs");
 
