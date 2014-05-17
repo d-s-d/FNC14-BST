@@ -1,0 +1,109 @@
+{
+  "from" : 100,
+  "to" : 250,
+  "step" : 10,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "07cb886 get a clearer picture",
+  "runs" : {
+    "opt/bst_105_blocking_transposed.c" : [
+      {
+        "N" : 100,
+        "cycles" : 1057581,
+        "cache-references" : 1169,
+        "cache-misses" : 28
+      },
+      {
+        "N" : 110,
+        "cycles" : 1307017,
+        "cache-references" : 1221,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 120,
+        "cycles" : 1639325,
+        "cache-references" : 1476,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 130,
+        "cycles" : 2047939,
+        "cache-references" : 1654,
+        "cache-misses" : 6
+      },
+      {
+        "N" : 140,
+        "cycles" : 2601877,
+        "cache-references" : 3018,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 150,
+        "cycles" : 3059841,
+        "cache-references" : 2518,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 160,
+        "cycles" : 3681436,
+        "cache-references" : 3407,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 170,
+        "cycles" : 7870540,
+        "cache-references" : 6676,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 180,
+        "cycles" : 5289267,
+        "cache-references" : 5607,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 190,
+        "cycles" : 6049760,
+        "cache-references" : 8234,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 200,
+        "cycles" : 7151947,
+        "cache-references" : 13972,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 210,
+        "cycles" : 8230727,
+        "cache-references" : 14951,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 220,
+        "cycles" : 9479646,
+        "cache-references" : 29047,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 230,
+        "cycles" : 11686111,
+        "cache-references" : 58308,
+        "cache-misses" : 57
+      },
+      {
+        "N" : 240,
+        "cycles" : 18071052,
+        "cache-references" : 57576,
+        "cache-misses" : 471
+      },
+      {
+        "N" : 250,
+        "cycles" : 15064331,
+        "cache-references" : 84021,
+        "cache-misses" : 197
+      }
+    ]
+  }
+}

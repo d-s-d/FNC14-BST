@@ -1,0 +1,75 @@
+{
+  "from" : 1000,
+  "to" : 1400,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "96cdd71 log file",
+  "runs" : {
+    "opt/bst_104_blocking_restructured.c" : [
+      {
+        "N" : 1000,
+        "cycles" : 777070132,
+        "cache-references" : 3176961,
+        "cache-misses" : 960575
+      },
+      {
+        "N" : 1100,
+        "cycles" : 1055031551,
+        "cache-references" : 4197770,
+        "cache-misses" : 1802002
+      },
+      {
+        "N" : 1200,
+        "cycles" : 1357114764,
+        "cache-references" : 5481306,
+        "cache-misses" : 2863154
+      },
+      {
+        "N" : 1300,
+        "cycles" : 1720636764,
+        "cache-references" : 6917472,
+        "cache-misses" : 3984925
+      },
+      {
+        "N" : 1400,
+        "cycles" : 2144350425,
+        "cache-references" : 8687280,
+        "cache-misses" : 5286362
+      }
+    ],
+    "opt/bst_102_blocking.c" : [
+      {
+        "N" : 1000,
+        "cycles" : 784707893,
+        "cache-references" : 3449567,
+        "cache-misses" : 1073540
+      },
+      {
+        "N" : 1100,
+        "cycles" : 1055273852,
+        "cache-references" : 4441673,
+        "cache-misses" : 1880724
+      },
+      {
+        "N" : 1200,
+        "cycles" : 1373013897,
+        "cache-references" : 5731762,
+        "cache-misses" : 2983833
+      },
+      {
+        "N" : 1300,
+        "cycles" : 1733316754,
+        "cache-references" : 7217100,
+        "cache-misses" : 4130860
+      },
+      {
+        "N" : 1400,
+        "cycles" : 2125747371,
+        "cache-references" : 8677294,
+        "cache-misses" : 5331485
+      }
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "from" : 1000,
+  "to" : 2000,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "07cb886 get a clearer picture",
+  "runs" : {
+    "opt/bst_104_blocking_restructured.c" : [
+      {
+        "N" : 1000,
+        "cycles" : 1171682831,
+        "cache-references" : 21674532,
+        "cache-misses" : 1631541
+      },
+      {
+        "N" : 1100,
+        "cycles" : 1968410981,
+        "cache-references" : 28988996,
+        "cache-misses" : 4621951
+      },
+      {
+        "N" : 1200,
+        "cycles" : 2671598947,
+        "cache-references" : 37774644,
+        "cache-misses" : 6892944
+      },
+      {
+        "N" : 1300,
+        "cycles" : 3857616830,
+        "cache-references" : 48137363,
+        "cache-misses" : 12557587
+      },
+      {
+        "N" : 1400,
+        "cycles" : 5704413683,
+        "cache-references" : 60168115,
+        "cache-misses" : 21836874
+      },
+      {
+        "N" : 1500,
+        "cycles" : 7112828306,
+        "cache-references" : 74017649,
+        "cache-misses" : 29385787
+      },
+      {
+        "N" : 1600,
+        "cycles" : 9234941186,
+        "cache-references" : 89880977,
+        "cache-misses" : 40797181
+      },
+      {
+        "N" : 1700,
+        "cycles" : 11485313966,
+        "cache-references" : 107938516,
+        "cache-misses" : 54489942
+      },
+      {
+        "N" : 1800,
+        "cycles" : 14242419513,
+        "cache-references" : 128354286,
+        "cache-misses" : 70941661
+      },
+      {
+        "N" : 1900,
+        "cycles" : 17357051319,
+        "cache-references" : 150657194,
+        "cache-misses" : 89204435
+      },
+      {
+        "N" : 2000,
+        "cycles" : 20997160185,
+        "cache-references" : 175690084,
+        "cache-misses" : 112487597
+      }
+    ],
+    "opt/bst_105_blocking_transposed.c" : [
+      {
+        "N" : 1000,
+        "cycles" : 931137236,
+        "cache-references" : 28302984,
+        "cache-misses" : 1954263
+      },
+      {
+        "N" : 1100,
+        "cycles" : 1397459981,
+        "cache-references" : 38826680,
+        "cache-misses" : 5977568
+      },
+      {
+        "N" : 1200,
+        "cycles" : 2018036944,
+        "cache-references" : 51069747,
+        "cache-misses" : 9152288
+      },
+      {
+        "N" : 1300,
+        "cycles" : 2680954777,
+        "cache-references" : 66399270,
+        "cache-misses" : 18977393
+      },
+      {
+        "N" : 1400,
+        "cycles" : 3559247252,
+        "cache-references" : 83437229,
+        "cache-misses" : 24484367
+      },
+      {
+        "N" : 1500,
+        "cycles" : 4369068654,
+        "cache-references" : 104183703,
+        "cache-misses" : 37693981
+      },
+      {
+        "N" : 1600,
+        "cycles" : 5278662347,
+        "cache-references" : 127090795,
+        "cache-misses" : 48686247
+      },
+      {
+        "N" : 1700,
+        "cycles" : 6362907044,
+        "cache-references" : 152559821,
+        "cache-misses" : 62098278
+      },
+      {
+        "N" : 1800,
+        "cycles" : 7699404510,
+        "cache-references" : 182704293,
+        "cache-misses" : 77712403
+      },
+      {
+        "N" : 1900,
+        "cycles" : 8656127224,
+        "cache-references" : 209088434,
+        "cache-misses" : 88641977
+      },
+      {
+        "N" : 2000,
+        "cycles" : 10167202003,
+        "cache-references" : 244987652,
+        "cache-misses" : 106293260
+      }
+    ]
+  }
+}

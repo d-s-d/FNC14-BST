@@ -1,0 +1,1579 @@
+{
+  "from" : 100,
+  "to" : 250,
+  "step" : 10,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "07cb886 get a clearer picture",
+  "runs" : {
+    "opt/bst_104_blocking_restructured.c:4" : [
+      {
+        "N" : 100,
+        "cycles" : 1273605,
+        "cache-references" : 777,
+        "cache-misses" : 272
+      },
+      {
+        "N" : 110,
+        "cycles" : 1616041,
+        "cache-references" : 732,
+        "cache-misses" : 41
+      },
+      {
+        "N" : 120,
+        "cycles" : 2033777,
+        "cache-references" : 895,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 130,
+        "cycles" : 3049392,
+        "cache-references" : 1457,
+        "cache-misses" : 74
+      },
+      {
+        "N" : 140,
+        "cycles" : 3796552,
+        "cache-references" : 1605,
+        "cache-misses" : 28
+      },
+      {
+        "N" : 150,
+        "cycles" : 4706088,
+        "cache-references" : 2055,
+        "cache-misses" : 29
+      },
+      {
+        "N" : 160,
+        "cycles" : 5533051,
+        "cache-references" : 7507,
+        "cache-misses" : 18
+      },
+      {
+        "N" : 170,
+        "cycles" : 6482568,
+        "cache-references" : 10773,
+        "cache-misses" : 82
+      },
+      {
+        "N" : 180,
+        "cycles" : 7509983,
+        "cache-references" : 9347,
+        "cache-misses" : 91
+      },
+      {
+        "N" : 190,
+        "cycles" : 8695162,
+        "cache-references" : 6717,
+        "cache-misses" : 85
+      },
+      {
+        "N" : 200,
+        "cycles" : 11214784,
+        "cache-references" : 26334,
+        "cache-misses" : 2019
+      },
+      {
+        "N" : 210,
+        "cycles" : 11512290,
+        "cache-references" : 14245,
+        "cache-misses" : 434
+      },
+      {
+        "N" : 220,
+        "cycles" : 13090669,
+        "cache-references" : 20354,
+        "cache-misses" : 114
+      },
+      {
+        "N" : 230,
+        "cycles" : 14913060,
+        "cache-references" : 27819,
+        "cache-misses" : 130
+      },
+      {
+        "N" : 240,
+        "cycles" : 16840667,
+        "cache-references" : 42453,
+        "cache-misses" : 164
+      },
+      {
+        "N" : 250,
+        "cycles" : 23463773,
+        "cache-references" : 106538,
+        "cache-misses" : 508
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:8" : [
+      {
+        "N" : 100,
+        "cycles" : 1830925,
+        "cache-references" : 1392,
+        "cache-misses" : 59
+      },
+      {
+        "N" : 110,
+        "cycles" : 2367089,
+        "cache-references" : 2341,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 120,
+        "cycles" : 2470964,
+        "cache-references" : 2757,
+        "cache-misses" : 64
+      },
+      {
+        "N" : 130,
+        "cycles" : 2617765,
+        "cache-references" : 2130,
+        "cache-misses" : 251
+      },
+      {
+        "N" : 140,
+        "cycles" : 3070701,
+        "cache-references" : 1640,
+        "cache-misses" : 58
+      },
+      {
+        "N" : 150,
+        "cycles" : 3740031,
+        "cache-references" : 2226,
+        "cache-misses" : 12
+      },
+      {
+        "N" : 160,
+        "cycles" : 4460326,
+        "cache-references" : 3331,
+        "cache-misses" : 18
+      },
+      {
+        "N" : 170,
+        "cycles" : 5338199,
+        "cache-references" : 7715,
+        "cache-misses" : 6
+      },
+      {
+        "N" : 180,
+        "cycles" : 6211987,
+        "cache-references" : 9577,
+        "cache-misses" : 72
+      },
+      {
+        "N" : 190,
+        "cycles" : 7243515,
+        "cache-references" : 13712,
+        "cache-misses" : 125
+      },
+      {
+        "N" : 200,
+        "cycles" : 8377745,
+        "cache-references" : 17325,
+        "cache-misses" : 48
+      },
+      {
+        "N" : 210,
+        "cycles" : 9624758,
+        "cache-references" : 22178,
+        "cache-misses" : 27
+      },
+      {
+        "N" : 220,
+        "cycles" : 11021772,
+        "cache-references" : 30450,
+        "cache-misses" : 6
+      },
+      {
+        "N" : 230,
+        "cycles" : 12584136,
+        "cache-references" : 34226,
+        "cache-misses" : 1786
+      },
+      {
+        "N" : 240,
+        "cycles" : 14263192,
+        "cache-references" : 35722,
+        "cache-misses" : 673
+      },
+      {
+        "N" : 250,
+        "cycles" : 15788112,
+        "cache-references" : 50725,
+        "cache-misses" : 243
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:12" : [
+      {
+        "N" : 100,
+        "cycles" : 1255572,
+        "cache-references" : 933,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 110,
+        "cycles" : 1607316,
+        "cache-references" : 1025,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 120,
+        "cycles" : 2020519,
+        "cache-references" : 1103,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 130,
+        "cycles" : 2510443,
+        "cache-references" : 1351,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 140,
+        "cycles" : 3080027,
+        "cache-references" : 1728,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 150,
+        "cycles" : 3734629,
+        "cache-references" : 2730,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 160,
+        "cycles" : 4479018,
+        "cache-references" : 3248,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 170,
+        "cycles" : 5343146,
+        "cache-references" : 7559,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 180,
+        "cycles" : 6200292,
+        "cache-references" : 6591,
+        "cache-misses" : 26
+      },
+      {
+        "N" : 190,
+        "cycles" : 7309715,
+        "cache-references" : 9788,
+        "cache-misses" : 486
+      },
+      {
+        "N" : 200,
+        "cycles" : 8371132,
+        "cache-references" : 13527,
+        "cache-misses" : 440
+      },
+      {
+        "N" : 210,
+        "cycles" : 9619341,
+        "cache-references" : 16705,
+        "cache-misses" : 123
+      },
+      {
+        "N" : 220,
+        "cycles" : 11080083,
+        "cache-references" : 30282,
+        "cache-misses" : 324
+      },
+      {
+        "N" : 230,
+        "cycles" : 12519800,
+        "cache-references" : 29484,
+        "cache-misses" : 342
+      },
+      {
+        "N" : 240,
+        "cycles" : 14070638,
+        "cache-references" : 29172,
+        "cache-misses" : 156
+      },
+      {
+        "N" : 250,
+        "cycles" : 15781982,
+        "cache-references" : 46302,
+        "cache-misses" : 30
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:16" : [
+      {
+        "N" : 100,
+        "cycles" : 1248151,
+        "cache-references" : 536,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 110,
+        "cycles" : 1613540,
+        "cache-references" : 570,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 120,
+        "cycles" : 2023047,
+        "cache-references" : 827,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 130,
+        "cycles" : 2510910,
+        "cache-references" : 1161,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 140,
+        "cycles" : 3120269,
+        "cache-references" : 2255,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 150,
+        "cycles" : 3742236,
+        "cache-references" : 2198,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 160,
+        "cycles" : 4472663,
+        "cache-references" : 2385,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 170,
+        "cycles" : 5332404,
+        "cache-references" : 3772,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 180,
+        "cycles" : 6193811,
+        "cache-references" : 4623,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 190,
+        "cycles" : 7224611,
+        "cache-references" : 9411,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 200,
+        "cycles" : 8355586,
+        "cache-references" : 13644,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 210,
+        "cycles" : 9604326,
+        "cache-references" : 14080,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 220,
+        "cycles" : 11155849,
+        "cache-references" : 23171,
+        "cache-misses" : 512
+      },
+      {
+        "N" : 230,
+        "cycles" : 12558179,
+        "cache-references" : 29522,
+        "cache-misses" : 915
+      },
+      {
+        "N" : 240,
+        "cycles" : 14099012,
+        "cache-references" : 39209,
+        "cache-misses" : 385
+      },
+      {
+        "N" : 250,
+        "cycles" : 15798547,
+        "cache-references" : 53772,
+        "cache-misses" : 227
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:20" : [
+      {
+        "N" : 100,
+        "cycles" : 1238368,
+        "cache-references" : 493,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 110,
+        "cycles" : 1631684,
+        "cache-references" : 678,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 120,
+        "cycles" : 2021184,
+        "cache-references" : 931,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 130,
+        "cycles" : 2511266,
+        "cache-references" : 989,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 140,
+        "cycles" : 3097232,
+        "cache-references" : 1756,
+        "cache-misses" : 24
+      },
+      {
+        "N" : 150,
+        "cycles" : 3747395,
+        "cache-references" : 2367,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 160,
+        "cycles" : 4470454,
+        "cache-references" : 2925,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 170,
+        "cycles" : 5372127,
+        "cache-references" : 4649,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 180,
+        "cycles" : 6220460,
+        "cache-references" : 6277,
+        "cache-misses" : 39
+      },
+      {
+        "N" : 190,
+        "cycles" : 7239258,
+        "cache-references" : 7872,
+        "cache-misses" : 48
+      },
+      {
+        "N" : 200,
+        "cycles" : 8348919,
+        "cache-references" : 7811,
+        "cache-misses" : 22
+      },
+      {
+        "N" : 210,
+        "cycles" : 9613546,
+        "cache-references" : 14812,
+        "cache-misses" : 35
+      },
+      {
+        "N" : 220,
+        "cycles" : 11036525,
+        "cache-references" : 22597,
+        "cache-misses" : 37
+      },
+      {
+        "N" : 230,
+        "cycles" : 12532932,
+        "cache-references" : 34047,
+        "cache-misses" : 225
+      },
+      {
+        "N" : 240,
+        "cycles" : 14085973,
+        "cache-references" : 37468,
+        "cache-misses" : 203
+      },
+      {
+        "N" : 250,
+        "cycles" : 15913920,
+        "cache-references" : 52385,
+        "cache-misses" : 1544
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:24" : [
+      {
+        "N" : 100,
+        "cycles" : 1241186,
+        "cache-references" : 538,
+        "cache-misses" : 38
+      },
+      {
+        "N" : 110,
+        "cycles" : 1611299,
+        "cache-references" : 632,
+        "cache-misses" : 19
+      },
+      {
+        "N" : 120,
+        "cycles" : 2025143,
+        "cache-references" : 854,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 130,
+        "cycles" : 2513339,
+        "cache-references" : 1072,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 140,
+        "cycles" : 3064157,
+        "cache-references" : 1357,
+        "cache-misses" : 18
+      },
+      {
+        "N" : 150,
+        "cycles" : 3798006,
+        "cache-references" : 2982,
+        "cache-misses" : 75
+      },
+      {
+        "N" : 160,
+        "cycles" : 4462014,
+        "cache-references" : 2969,
+        "cache-misses" : 90
+      },
+      {
+        "N" : 170,
+        "cycles" : 5340694,
+        "cache-references" : 8507,
+        "cache-misses" : 10
+      },
+      {
+        "N" : 180,
+        "cycles" : 6203791,
+        "cache-references" : 8379,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 190,
+        "cycles" : 7231943,
+        "cache-references" : 12336,
+        "cache-misses" : 23
+      },
+      {
+        "N" : 200,
+        "cycles" : 8356726,
+        "cache-references" : 17878,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 210,
+        "cycles" : 9639506,
+        "cache-references" : 23696,
+        "cache-misses" : 10
+      },
+      {
+        "N" : 220,
+        "cycles" : 11035545,
+        "cache-references" : 29656,
+        "cache-misses" : 22
+      },
+      {
+        "N" : 230,
+        "cycles" : 12512593,
+        "cache-references" : 34508,
+        "cache-misses" : 36
+      },
+      {
+        "N" : 240,
+        "cycles" : 14119092,
+        "cache-references" : 37128,
+        "cache-misses" : 1292
+      },
+      {
+        "N" : 250,
+        "cycles" : 15853523,
+        "cache-references" : 40036,
+        "cache-misses" : 1147
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:28" : [
+      {
+        "N" : 100,
+        "cycles" : 1239751,
+        "cache-references" : 512,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 110,
+        "cycles" : 1601618,
+        "cache-references" : 639,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 120,
+        "cycles" : 2025214,
+        "cache-references" : 810,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 130,
+        "cycles" : 2511401,
+        "cache-references" : 1116,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 140,
+        "cycles" : 3057765,
+        "cache-references" : 1569,
+        "cache-misses" : 35
+      },
+      {
+        "N" : 150,
+        "cycles" : 3884560,
+        "cache-references" : 3096,
+        "cache-misses" : 74
+      },
+      {
+        "N" : 160,
+        "cycles" : 4492317,
+        "cache-references" : 2996,
+        "cache-misses" : 354
+      },
+      {
+        "N" : 170,
+        "cycles" : 5333365,
+        "cache-references" : 6441,
+        "cache-misses" : 99
+      },
+      {
+        "N" : 180,
+        "cycles" : 6203486,
+        "cache-references" : 7546,
+        "cache-misses" : 20
+      },
+      {
+        "N" : 190,
+        "cycles" : 7234877,
+        "cache-references" : 11616,
+        "cache-misses" : 49
+      },
+      {
+        "N" : 200,
+        "cycles" : 8354081,
+        "cache-references" : 13222,
+        "cache-misses" : 116
+      },
+      {
+        "N" : 210,
+        "cycles" : 9614086,
+        "cache-references" : 21436,
+        "cache-misses" : 47
+      },
+      {
+        "N" : 220,
+        "cycles" : 11043069,
+        "cache-references" : 27676,
+        "cache-misses" : 21
+      },
+      {
+        "N" : 230,
+        "cycles" : 12513061,
+        "cache-references" : 28551,
+        "cache-misses" : 86
+      },
+      {
+        "N" : 240,
+        "cycles" : 14129956,
+        "cache-references" : 44762,
+        "cache-misses" : 31
+      },
+      {
+        "N" : 250,
+        "cycles" : 15805056,
+        "cache-references" : 51761,
+        "cache-misses" : 53
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:32" : [
+      {
+        "N" : 100,
+        "cycles" : 1237321,
+        "cache-references" : 522,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 110,
+        "cycles" : 1601667,
+        "cache-references" : 605,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 120,
+        "cycles" : 2023701,
+        "cache-references" : 908,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 130,
+        "cycles" : 2515285,
+        "cache-references" : 1027,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 140,
+        "cycles" : 3064550,
+        "cache-references" : 1361,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 150,
+        "cycles" : 3815111,
+        "cache-references" : 2289,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 160,
+        "cycles" : 4481088,
+        "cache-references" : 2927,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 170,
+        "cycles" : 5348185,
+        "cache-references" : 3865,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 180,
+        "cycles" : 6200703,
+        "cache-references" : 5103,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 190,
+        "cycles" : 7228747,
+        "cache-references" : 9772,
+        "cache-misses" : 15
+      },
+      {
+        "N" : 200,
+        "cycles" : 8416499,
+        "cache-references" : 12714,
+        "cache-misses" : 657
+      },
+      {
+        "N" : 210,
+        "cycles" : 9652150,
+        "cache-references" : 15991,
+        "cache-misses" : 1108
+      },
+      {
+        "N" : 220,
+        "cycles" : 11048035,
+        "cache-references" : 22913,
+        "cache-misses" : 359
+      },
+      {
+        "N" : 230,
+        "cycles" : 12547296,
+        "cache-references" : 32869,
+        "cache-misses" : 807
+      },
+      {
+        "N" : 240,
+        "cycles" : 14112056,
+        "cache-references" : 42726,
+        "cache-misses" : 304
+      },
+      {
+        "N" : 250,
+        "cycles" : 15772840,
+        "cache-references" : 43090,
+        "cache-misses" : 103
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:36" : [
+      {
+        "N" : 100,
+        "cycles" : 1244271,
+        "cache-references" : 489,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 110,
+        "cycles" : 1612614,
+        "cache-references" : 615,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 120,
+        "cycles" : 2024750,
+        "cache-references" : 761,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 130,
+        "cycles" : 2520301,
+        "cache-references" : 1051,
+        "cache-misses" : 13
+      },
+      {
+        "N" : 140,
+        "cycles" : 3109818,
+        "cache-references" : 1846,
+        "cache-misses" : 12
+      },
+      {
+        "N" : 150,
+        "cycles" : 3747164,
+        "cache-references" : 1890,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 160,
+        "cycles" : 4464835,
+        "cache-references" : 2116,
+        "cache-misses" : 11
+      },
+      {
+        "N" : 170,
+        "cycles" : 5339506,
+        "cache-references" : 3098,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 180,
+        "cycles" : 6240808,
+        "cache-references" : 5787,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 190,
+        "cycles" : 7232005,
+        "cache-references" : 7439,
+        "cache-misses" : 14
+      },
+      {
+        "N" : 200,
+        "cycles" : 8347230,
+        "cache-references" : 7896,
+        "cache-misses" : 12
+      },
+      {
+        "N" : 210,
+        "cycles" : 9613229,
+        "cache-references" : 13022,
+        "cache-misses" : 63
+      },
+      {
+        "N" : 220,
+        "cycles" : 11109219,
+        "cache-references" : 30731,
+        "cache-misses" : 186
+      },
+      {
+        "N" : 230,
+        "cycles" : 12744273,
+        "cache-references" : 36987,
+        "cache-misses" : 3040
+      },
+      {
+        "N" : 240,
+        "cycles" : 14092325,
+        "cache-references" : 38828,
+        "cache-misses" : 788
+      },
+      {
+        "N" : 250,
+        "cycles" : 15773690,
+        "cache-references" : 49942,
+        "cache-misses" : 369
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:40" : [
+      {
+        "N" : 100,
+        "cycles" : 1238135,
+        "cache-references" : 499,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 110,
+        "cycles" : 1600735,
+        "cache-references" : 582,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 120,
+        "cycles" : 2018722,
+        "cache-references" : 803,
+        "cache-misses" : 6
+      },
+      {
+        "N" : 130,
+        "cycles" : 2508939,
+        "cache-references" : 1227,
+        "cache-misses" : 31
+      },
+      {
+        "N" : 140,
+        "cycles" : 3124381,
+        "cache-references" : 1884,
+        "cache-misses" : 29
+      },
+      {
+        "N" : 150,
+        "cycles" : 3744937,
+        "cache-references" : 2657,
+        "cache-misses" : 39
+      },
+      {
+        "N" : 160,
+        "cycles" : 4464592,
+        "cache-references" : 2868,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 170,
+        "cycles" : 5354997,
+        "cache-references" : 5929,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 180,
+        "cycles" : 6201084,
+        "cache-references" : 6542,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 190,
+        "cycles" : 7240120,
+        "cache-references" : 10530,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 200,
+        "cycles" : 8360203,
+        "cache-references" : 11797,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 210,
+        "cycles" : 9621369,
+        "cache-references" : 19706,
+        "cache-misses" : 55
+      },
+      {
+        "N" : 220,
+        "cycles" : 11011039,
+        "cache-references" : 28174,
+        "cache-misses" : 42
+      },
+      {
+        "N" : 230,
+        "cycles" : 12517439,
+        "cache-references" : 33990,
+        "cache-misses" : 54
+      },
+      {
+        "N" : 240,
+        "cycles" : 14084574,
+        "cache-references" : 32010,
+        "cache-misses" : 254
+      },
+      {
+        "N" : 250,
+        "cycles" : 16007004,
+        "cache-references" : 49843,
+        "cache-misses" : 3098
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:44" : [
+      {
+        "N" : 100,
+        "cycles" : 1250012,
+        "cache-references" : 603,
+        "cache-misses" : 41
+      },
+      {
+        "N" : 110,
+        "cycles" : 1604833,
+        "cache-references" : 620,
+        "cache-misses" : 22
+      },
+      {
+        "N" : 120,
+        "cycles" : 2026914,
+        "cache-references" : 788,
+        "cache-misses" : 27
+      },
+      {
+        "N" : 130,
+        "cycles" : 2514963,
+        "cache-references" : 1092,
+        "cache-misses" : 33
+      },
+      {
+        "N" : 140,
+        "cycles" : 3133169,
+        "cache-references" : 2363,
+        "cache-misses" : 55
+      },
+      {
+        "N" : 150,
+        "cycles" : 3735989,
+        "cache-references" : 2851,
+        "cache-misses" : 28
+      },
+      {
+        "N" : 160,
+        "cycles" : 4460774,
+        "cache-references" : 2982,
+        "cache-misses" : 32
+      },
+      {
+        "N" : 170,
+        "cycles" : 5359819,
+        "cache-references" : 6523,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 180,
+        "cycles" : 6214256,
+        "cache-references" : 6257,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 190,
+        "cycles" : 7245909,
+        "cache-references" : 11221,
+        "cache-misses" : 46
+      },
+      {
+        "N" : 200,
+        "cycles" : 8347655,
+        "cache-references" : 11059,
+        "cache-misses" : 13
+      },
+      {
+        "N" : 210,
+        "cycles" : 9613778,
+        "cache-references" : 16515,
+        "cache-misses" : 24
+      },
+      {
+        "N" : 220,
+        "cycles" : 11081043,
+        "cache-references" : 24666,
+        "cache-misses" : 43
+      },
+      {
+        "N" : 230,
+        "cycles" : 12496175,
+        "cache-references" : 29540,
+        "cache-misses" : 122
+      },
+      {
+        "N" : 240,
+        "cycles" : 14097689,
+        "cache-references" : 39800,
+        "cache-misses" : 132
+      },
+      {
+        "N" : 250,
+        "cycles" : 15791242,
+        "cache-references" : 42665,
+        "cache-misses" : 96
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:48" : [
+      {
+        "N" : 100,
+        "cycles" : 1234819,
+        "cache-references" : 525,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 110,
+        "cycles" : 1602729,
+        "cache-references" : 621,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 120,
+        "cycles" : 2028072,
+        "cache-references" : 812,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 130,
+        "cycles" : 2511560,
+        "cache-references" : 1084,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 140,
+        "cycles" : 3143264,
+        "cache-references" : 2133,
+        "cache-misses" : 27
+      },
+      {
+        "N" : 150,
+        "cycles" : 3743684,
+        "cache-references" : 1887,
+        "cache-misses" : 11
+      },
+      {
+        "N" : 160,
+        "cycles" : 4503656,
+        "cache-references" : 3370,
+        "cache-misses" : 333
+      },
+      {
+        "N" : 170,
+        "cycles" : 5388461,
+        "cache-references" : 5444,
+        "cache-misses" : 61
+      },
+      {
+        "N" : 180,
+        "cycles" : 6199211,
+        "cache-references" : 5717,
+        "cache-misses" : 41
+      },
+      {
+        "N" : 190,
+        "cycles" : 7248630,
+        "cache-references" : 12136,
+        "cache-misses" : 51
+      },
+      {
+        "N" : 200,
+        "cycles" : 8356838,
+        "cache-references" : 14604,
+        "cache-misses" : 38
+      },
+      {
+        "N" : 210,
+        "cycles" : 9632829,
+        "cache-references" : 21653,
+        "cache-misses" : 25
+      },
+      {
+        "N" : 220,
+        "cycles" : 11099026,
+        "cache-references" : 36335,
+        "cache-misses" : 144
+      },
+      {
+        "N" : 230,
+        "cycles" : 12520241,
+        "cache-references" : 34473,
+        "cache-misses" : 209
+      },
+      {
+        "N" : 240,
+        "cycles" : 14089509,
+        "cache-references" : 35316,
+        "cache-misses" : 134
+      },
+      {
+        "N" : 250,
+        "cycles" : 15783610,
+        "cache-references" : 47187,
+        "cache-misses" : 81
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:52" : [
+      {
+        "N" : 100,
+        "cycles" : 1242206,
+        "cache-references" : 543,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 110,
+        "cycles" : 1601982,
+        "cache-references" : 649,
+        "cache-misses" : 13
+      },
+      {
+        "N" : 120,
+        "cycles" : 2017376,
+        "cache-references" : 899,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 130,
+        "cycles" : 2606309,
+        "cache-references" : 1833,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 140,
+        "cycles" : 3063239,
+        "cache-references" : 1382,
+        "cache-misses" : 6
+      },
+      {
+        "N" : 150,
+        "cycles" : 3727913,
+        "cache-references" : 1957,
+        "cache-misses" : 14
+      },
+      {
+        "N" : 160,
+        "cycles" : 4472034,
+        "cache-references" : 3187,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 170,
+        "cycles" : 5337896,
+        "cache-references" : 7093,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 180,
+        "cycles" : 6203403,
+        "cache-references" : 7841,
+        "cache-misses" : 27
+      },
+      {
+        "N" : 190,
+        "cycles" : 7250577,
+        "cache-references" : 10867,
+        "cache-misses" : 43
+      },
+      {
+        "N" : 200,
+        "cycles" : 8432087,
+        "cache-references" : 12418,
+        "cache-misses" : 615
+      },
+      {
+        "N" : 210,
+        "cycles" : 9624169,
+        "cache-references" : 17207,
+        "cache-misses" : 413
+      },
+      {
+        "N" : 220,
+        "cycles" : 11108894,
+        "cache-references" : 25127,
+        "cache-misses" : 355
+      },
+      {
+        "N" : 230,
+        "cycles" : 12538376,
+        "cache-references" : 34412,
+        "cache-misses" : 557
+      },
+      {
+        "N" : 240,
+        "cycles" : 14140390,
+        "cache-references" : 40373,
+        "cache-misses" : 1809
+      },
+      {
+        "N" : 250,
+        "cycles" : 15840031,
+        "cache-references" : 53981,
+        "cache-misses" : 590
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:56" : [
+      {
+        "N" : 100,
+        "cycles" : 1235906,
+        "cache-references" : 524,
+        "cache-misses" : 22
+      },
+      {
+        "N" : 110,
+        "cycles" : 1598298,
+        "cache-references" : 586,
+        "cache-misses" : 10
+      },
+      {
+        "N" : 120,
+        "cycles" : 2019914,
+        "cache-references" : 789,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 130,
+        "cycles" : 2596618,
+        "cache-references" : 1466,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 140,
+        "cycles" : 3065193,
+        "cache-references" : 1348,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 150,
+        "cycles" : 3742598,
+        "cache-references" : 2704,
+        "cache-misses" : 0
+      },
+      {
+        "N" : 160,
+        "cycles" : 4470369,
+        "cache-references" : 2526,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 170,
+        "cycles" : 5366654,
+        "cache-references" : 4793,
+        "cache-misses" : 17
+      },
+      {
+        "N" : 180,
+        "cycles" : 6205330,
+        "cache-references" : 4613,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 190,
+        "cycles" : 7228676,
+        "cache-references" : 7741,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 200,
+        "cycles" : 8345653,
+        "cache-references" : 10677,
+        "cache-misses" : 14
+      },
+      {
+        "N" : 210,
+        "cycles" : 9671119,
+        "cache-references" : 15487,
+        "cache-misses" : 15
+      },
+      {
+        "N" : 220,
+        "cycles" : 11070329,
+        "cache-references" : 22847,
+        "cache-misses" : 105
+      },
+      {
+        "N" : 230,
+        "cycles" : 12632412,
+        "cache-references" : 31966,
+        "cache-misses" : 1445
+      },
+      {
+        "N" : 240,
+        "cycles" : 14089038,
+        "cache-references" : 34865,
+        "cache-misses" : 539
+      },
+      {
+        "N" : 250,
+        "cycles" : 15823273,
+        "cache-references" : 46747,
+        "cache-misses" : 1088
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:60" : [
+      {
+        "N" : 100,
+        "cycles" : 1249432,
+        "cache-references" : 565,
+        "cache-misses" : 53
+      },
+      {
+        "N" : 110,
+        "cycles" : 1617054,
+        "cache-references" : 647,
+        "cache-misses" : 69
+      },
+      {
+        "N" : 120,
+        "cycles" : 2111138,
+        "cache-references" : 1393,
+        "cache-misses" : 118
+      },
+      {
+        "N" : 130,
+        "cycles" : 2519146,
+        "cache-references" : 1260,
+        "cache-misses" : 10
+      },
+      {
+        "N" : 140,
+        "cycles" : 3064082,
+        "cache-references" : 1415,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 150,
+        "cycles" : 3739485,
+        "cache-references" : 1951,
+        "cache-misses" : 10
+      },
+      {
+        "N" : 160,
+        "cycles" : 4466821,
+        "cache-references" : 3528,
+        "cache-misses" : 42
+      },
+      {
+        "N" : 170,
+        "cycles" : 5329102,
+        "cache-references" : 6353,
+        "cache-misses" : 10
+      },
+      {
+        "N" : 180,
+        "cycles" : 6277385,
+        "cache-references" : 8622,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 190,
+        "cycles" : 7236600,
+        "cache-references" : 11878,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 200,
+        "cycles" : 8349724,
+        "cache-references" : 12982,
+        "cache-misses" : 8
+      },
+      {
+        "N" : 210,
+        "cycles" : 9627464,
+        "cache-references" : 18129,
+        "cache-misses" : 35
+      },
+      {
+        "N" : 220,
+        "cycles" : 11064883,
+        "cache-references" : 28433,
+        "cache-misses" : 70
+      },
+      {
+        "N" : 230,
+        "cycles" : 12506023,
+        "cache-references" : 26172,
+        "cache-misses" : 278
+      },
+      {
+        "N" : 240,
+        "cycles" : 14094869,
+        "cache-references" : 36726,
+        "cache-misses" : 161
+      },
+      {
+        "N" : 250,
+        "cycles" : 15854441,
+        "cache-references" : 45865,
+        "cache-misses" : 1337
+      }
+    ],
+    "opt/bst_104_blocking_restructured.c:64" : [
+      {
+        "N" : 100,
+        "cycles" : 1246764,
+        "cache-references" : 599,
+        "cache-misses" : 29
+      },
+      {
+        "N" : 110,
+        "cycles" : 1703777,
+        "cache-references" : 1022,
+        "cache-misses" : 28
+      },
+      {
+        "N" : 120,
+        "cycles" : 2019259,
+        "cache-references" : 789,
+        "cache-misses" : 16
+      },
+      {
+        "N" : 130,
+        "cycles" : 2509836,
+        "cache-references" : 1093,
+        "cache-misses" : 7
+      },
+      {
+        "N" : 140,
+        "cycles" : 3059455,
+        "cache-references" : 1836,
+        "cache-misses" : 18
+      },
+      {
+        "N" : 150,
+        "cycles" : 3748592,
+        "cache-references" : 2672,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 160,
+        "cycles" : 4469816,
+        "cache-references" : 3093,
+        "cache-misses" : 5
+      },
+      {
+        "N" : 170,
+        "cycles" : 5332489,
+        "cache-references" : 6586,
+        "cache-misses" : 11
+      },
+      {
+        "N" : 180,
+        "cycles" : 6215545,
+        "cache-references" : 6142,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 190,
+        "cycles" : 7242647,
+        "cache-references" : 9556,
+        "cache-misses" : 14
+      },
+      {
+        "N" : 200,
+        "cycles" : 8360473,
+        "cache-references" : 15688,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 210,
+        "cycles" : 9609716,
+        "cache-references" : 19080,
+        "cache-misses" : 22
+      },
+      {
+        "N" : 220,
+        "cycles" : 11028525,
+        "cache-references" : 25367,
+        "cache-misses" : 30
+      },
+      {
+        "N" : 230,
+        "cycles" : 12524414,
+        "cache-references" : 32239,
+        "cache-misses" : 94
+      },
+      {
+        "N" : 240,
+        "cycles" : 14068969,
+        "cache-references" : 38864,
+        "cache-misses" : 41
+      },
+      {
+        "N" : 250,
+        "cycles" : 15836837,
+        "cache-references" : 50562,
+        "cache-misses" : 56
+      }
+    ]
+  }
+}
