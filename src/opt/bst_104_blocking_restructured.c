@@ -20,7 +20,7 @@
 #define STRIDE (n+1)
 #define IDX(i,j) ((i)*STRIDE + j)
 
-#define NB 1
+extern int nb1;
 
 typedef struct {
     double* e;
@@ -71,8 +71,8 @@ double bst_compute_104_blocking_restructured( void*_bst_obj, double* p, double* 
 
     int ib;
 
-    // compute bottom right triangle NBxNB (i.e. bottom NB rows)
-    for (i = n-1; (i >= 0) && (i > (n-NB)); --i) {
+    // compute bottom right triangle nb1xnb1 (i.e. bottom nb1 rows)
+    for (i = n-1; (i >= 0) && (i > (n-nb1)); --i) {
         for (j = i+1; j < n+1; ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
@@ -83,46 +83,46 @@ double bst_compute_104_blocking_restructured( void*_bst_obj, double* p, double* 
     // compute the remaining rows
     // printf("Rest of rows: i=%d\n", i);
     for (; i >= 0; --i) {
-        // First, the starting NB values in this row are computed.
-        // This corresponds to completing the NBxNB triangle right down from (i,i)
-        for (j = i+1; j < (i+NB); ++j) {
+        // First, the starting nb1 values in this row are computed.
+        // This corresponds to completing the nb1xnb1 triangle right down from (i,i)
+        for (j = i+1; j < (i+nb1); ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
             compute_min( i, j, n, i, j, e, w, root );
        }
 
-        // Now we compute the rest of the row, but do updates in chunk of NB's.
-        // Since we now have the first NB values in this row, we can compute
-        // the first NB iterations of the r-loop for all the remaining values
+        // Now we compute the rest of the row, but do updates in chunk of nb1's.
+        // Since we now have the first nb1 values in this row, we can compute
+        // the first nb1 iterations of the r-loop for all the remaining values
         // in this row.
         // (this needs to be seperated from the loop afterwards since we also do
         //  initialization to INFINITY))
         for (; j < (n+1); ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
-            compute_min( i, j, n, i, i+NB, e, w, root );
+            compute_min( i, j, n, i, i+nb1, e, w, root );
        }
 
-        // We now continue to update the values in this row in chunks of NB
+        // We now continue to update the values in this row in chunks of nb1
         // as long as possible.
-        for (ib = i+NB; (ib+NB) < (n+1); ib += NB) {
+        for (ib = i+nb1; (ib+nb1) < (n+1); ib += nb1) {
             //printf("got in here for i=%d\n", i);
 
-            // Again we start by finishing computing the next NB values of
+            // Again we start by finishing computing the next nb1 values of
             // row 'i'. The last values needed for that are from the triangle
             // in down right from (ib,ib).
-            for (j = (ib+1); j < (ib+NB); ++j) {
+            for (j = (ib+1); j < (ib+nb1); ++j) {
                 compute_min( i, j, n, ib, j, e, w, root );
             }
 
-            // Now, having NB new values in row 'i', we compute the next NB
+            // Now, having nb1 new values in row 'i', we compute the next nb1
             // r-iterations for the remaining values in row 'i'.
             for (; j < (n+1); ++j) {
-                compute_min( i, j, n, ib, ib + NB, e, w, root );
+                compute_min( i, j, n, ib, ib + nb1, e, w, root );
             }
         }
 
-        // There are less than NB elements remaining in row 'i'. The values
+        // There are less than nb1 elements remaining in row 'i'. The values
         // missing come from the triangle down right of (ib,ib)
         for (j = (ib+1); j < (n+1); ++j) {
             compute_min( i, j, n, ib, j, e, w, root );
