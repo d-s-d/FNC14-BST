@@ -38,7 +38,7 @@ void* bst_alloc_102_blocking( size_t n ) {
     return mem;
 }
 
-#define NB 16
+#define NB 1
 double bst_compute_102_blocking( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
     int n;

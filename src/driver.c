@@ -20,12 +20,16 @@
 
 #define TS_FMT "%Y-%m-%d_%H-%M-%S"
 
+int nb1;
+
 struct {
     // Test Setup
     urange_t N;
     char   **tests;  ///< NULL-terminated list of implementations to test
     unsigned int seed; ///< seed for random number generator
     int      calibrate;
+
+    urange_t nb1_range; ///< range for first blocking parameter
 
     // Validation
     bst_impl_t* validation;
@@ -243,23 +247,31 @@ void run_configuration()
             }
         }
 
-        // Sweep through the tests
-        log_array(impl->name);
-        int i = 0;
+        size_t final_i_len = strlen(impl->name)+11;
+        char final_impl_name[final_i_len];
         int test_ret = 0;
-        for (size_t n=config.N.start; n<=config.N.stop && !test_ret;
-             n+=config.N.step) {
-            LOG("N = %zu\n", n);
-            log_struct(NULL);
-            log_int("N", n);
-            test_ret = run_test(n, impl, validate ? config.valid_values[i] :
-                                                    0.0, validate);
-            log_struct_end();
-            i++;
+        for( nb1=config.nb1_range.start; nb1<=config.nb1_range.stop
+                && !test_ret; nb1+=config.nb1_range.step ) {
+            snprintf( final_impl_name, final_i_len, "%s:%d", impl->name,
+                nb1 );
+            // Sweep through the tests
+            LOG("NB1=%d.\n", nb1);
+            log_array(final_impl_name);
+            int i = 0;
+            for (size_t n=config.N.start; n<=config.N.stop && !test_ret;
+                 n+=config.N.step) {
+                LOG(" N = %zu\n", n);
+                log_struct(NULL);
+                log_int("N", n);
+                test_ret = run_test(n, impl, validate ? config.valid_values[i] :
+                                                        0.0, validate);
+                log_struct_end();
+                i++;
+            }
+            log_array_end();
         }
         if( test_ret )
             LOG("ERROR: Test failed.\n");
-        log_array_end();
 
         if( config.valid_values )
             free(config.valid_values);
@@ -330,7 +342,9 @@ const char* usage_str =
 "  --seed <seed>\n"
 "    sets the random number seed to <seed> (default: 42 ;)\n\n"
 "  --validate <implementation>\n"
-"    validate against <implementation>."
+"    validate against <implementation>.\n\n"
+"  --nb1 <range>\n"
+"    set range for the first blocking parameter (default 1:1:1)\n\n"
 " <input_sizes>: matlab-like range definition (start:step:stop)\n"
 "\n"
 " Example:"
@@ -359,15 +373,20 @@ int main(int argc, char *argv[])
 
     // set defaults
     generate_logfn( config.logfile, LOGFN_LEN );
-   config.seed    = 42;
+    config.seed    = 42;
+
+    config.nb1_range.start = 1;
+    config.nb1_range.stop  = 1;
+    config.nb1_range.step  = 1;
 
     int c;
     while (true) {
         static struct option long_options[] = {
-            {"logfile",  required_argument, 0, 'l'},
-            {"seed",     required_argument, 0, 's'},
-            {"validate",   required_argument, 0, 'v'},
+            {"logfile",   required_argument, 0, 'l'},
+            {"seed",      required_argument, 0, 's'},
+            {"validate",  required_argument, 0, 'v'},
             {"calibrate", required_argument, 0, 'c'},
+            {"nb1",       required_argument, 0, 'n'},
             {0,0,0,0}
         };
 
@@ -396,6 +415,11 @@ int main(int argc, char *argv[])
         case 'c':
             config.calibrate = atoi(optarg);
             break;
+        case 'n':
+            if( read_urange( &config.nb1_range, optarg ) < 0 ) {
+                ERROR_MSG("Error parsing argument: %s \n", optarg);
+                print_usage_and_exit();
+            }
         case '?':
             printf("getopt: error on character %c\n", optopt);
             break;
