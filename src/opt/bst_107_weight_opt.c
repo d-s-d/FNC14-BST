@@ -46,7 +46,7 @@ double bst_compute_107_weight_opt( void*_bst_obj, double* p, double* q, size_t n
     int r_min;
     double* e = mem->e; //, *w = mem->w;
     int* root = mem->r;
-    double w_cur, w_last;
+    double w_cur;
     // initialization
     // mem->n = n;
     for( i = 0; i < n+1; i++ ) {
@@ -54,10 +54,10 @@ double bst_compute_107_weight_opt( void*_bst_obj, double* p, double* q, size_t n
     }
 
     for (i = n-1; i >= 0; --i) {
-        w_last = q[i];
+        w_cur = q[i];
         for (j = i+1; j < n+1; ++j) {
             t_min = INFINITY;
-            w_cur = w_last + p[j-1] + q[j];
+            w_cur = w_cur + p[j-1] + q[j];
             for (r=i; r<j; ++r) {
                 t = e[IDX(i,r)] + e[IDX(j,r+1)] + w_cur;
                 if (t < t_min) {
@@ -68,7 +68,6 @@ double bst_compute_107_weight_opt( void*_bst_obj, double* p, double* q, size_t n
             e[IDX(i,j)]    = t_min;
             e[IDX(j,i)]    = t_min;
             root[IDX(i,j)] = r_min;
-            w_last         = w_cur;
         }
     }
 
