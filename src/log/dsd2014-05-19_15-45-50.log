@@ -1,0 +1,15 @@
+{
+  "from" : 128,
+  "to" : 256,
+  "step" : 1,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "6619a1f adjusted gitignore",
+  "runs" : {
+    "opt/bst_107_weight_opt.c:1" : [
+      {
+        "N" : 128,
+        "cycles" : 2151773,
+        "cache-references" : 1002,
+        "cache-misses" : 109

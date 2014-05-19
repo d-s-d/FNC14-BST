@@ -1,0 +1,267 @@
+{
+  "from" : 1000,
+  "to" : 2000,
+  "step" : 50,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "6619a1f adjusted gitignore",
+  "runs" : {
+    "opt/bst_107_weight_opt.c:1" : [
+      {
+        "N" : 1000,
+        "cycles" : 744190729,
+        "cache-references" : 3630109,
+        "cache-misses" : 1014500
+      },
+      {
+        "N" : 1050,
+        "cycles" : 860043075,
+        "cache-references" : 4167232,
+        "cache-misses" : 1448399
+      },
+      {
+        "N" : 1100,
+        "cycles" : 1017948804,
+        "cache-references" : 4880177,
+        "cache-misses" : 2108902
+      },
+      {
+        "N" : 1150,
+        "cycles" : 1145392744,
+        "cache-references" : 5413376,
+        "cache-misses" : 2590422
+      },
+      {
+        "N" : 1200,
+        "cycles" : 1303930309,
+        "cache-references" : 6321511,
+        "cache-misses" : 3244893
+      },
+      {
+        "N" : 1250,
+        "cycles" : 1482694689,
+        "cache-references" : 7285627,
+        "cache-misses" : 4032131
+      },
+      {
+        "N" : 1300,
+        "cycles" : 1664837474,
+        "cache-references" : 8175911,
+        "cache-misses" : 4662431
+      },
+      {
+        "N" : 1350,
+        "cycles" : 1871359761,
+        "cache-references" : 9354799,
+        "cache-misses" : 5603057
+      },
+      {
+        "N" : 1400,
+        "cycles" : 2087864330,
+        "cache-references" : 10605081,
+        "cache-misses" : 6442569
+      },
+      {
+        "N" : 1450,
+        "cycles" : 2337750638,
+        "cache-references" : 11887720,
+        "cache-misses" : 7328117
+      },
+      {
+        "N" : 1500,
+        "cycles" : 2572284088,
+        "cache-references" : 13382628,
+        "cache-misses" : 8413216
+      },
+      {
+        "N" : 1550,
+        "cycles" : 2835130733,
+        "cache-references" : 15112337,
+        "cache-misses" : 9588593
+      },
+      {
+        "N" : 1600,
+        "cycles" : 3100292175,
+        "cache-references" : 16633725,
+        "cache-misses" : 10629502
+      },
+      {
+        "N" : 1650,
+        "cycles" : 3403905679,
+        "cache-references" : 18297190,
+        "cache-misses" : 11763209
+      },
+      {
+        "N" : 1700,
+        "cycles" : 3737108120,
+        "cache-references" : 20225329,
+        "cache-misses" : 12883743
+      },
+      {
+        "N" : 1750,
+        "cycles" : 4055287115,
+        "cache-references" : 22181306,
+        "cache-misses" : 14348068
+      },
+      {
+        "N" : 1800,
+        "cycles" : 4395649423,
+        "cache-references" : 24366806,
+        "cache-misses" : 15716601
+      },
+      {
+        "N" : 1850,
+        "cycles" : 4765320034,
+        "cache-references" : 26780849,
+        "cache-misses" : 17303944
+      },
+      {
+        "N" : 1900,
+        "cycles" : 5154373825,
+        "cache-references" : 29093543,
+        "cache-misses" : 18754181
+      },
+      {
+        "N" : 1950,
+        "cycles" : 5625730532,
+        "cache-references" : 31204157,
+        "cache-misses" : 19875664
+      },
+      {
+        "N" : 2000,
+        "cycles" : 6076858360,
+        "cache-references" : 33858559,
+        "cache-misses" : 21571004
+      }
+    ],
+    "opt/bst_108_root_opt.c:1" : [
+      {
+        "N" : 1000,
+        "cycles" : 771821986,
+        "cache-references" : 3665944,
+        "cache-misses" : 1150186
+      },
+      {
+        "N" : 1050,
+        "cycles" : 904691345,
+        "cache-references" : 4272924,
+        "cache-misses" : 1599538
+      },
+      {
+        "N" : 1100,
+        "cycles" : 1053452345,
+        "cache-references" : 4882069,
+        "cache-misses" : 2125293
+      },
+      {
+        "N" : 1150,
+        "cycles" : 1206596461,
+        "cache-references" : 5932715,
+        "cache-misses" : 2846609
+      },
+      {
+        "N" : 1200,
+        "cycles" : 1370513661,
+        "cache-references" : 6465803,
+        "cache-misses" : 3336878
+      },
+      {
+        "N" : 1250,
+        "cycles" : 1553336640,
+        "cache-references" : 7471572,
+        "cache-misses" : 4077211
+      },
+      {
+        "N" : 1300,
+        "cycles" : 1747138927,
+        "cache-references" : 8534266,
+        "cache-misses" : 4845535
+      },
+      {
+        "N" : 1350,
+        "cycles" : 1939401556,
+        "cache-references" : 9462229,
+        "cache-misses" : 5642786
+      },
+      {
+        "N" : 1400,
+        "cycles" : 2166642544,
+        "cache-references" : 10670111,
+        "cache-misses" : 6581957
+      },
+      {
+        "N" : 1450,
+        "cycles" : 2413965078,
+        "cache-references" : 12227259,
+        "cache-misses" : 7525108
+      },
+      {
+        "N" : 1500,
+        "cycles" : 2680726171,
+        "cache-references" : 13497761,
+        "cache-misses" : 8592150
+      },
+      {
+        "N" : 1550,
+        "cycles" : 2963186229,
+        "cache-references" : 15166088,
+        "cache-misses" : 9700736
+      },
+      {
+        "N" : 1600,
+        "cycles" : 3244361198,
+        "cache-references" : 16850347,
+        "cache-misses" : 10750115
+      },
+      {
+        "N" : 1650,
+        "cycles" : 3579181936,
+        "cache-references" : 18435716,
+        "cache-misses" : 11999076
+      },
+      {
+        "N" : 1700,
+        "cycles" : 3892091057,
+        "cache-references" : 20327410,
+        "cache-misses" : 13236506
+      },
+      {
+        "N" : 1750,
+        "cycles" : 4234797753,
+        "cache-references" : 22395444,
+        "cache-misses" : 14503161
+      },
+      {
+        "N" : 1800,
+        "cycles" : 4567364152,
+        "cache-references" : 24786486,
+        "cache-misses" : 16234855
+      },
+      {
+        "N" : 1850,
+        "cycles" : 4940721936,
+        "cache-references" : 27189313,
+        "cache-misses" : 17800933
+      },
+      {
+        "N" : 1900,
+        "cycles" : 5317881878,
+        "cache-references" : 29507871,
+        "cache-misses" : 19274154
+      },
+      {
+        "N" : 1950,
+        "cycles" : 5734277237,
+        "cache-references" : 32682501,
+        "cache-misses" : 21053242
+      },
+      {
+        "N" : 2000,
+        "cycles" : 6168395433,
+        "cache-references" : 35085187,
+        "cache-misses" : 22687173
+      }
+    ]
+  }
+}

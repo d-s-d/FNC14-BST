@@ -1,0 +1,49 @@
+{
+  "from" : 256,
+  "to" : 1536,
+  "step" : 256,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "0413d12 don't ignore bn1 ;)",
+  "runs" : {
+    "opt/bst_106_scalar_rep_transp.c:1" : [
+      {
+        "N" : 256,
+        "cycles" : 14277551,
+        "cache-references" : 56325,
+        "cache-misses" : 140
+      },
+      {
+        "N" : 512,
+        "cycles" : 100614577,
+        "cache-references" : 791673,
+        "cache-misses" : 20116
+      },
+      {
+        "N" : 768,
+        "cycles" : 329976915,
+        "cache-references" : 2039592,
+        "cache-misses" : 210482
+      },
+      {
+        "N" : 1024,
+        "cycles" : 813563211,
+        "cache-references" : 4234999,
+        "cache-misses" : 1473347
+      },
+      {
+        "N" : 1280,
+        "cycles" : 1579645778,
+        "cache-references" : 8012217,
+        "cache-misses" : 4457624
+      },
+      {
+        "N" : 1536,
+        "cycles" : 2718100670,
+        "cache-references" : 14872537,
+        "cache-misses" : 9349327
+      }
+    ]
+  }
+}
