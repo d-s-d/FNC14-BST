@@ -1,0 +1,25 @@
+{
+  "from" : 128,
+  "to" : 256,
+  "step" : 128,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -fno-tree-vectorize",
+  "git-revision" : "65e7f1d new logs",
+  "runs" : {
+    "opt/bst_105_blocking_transposed.c:1024" : [
+      {
+        "N" : 128,
+        "cycles" : 2119708,
+        "cache-references" : 1491,
+        "cache-misses" : 35
+      },
+      {
+        "N" : 256,
+        "cycles" : 13751730,
+        "cache-references" : 53248,
+        "cache-misses" : 339
+      }
+    ]
+  }
+}
