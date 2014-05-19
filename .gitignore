@@ -39,3 +39,5 @@ tags
 
 # config.make
 config.make
+
+src/log/*.png
