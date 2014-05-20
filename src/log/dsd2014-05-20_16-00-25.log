@@ -1,0 +1,13 @@
+{
+  "from" : 1000,
+  "to" : 2000,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "5cfa589 minor changes",
+  "runs" : {
+    "opt/bst_112_new_index.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000

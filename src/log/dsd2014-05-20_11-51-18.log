@@ -1,0 +1,159 @@
+{
+  "from" : 1000,
+  "to" : 1800,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "on",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "0d8e56b Merge branch 'master' of github.com:d-s-d/FNC14-BST",
+  "runs" : {
+    "opt/bst_110_precompute.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502002500,
+        "average-rounds" : 1,
+        "cycles" : 723950732,
+        "cache-references" : 3457806,
+        "cache-misses" : 954187
+      },
+      {
+        "N" : 1100,
+        "flops" : 667922750,
+        "average-rounds" : 1,
+        "cycles" : 962548744,
+        "cache-references" : 4296700,
+        "cache-misses" : 1459314
+      },
+      {
+        "N" : 1200,
+        "flops" : 866883000,
+        "average-rounds" : 1,
+        "cycles" : 1261064792,
+        "cache-references" : 5568995,
+        "cache-misses" : 2544636
+      },
+      {
+        "N" : 1300,
+        "flops" : 1101883250,
+        "average-rounds" : 1,
+        "cycles" : 1608740259,
+        "cache-references" : 7086856,
+        "cache-misses" : 3764651
+      },
+      {
+        "N" : 1400,
+        "flops" : 1375923500,
+        "average-rounds" : 1,
+        "cycles" : 2013853118,
+        "cache-references" : 8994344,
+        "cache-misses" : 5252297
+      },
+      {
+        "N" : 1500,
+        "flops" : 1692003750,
+        "average-rounds" : 1,
+        "cycles" : 2474807625,
+        "cache-references" : 11167910,
+        "cache-misses" : 6847397
+      },
+      {
+        "N" : 1600,
+        "flops" : 2053124000,
+        "average-rounds" : 1,
+        "cycles" : 3005690837,
+        "cache-references" : 13843176,
+        "cache-misses" : 8836007
+      },
+      {
+        "N" : 1700,
+        "flops" : 2462284250,
+        "average-rounds" : 1,
+        "cycles" : 3596663762,
+        "cache-references" : 16627911,
+        "cache-misses" : 10764500
+      },
+      {
+        "N" : 1800,
+        "flops" : 2922484500,
+        "average-rounds" : 1,
+        "cycles" : 4259261220,
+        "cache-references" : 19937766,
+        "cache-misses" : 13049132
+      }
+    ],
+    "opt/bst_109_init_opt.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 688085897,
+        "cache-references" : 3491057,
+        "cache-misses" : 827573
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 933998334,
+        "cache-references" : 4495755,
+        "cache-misses" : 1634101
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1229728440,
+        "cache-references" : 5833443,
+        "cache-misses" : 2746252
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1569349722,
+        "cache-references" : 7461001,
+        "cache-misses" : 4024172
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 1967371118,
+        "cache-references" : 9378643,
+        "cache-misses" : 5563996
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2409763923,
+        "cache-references" : 11716502,
+        "cache-misses" : 7253908
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 2921421862,
+        "cache-references" : 14399216,
+        "cache-misses" : 9191933
+      },
+      {
+        "N" : 1700,
+        "flops" : 2463728400,
+        "average-rounds" : 1,
+        "cycles" : 3498622819,
+        "cache-references" : 17395482,
+        "cache-misses" : 11340559
+      },
+      {
+        "N" : 1800,
+        "flops" : 2924103600,
+        "average-rounds" : 1,
+        "cycles" : 4139760097,
+        "cache-references" : 20917388,
+        "cache-misses" : 13667997
+      }
+    ]
+  }
+}

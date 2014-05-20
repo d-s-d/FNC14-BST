@@ -1,0 +1,90 @@
+{
+  "from" : 10,
+  "to" : 20,
+  "step" : 1,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "5cfa589 minor changes",
+  "runs" : {
+    "opt/bst_112_new_index.c:1" : [
+      {
+        "N" : 10,
+        "flops" : 770,
+        "cycles" : 16700111,
+        "cache-references" : 43878,
+        "cache-misses" : 929
+      },
+      {
+        "N" : 11,
+        "flops" : 990,
+        "cycles" : 444808,
+        "cache-references" : 2094,
+        "cache-misses" : 72
+      },
+      {
+        "N" : 12,
+        "flops" : 1248,
+        "cycles" : 477727,
+        "cache-references" : 2206,
+        "cache-misses" : 12
+      },
+      {
+        "N" : 13,
+        "flops" : 1547,
+        "cycles" : 528684,
+        "cache-references" : 2672,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 14,
+        "flops" : 1890,
+        "cycles" : 570672,
+        "cache-references" : 2344,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 15,
+        "flops" : 2280,
+        "cycles" : 623981,
+        "cache-references" : 2538,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 16,
+        "flops" : 2720,
+        "cycles" : 703657,
+        "cache-references" : 2946,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 17,
+        "flops" : 3213,
+        "cycles" : 735081,
+        "cache-references" : 3016,
+        "cache-misses" : 3
+      },
+      {
+        "N" : 18,
+        "flops" : 3762,
+        "cycles" : 797019,
+        "cache-references" : 3173,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 19,
+        "flops" : 4370,
+        "cycles" : 857785,
+        "cache-references" : 3490,
+        "cache-misses" : 1
+      },
+      {
+        "N" : 20,
+        "flops" : 5040,
+        "cycles" : 924672,
+        "cache-references" : 3383,
+        "cache-misses" : 0
+      }
+    ]
+  }
+}

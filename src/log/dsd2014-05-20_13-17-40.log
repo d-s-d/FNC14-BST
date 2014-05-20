@@ -1,0 +1,111 @@
+{
+  "from" : 1000,
+  "to" : 1500,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "on",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "3f0ba0d new logs",
+  "runs" : {
+    "opt/bst_103_why_would_you_block.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 738899496,
+        "cache-references" : 2975239,
+        "cache-misses" : 622377
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 993381220,
+        "cache-references" : 3832400,
+        "cache-misses" : 1296910
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1296528864,
+        "cache-references" : 4900424,
+        "cache-misses" : 2165715
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1680282406,
+        "cache-references" : 6193698,
+        "cache-misses" : 3248222
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 2076281398,
+        "cache-references" : 7720028,
+        "cache-misses" : 4516963
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2544249236,
+        "cache-references" : 9331477,
+        "cache-misses" : 5684887
+      }
+    ],
+    "opt/bst_109_init_opt.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 692050715,
+        "cache-references" : 3419589,
+        "cache-misses" : 810136
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 932267118,
+        "cache-references" : 4435235,
+        "cache-misses" : 1618775
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1226675548,
+        "cache-references" : 5736744,
+        "cache-misses" : 2671500
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1559933154,
+        "cache-references" : 7398668,
+        "cache-misses" : 3955890
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 1949283392,
+        "cache-references" : 9441506,
+        "cache-misses" : 5516019
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2397261657,
+        "cache-references" : 11473605,
+        "cache-misses" : 7114029
+      }
+    ]
+  }
+}
