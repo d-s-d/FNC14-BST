@@ -366,7 +366,7 @@ size_t generate_logfn( char* logfn, size_t max ) {
 
 int main(int argc, char *argv[])
 {
-#define LOGFN_LEN 32
+#define LOGFN_LEN 40
     int ret;
     char logfn[LOGFN_LEN];
     config.logfile = logfn;
