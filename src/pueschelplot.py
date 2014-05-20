@@ -10,6 +10,8 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg') # for pyplot to work without X, e.g. SSH session
 from matplotlib import pyplot as plt
+from matplotlib.pyplot import *
+from matplotlib import gridspec
 
 def usage():
     print("Usage: %s logfile") % sys.argv[0]
@@ -18,8 +20,14 @@ def usage():
 def plot(title, xlabel, ylabel, data, log, filename):
     yprops = dict(rotation=0, y=1.05, horizontalalignment='left')
 
+
     plt.clf()
-    plt.subplot(111,axisbg='#BBBBBB',alpha=0.1)
+    fig = plt.figure(figsize=(8, 8)) 
+    fig = matplotlib.pyplot.gcf()
+    fig.set_size_inches(15, 6)
+    gs = gridspec.GridSpec(1, 2, width_ratios=[3, 1]) 
+
+    plt.subplot(gs[0],axisbg='#BBBBBB',alpha=0.1)
     plt.grid(color='white', alpha=0.5, linewidth=2, linestyle='-', axis='y')
 
     for spine_name in ['top', 'left', 'right']:
@@ -36,8 +44,9 @@ def plot(title, xlabel, ylabel, data, log, filename):
 
     for implName, results in data.iteritems():
         plt.plot(N, results, 'o-', linewidth=2, label=implName)
-    #plt.legend(loc=2)
-    plt.legend(loc=3, prop={'size':10})
+
+    #plt.legend(loc=3, prop={'size':10})
+    legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
     # some space on the bottom for comments
     plt.subplots_adjust(bottom=0.2)
@@ -47,8 +56,9 @@ def plot(title, xlabel, ylabel, data, log, filename):
             "Calibration = %s;\n" % log['calibration'] +
             "CFLAGS: %s\n" % log['userflags'] +
             "Git Revision: %s" % log['git-revision'])
-    
-    plt.savefig(filename, dpi=75)
+
+    plt.savefig(filename, dpi=150)
+
     print("Graph generated: %s" % filename)
 
 def main():
