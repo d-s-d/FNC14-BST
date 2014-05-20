@@ -1,0 +1,159 @@
+{
+  "from" : 1000,
+  "to" : 1800,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "on",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "3f0ba0d new logs",
+  "runs" : {
+    "opt/bst_109_init_opt.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 682806468,
+        "cache-references" : 3427285,
+        "cache-misses" : 920321
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 908440370,
+        "cache-references" : 4266965,
+        "cache-misses" : 1523476
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1188834265,
+        "cache-references" : 5522822,
+        "cache-misses" : 2513222
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1514349204,
+        "cache-references" : 7037936,
+        "cache-misses" : 3755785
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 1903932362,
+        "cache-references" : 8998090,
+        "cache-misses" : 5228898
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2322495814,
+        "cache-references" : 10943502,
+        "cache-misses" : 6599713
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 2819411081,
+        "cache-references" : 13495499,
+        "cache-misses" : 8472744
+      },
+      {
+        "N" : 1700,
+        "flops" : 2463728400,
+        "average-rounds" : 1,
+        "cycles" : 3374282360,
+        "cache-references" : 16186925,
+        "cache-misses" : 10363513
+      },
+      {
+        "N" : 1800,
+        "flops" : 2924103600,
+        "average-rounds" : 1,
+        "cycles" : 3993388736,
+        "cache-references" : 19428490,
+        "cache-misses" : 12508800
+      }
+    ],
+    "opt/bst_111_init_opt_nontransp.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 927317331,
+        "cache-references" : 21394116,
+        "cache-misses" : 784021
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 1654128131,
+        "cache-references" : 29118757,
+        "cache-misses" : 3566117
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 3340048030,
+        "cache-references" : 39583378,
+        "cache-misses" : 11987950
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 5436509634,
+        "cache-references" : 53526136,
+        "cache-misses" : 23467926
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 7749952564,
+        "cache-references" : 68840506,
+        "cache-misses" : 38641585
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 10040880595,
+        "cache-references" : 89664335,
+        "cache-misses" : 58747097
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 12574361602,
+        "cache-references" : 105905847,
+        "cache-misses" : 74740278
+      },
+      {
+        "N" : 1700,
+        "flops" : 2463728400,
+        "average-rounds" : 1,
+        "cycles" : 14698323530,
+        "cache-references" : 126234948,
+        "cache-misses" : 89609274
+      },
+      {
+        "N" : 1800,
+        "flops" : 2924103600,
+        "average-rounds" : 1,
+        "cycles" : 17457203485,
+        "cache-references" : 156540204,
+        "cache-misses" : 112696404
+      }
+    ]
+  }
+}
