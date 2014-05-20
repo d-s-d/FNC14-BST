@@ -1,0 +1,159 @@
+{
+  "from" : 1000,
+  "to" : 1800,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "on",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "0d8e56b Merge branch 'master' of github.com:d-s-d/FNC14-BST",
+  "runs" : {
+    "opt/bst_109_init_opt.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 699568915,
+        "cache-references" : 3495762,
+        "cache-misses" : 1012691
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 930177707,
+        "cache-references" : 4330148,
+        "cache-misses" : 1598399
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1211422981,
+        "cache-references" : 5613181,
+        "cache-misses" : 2610112
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1531792194,
+        "cache-references" : 7701909,
+        "cache-misses" : 3961625
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 1919312789,
+        "cache-references" : 10101667,
+        "cache-misses" : 5594414
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2369264409,
+        "cache-references" : 11247101,
+        "cache-misses" : 6893442
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 2871895531,
+        "cache-references" : 13833580,
+        "cache-misses" : 8742494
+      },
+      {
+        "N" : 1700,
+        "flops" : -1831238896,
+        "average-rounds" : 1,
+        "cycles" : 3468280714,
+        "cache-references" : 16722530,
+        "cache-misses" : 10680874
+      },
+      {
+        "N" : 1800,
+        "flops" : -1370863696,
+        "average-rounds" : 1,
+        "cycles" : 4059425012,
+        "cache-references" : 20165898,
+        "cache-misses" : 12938237
+      }
+    ],
+    "opt/bst_103_why_would_you_block.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 749165232,
+        "cache-references" : 3173176,
+        "cache-misses" : 710682
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 1018447564,
+        "cache-references" : 4044577,
+        "cache-misses" : 1454553
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1332324387,
+        "cache-references" : 5236687,
+        "cache-misses" : 2451983
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1706178422,
+        "cache-references" : 6744897,
+        "cache-misses" : 3726433
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 2124292951,
+        "cache-references" : 8285149,
+        "cache-misses" : 4937274
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2610216462,
+        "cache-references" : 9941314,
+        "cache-misses" : 6192559
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 3159047365,
+        "cache-references" : 12453725,
+        "cache-misses" : 8029208
+      },
+      {
+        "N" : 1700,
+        "flops" : -1831238896,
+        "average-rounds" : 1,
+        "cycles" : 3780966035,
+        "cache-references" : 14154759,
+        "cache-misses" : 9344779
+      },
+      {
+        "N" : 1800,
+        "flops" : -1370863696,
+        "average-rounds" : 1,
+        "cycles" : 4426802252,
+        "cache-references" : 15947212,
+        "cache-misses" : 10728653
+      }
+    ]
+  }
+}

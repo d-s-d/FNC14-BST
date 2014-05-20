@@ -1,0 +1,159 @@
+{
+  "from" : 1000,
+  "to" : 1800,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "on",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "0d8e56b Merge branch 'master' of github.com:d-s-d/FNC14-BST",
+  "runs" : {
+    "opt/bst_103_why_would_you_block.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 751645145,
+        "cache-references" : 3192191,
+        "cache-misses" : 869185
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 999847901,
+        "cache-references" : 4019253,
+        "cache-misses" : 1346114
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1315572957,
+        "cache-references" : 5101418,
+        "cache-misses" : 2295802
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1668157633,
+        "cache-references" : 6294643,
+        "cache-misses" : 3308258
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 2101802921,
+        "cache-references" : 7963483,
+        "cache-misses" : 4832609
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2571478363,
+        "cache-references" : 9538572,
+        "cache-misses" : 5829441
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 3121910610,
+        "cache-references" : 11392993,
+        "cache-misses" : 7245094
+      },
+      {
+        "N" : 1700,
+        "flops" : 2463728400,
+        "average-rounds" : 1,
+        "cycles" : 3732140756,
+        "cache-references" : 13444661,
+        "cache-misses" : 8828106
+      },
+      {
+        "N" : 1800,
+        "flops" : 2924103600,
+        "average-rounds" : 1,
+        "cycles" : 4433398384,
+        "cache-references" : 16117592,
+        "cache-misses" : 10815707
+      }
+    ],
+    "opt/bst_109_init_opt.c:1" : [
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 1,
+        "cycles" : 691261577,
+        "cache-references" : 3453139,
+        "cache-misses" : 850595
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 1,
+        "cycles" : 937220366,
+        "cache-references" : 4494036,
+        "cache-misses" : 1688674
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 1,
+        "cycles" : 1225734449,
+        "cache-references" : 6064782,
+        "cache-misses" : 2781800
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 1,
+        "cycles" : 1571192689,
+        "cache-references" : 7670222,
+        "cache-misses" : 4066186
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 1,
+        "cycles" : 1970540527,
+        "cache-references" : 9381791,
+        "cache-misses" : 5552487
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 1,
+        "cycles" : 2417479424,
+        "cache-references" : 11692787,
+        "cache-misses" : 7248946
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 1,
+        "cycles" : 2924712405,
+        "cache-references" : 15805614,
+        "cache-misses" : 9644549
+      },
+      {
+        "N" : 1700,
+        "flops" : 2463728400,
+        "average-rounds" : 1,
+        "cycles" : 3490968545,
+        "cache-references" : 17436981,
+        "cache-misses" : 11222161
+      },
+      {
+        "N" : 1800,
+        "flops" : 2924103600,
+        "average-rounds" : 1,
+        "cycles" : 4135471250,
+        "cache-references" : 21494383,
+        "cache-misses" : 13702501
+      }
+    ]
+  }
+}
