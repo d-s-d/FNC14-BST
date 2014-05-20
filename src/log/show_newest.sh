@@ -4,4 +4,4 @@ if [ -z "$1" ]; then
 fi
 
 start=$(($1 * 3))
-okular `ls *.png | sort | tail -n $start | head -n 3`
+okular `ls $LOG_PREFIX*.png | sort | tail -n $start | head -n 3`

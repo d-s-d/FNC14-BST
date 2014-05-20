@@ -34,6 +34,7 @@ void* bst_alloc_103_why_would_you_block( size_t n ) {
     mem->e = (double*) calloc(1,  sz * sizeof(double) );
     mem->w = (double*) calloc(1,  sz * sizeof(double) );
     mem->r = (int*)    calloc(1,  sz * sizeof(int) );
+    mem->n = n;
     memset( mem->r, -1, sz * sizeof(int) );
     return mem;
 }
@@ -47,14 +48,13 @@ double bst_compute_103_why_would_you_block( void*_bst_obj, double* p, double* q,
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
     // initialization
-    mem->n = nn;
+    // mem->n = nn;
     n = nn; // subtractions with n potentially negative. say hello to all the bugs
-    for( i = 0; i < n+1; i++ ) {
+
+    e[IDX(n,n)] = q[n];
+    for (i = n-1; i >= 0; --i) {
         e[IDX(i,i)] = q[i];
         w[IDX(i,i)] = q[i];
-    }
-
-    for (i = n-1; i >= 0; --i) {
         for (j = i+1; j < n+1; ++j) {
             e[IDX(i,j)] = INFINITY;
             w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
