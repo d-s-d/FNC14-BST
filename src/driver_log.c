@@ -56,6 +56,11 @@ void log_int(char *name, int v)
     log_fmt(name, "%d", v);
 }
 
+void log_size_t(char* name, size_t v)
+{
+    log_fmt(name, "%zu", v);
+}
+
 void log_idouble(char *name, double v)
 {
     log_fmt(name, "%.0lf", v);

@@ -263,7 +263,7 @@ void run_configuration()
                 LOG(" N = %zu\n", n);
                 log_struct(NULL);
                 log_int("N", n);
-                log_int("flops", impl->flops(n));
+                log_size_t("flops", impl->flops(n));
                 test_ret = run_test(n, impl, validate ? config.valid_values[i] :
                                                         0.0, validate);
                 log_struct_end();
