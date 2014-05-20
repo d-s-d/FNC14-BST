@@ -14,7 +14,7 @@
  */
 
 /*
- * This version applies scalar replacement to bst_100_ref_bottomup.
+ * This version swaps the r and j loop form 100_ref_bottomup.c
  */
 
 #define STRIDE (n+1)
@@ -38,8 +38,6 @@ void* bst_alloc_103_why_would_you_block( size_t n ) {
     return mem;
 }
 
-//#define ACCESS_PRINT(i,j,r) {printf("ACCESS i=%d j=%d r=%d\n", i, j, r);}
-
 double bst_compute_103_why_would_you_block( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
     int n;
@@ -59,18 +57,17 @@ double bst_compute_103_why_would_you_block( void*_bst_obj, double* p, double* q,
     for (i = n-1; i >= 0; --i) {
         for (j = i+1; j < n+1; ++j) {
             e[IDX(i,j)] = INFINITY;
+            w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
         }
 
-        for (r=i; r<n; ++r) {
+        for (r = i; r < n; ++r) {
             for (j = r+1; j < n+1; ++j) {
-                w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
-                    t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
-                    //ACCESS_PRINT(i, j, r);
-                    if (t < e[IDX(i,j)]) {
-                        e[IDX(i,j)] = t;
-                        root[IDX(i,j)] = r;
-                    }
+                t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
+                if (t < e[IDX(i,j)]) {
+                    e[IDX(i,j)] = t;
+                    root[IDX(i,j)] = r;
                 }
+            }
         }
     }
 
