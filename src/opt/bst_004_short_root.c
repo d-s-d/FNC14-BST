@@ -104,3 +104,9 @@ void bst_free_004_short_root( void* _mem ) {
     free( mem->r );
     free( mem );
 }
+
+size_t bst_flops_004_short_root( size_t n ) {
+    size_t n3 = n*n*n;
+    size_t n2 = n*n;
+    return (n3 + 5*n2)/2 + 2*n;
+}

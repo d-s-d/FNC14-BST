@@ -93,3 +93,9 @@ void bst_free_110_precompute( void* _mem ) {
     free( mem->pq);
     free( mem );
 }
+
+size_t bst_flops_110_precompute( size_t n ) {
+    size_t n3 = n*n*n;
+    size_t n2 = n*n;
+    return (n3 + 4*n2 + 3*n)/2 + n;
+}

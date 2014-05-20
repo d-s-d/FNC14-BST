@@ -23,7 +23,8 @@ bst_impl_t implementations[] = {
         .alloc   = bst_alloc,
         .compute = bst_compute,
         .root    = bst_get_root,
-        .free    = bst_free
+        .free    = bst_free,
+        .flops   = bst_flops
     }
 """;
 
@@ -43,6 +44,7 @@ class Implementation(object):
                                    size_t n );\n""" % (self.name,)
         declStr += """size_t bst_get_root_%s( void* _bst_obj, size_t i, size_t j );\n""" % (self.name,)
         declStr += """void bst_free_%s( void* _mem );\n""" % (self.name);
+        declStr += """size_t bst_flops_%s( size_t n );\n""" % (self.name);
 
         return declStr;
 
@@ -52,8 +54,9 @@ class Implementation(object):
         .alloc   = bst_alloc_%s,
         .compute = bst_compute_%s,
         .root    = bst_get_root_%s,
-        .free    = bst_free_%s
-        }""" % (self.filename, self.name, self.name, self.name, self.name);
+        .free    = bst_free_%s,
+        .flops   = bst_flops_%s
+        }""" % (self.filename, self.name, self.name, self.name, self.name, self.name);
 
 def main():
     impls = []
