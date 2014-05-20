@@ -1,0 +1,10 @@
+{
+  "from" : 50,
+  "to" : 1200,
+  "step" : 10,
+  "seed" : 42,
+  "calibration" : "on",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "23c4ec4 simplifications",
+  "runs" : {
+}

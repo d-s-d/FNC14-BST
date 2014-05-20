@@ -1,0 +1,79 @@
+{
+  "from" : 1000,
+  "to" : 2000,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "23c4ec4 simplifications",
+  "runs" : {
+    "opt/bst_110_precompute.c:1" : [
+      {
+        "N" : 1000,
+        "cycles" : 730607114,
+        "cache-references" : 3472263,
+        "cache-misses" : 825812
+      },
+      {
+        "N" : 1100,
+        "cycles" : 973249122,
+        "cache-references" : 4535411,
+        "cache-misses" : 1631803
+      },
+      {
+        "N" : 1200,
+        "cycles" : 1290223781,
+        "cache-references" : 6105139,
+        "cache-misses" : 3081881
+      },
+      {
+        "N" : 1300,
+        "cycles" : 1635028866,
+        "cache-references" : 7750856,
+        "cache-misses" : 4288431
+      },
+      {
+        "N" : 1400,
+        "cycles" : 2044146107,
+        "cache-references" : 10061629,
+        "cache-misses" : 6052507
+      },
+      {
+        "N" : 1500,
+        "cycles" : 2512967151,
+        "cache-references" : 12727564,
+        "cache-misses" : 8010409
+      },
+      {
+        "N" : 1600,
+        "cycles" : 3038994708,
+        "cache-references" : 15764627,
+        "cache-misses" : 10198327
+      },
+      {
+        "N" : 1700,
+        "cycles" : 3640324423,
+        "cache-references" : 19276002,
+        "cache-misses" : 12622561
+      },
+      {
+        "N" : 1800,
+        "cycles" : 4303921036,
+        "cache-references" : 23305532,
+        "cache-misses" : 15326829
+      },
+      {
+        "N" : 1900,
+        "cycles" : 5042995811,
+        "cache-references" : 27719885,
+        "cache-misses" : 18246432
+      },
+      {
+        "N" : 2000,
+        "cycles" : 5874927333,
+        "cache-references" : 32958358,
+        "cache-misses" : 21532935
+      }
+    ]
+  }
+}

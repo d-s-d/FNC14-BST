@@ -1,0 +1,25 @@
+{
+  "from" : 1000,
+  "to" : 1001,
+  "step" : 1,
+  "seed" : 21,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize",
+  "git-revision" : "23c4ec4 simplifications",
+  "runs" : {
+    "opt/bst_110_precompute.c:1" : [
+      {
+        "N" : 1000,
+        "cycles" : 697898262,
+        "cache-references" : 3498681,
+        "cache-misses" : 851518
+      },
+      {
+        "N" : 1001,
+        "cycles" : 693862290,
+        "cache-references" : 3519862,
+        "cache-misses" : 931635
+      }
+    ]
+  }
+}
