@@ -22,10 +22,10 @@ def plot(title, xlabel, ylabel, data, log, filename):
 
 
     plt.clf()
-    fig = plt.figure(figsize=(8, 8)) 
+    fig = plt.figure(figsize=(8, 8))
     fig = matplotlib.pyplot.gcf()
-    fig.set_size_inches(15, 6)
-    gs = gridspec.GridSpec(1, 2, width_ratios=[3, 1]) 
+    fig.set_size_inches(13, 6)
+    gs = gridspec.GridSpec(1, 2, width_ratios=[5, 2])
 
     plt.subplot(gs[0],axisbg='#BBBBBB',alpha=0.1)
     plt.grid(color='white', alpha=0.5, linewidth=2, linestyle='-', axis='y')
@@ -93,7 +93,6 @@ def main():
     flops  = {}
     cycles = {}
     c_miss = {}
-    c_read = {}
 
     performance = {}
     hit_rate    = {}
@@ -102,18 +101,16 @@ def main():
         flops[implName]  = [float(x['flops']) for x in results]
         cycles[implName] = [int(x['cycles']) for x in results]
         c_miss[implName] = [int(x['cache-misses']) for x in results]
-        c_read[implName] = [int(x['cache-references']) for x in results]
 
         performance[implName] = [fl/c for (c,fl) in zip(cycles[implName],flops[implName])]
-        hit_rate[implName] = [1-float(m)/float(r) if r > 0 else 1 for (m,r) in zip(c_miss[implName], c_read[implName])]
 
     # data plotting
     plot('Runtime', 'N [doubles]', 'Runtime [cycles]',
             cycles, jsonLog, filename + '.cycles.png')
     plot('Performance', 'N [doubles]', 'Performance [flops/cycles]',
             performance, jsonLog, filename + '.performance.png')
-    plot('Cache Hit Rate', 'N [doubles]', 'Cache Hit Rate',
-            hit_rate, jsonLog, filename + '.cache.png')
+    plot('', 'N [doubles]', 'Last-Level Cache Misses',
+            c_miss, jsonLog, filename + '.cache.png')
 
 if __name__=="__main__":
     main()

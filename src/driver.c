@@ -141,8 +141,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
     // log performance
     perf_update_values(config.perf_data);
     log_idouble("cycles",           config.perf_data[0].value / num_runs);
-    log_idouble("cache-references", config.perf_data[1].value);
-    log_idouble("cache-misses",     config.perf_data[2].value);
+    log_idouble("cache-misses",     config.perf_data[1].value);
 
     impl->free(bst_data);
     return pass;
@@ -464,9 +463,7 @@ int main(int argc, char *argv[])
     char *events[] = {
         // on Haswell, can use at most 4, otherwise '0' results
         "PERF_COUNT_HW_CPU_CYCLES",
-        "CACHE-REFERENCES",
-        "CACHE-MISSES",
-        "DTLB-LOAD-MISSES",
+        "LLC_MISSES",
         NULL
     };
 
