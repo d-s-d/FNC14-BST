@@ -27,7 +27,7 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc_113_strength_red( size_t n ) {
+void* bst_alloc_116_further_stren_red( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
     size_t sz = (n+1)*(n+1);
     size_t sz2 = (n+1)*(n+2)/2;
@@ -40,32 +40,35 @@ void* bst_alloc_113_strength_red( size_t n ) {
     return mem;
 }
 
-double bst_compute_113_strength_red( void*_bst_obj, double* p, double* q, size_t nn ) {
+double bst_compute_116_further_stren_red( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
-    int n;
-    int i, l, r, j;
-    double t, t_min, w_cur;
-    int r_min;
+    int n, i, r, j;
+    double t;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
     // initialization
     // mem->n = nn;
     n = nn; // subtractions with n potentially negative. say hello to all the bugs
 
-    int idx1, idx2;
-
-    e[IDX(n,n)] = q[n];
+    int idx1, idx2, idx3;
+    
+    idx1 = IDX(n,n);
+    e[idx1] = q[n];
+    idx1 -= 2;
     for (i = n-1; i >= 0; --i) {
-        e[IDX(i,i)] = q[i];
-        w[IDX(i,i)] = q[i];
+        idx1 = IDX(i,i);
+        idx2 = idx1 + 1;
+        e[idx1] = q[i];
+        w[idx1] = q[i];
         for (j = i+1; j < n+1; ++j) {
-            e[IDX(i,j)] = INFINITY;
-            w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
+            e[idx2] = INFINITY;
+            w[idx2] = w[idx2-1] + p[j-1] + q[j];
+            idx2++;
         }
-
+        idx3 = idx1; 
         for (r = i; r < n; ++r) {
-            idx1 = IDX(i,r);
-            idx2 = IDX(r+1, r+1);
+            // idx2 = IDX(r+1, r+1);
+            idx1 = idx3;
             double e_tmp = e[idx1++];
             for (j = r+1; j < n+1; ++j) {
                 t = e_tmp + e[idx2++] + w[idx1];
@@ -75,6 +78,7 @@ double bst_compute_113_strength_red( void*_bst_obj, double* p, double* q, size_t
                 }
                 idx1++;
             }
+            idx3++;
         }
     }
 
@@ -82,7 +86,7 @@ double bst_compute_113_strength_red( void*_bst_obj, double* p, double* q, size_t
     return e[IDX(0,n)];
 }
 
-size_t bst_get_root_113_strength_red( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_116_further_stren_red( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -91,7 +95,7 @@ size_t bst_get_root_113_strength_red( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-void bst_free_113_strength_red( void* _mem ) {
+void bst_free_116_further_stren_red( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
 
     /*
@@ -110,8 +114,8 @@ void bst_free_113_strength_red( void* _mem ) {
     free( mem );
 }
 
-size_t bst_flops_113_strength_red( size_t n ) {
-    size_t n3 = n*n*n;
-    size_t n2 = n*n;
+size_t bst_flops_116_further_stren_red( size_t n ) {
+    double n3 = n*n*n;
+    double n2 = n*n;
     return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
 }

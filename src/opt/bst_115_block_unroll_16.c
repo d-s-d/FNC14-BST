@@ -348,5 +348,5 @@ void bst_free_115_block_unroll_16( void* _mem ) {
 size_t bst_flops_115_block_unroll_16( size_t n ) {
     size_t n3 = n*n*n;
     size_t n2 = n*n;
-    return (n3 + 5*n2)/2 + 2*n;
+    return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
 }

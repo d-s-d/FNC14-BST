@@ -96,5 +96,5 @@ void bst_free_108_root_opt( void* _mem ) {
 size_t bst_flops_108_root_opt( size_t n ) {
     size_t n3 = n*n*n;
     size_t n2 = n*n;
-    return (n3 + 5*n2)/2 + 2*n;
+    return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
 }

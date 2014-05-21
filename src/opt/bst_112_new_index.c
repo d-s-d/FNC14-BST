@@ -62,8 +62,9 @@ double bst_compute_112_new_index( void*_bst_obj, double* p, double* q, size_t nn
         }
 
         for (r = i; r < n; ++r) {
+            double e_tmp = e[IDX(i,r)];
             for (j = r+1; j < n+1; ++j) {
-                t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
+                t = e_tmp + e[IDX(r+1,j)] + w[IDX(i,j)];
                 if (t < e[IDX(i,j)]) {
                     e[IDX(i,j)] = t;
                     root[IDX(i,j)] = r;
@@ -107,5 +108,5 @@ void bst_free_112_new_index( void* _mem ) {
 size_t bst_flops_112_new_index( size_t n ) {
     size_t n3 = n*n*n;
     size_t n2 = n*n;
-    return (n3 + 5*n2)/2 + 2*n;
+    return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
 }

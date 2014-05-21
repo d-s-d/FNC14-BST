@@ -163,5 +163,5 @@ void bst_free_105_blocking_transposed( void* _mem ) {
 size_t bst_flops_105_blocking_transposed( size_t n ) {
     size_t n3 = n*n*n;
     size_t n2 = n*n;
-    return (n3 + 5*n2)/2 + 2*n;
+    return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
 }
