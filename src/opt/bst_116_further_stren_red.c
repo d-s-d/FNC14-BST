@@ -54,9 +54,8 @@ double bst_compute_116_further_stren_red( void*_bst_obj, double* p, double* q, s
     
     idx1 = IDX(n,n);
     e[idx1] = q[n];
-    idx1 -= 2;
     for (i = n-1; i >= 0; --i) {
-        idx1 = IDX(i,i);
+        idx1 -= 2*(n-i);
         idx2 = idx1 + 1;
         e[idx1] = q[i];
         w[idx1] = q[i];
