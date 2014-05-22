@@ -14,7 +14,9 @@
  */
 
 /*
- * This version swaps the r and j loop form 100_ref_bottomup.c
+ * This is an extension of bst_117. It implements the padding semantics that
+ * enable proper alignment of vectors.
+ *
  */
 
 #define STRIDE (n+1)
@@ -27,9 +29,10 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc_117_index_opt( size_t n ) {
+void* bst_alloc_118_m128_padding( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
-    size_t sz2 = (n+1)*(n+2)/2;
+    size_t sz2 = (n+1)*(n+2)/2 + n/2 + 1;
+    // n/2 + 1 is the padding space
     // XXX: for testing: calloc
     mem->e = (double*) calloc(1,  sz2 * sizeof(double) );
     mem->w = (double*) calloc(1,  sz2 * sizeof(double) );
@@ -39,7 +42,7 @@ void* bst_alloc_117_index_opt( size_t n ) {
     return mem;
 }
 
-double bst_compute_117_index_opt( void*_bst_obj, double* p, double* q, size_t nn ) {
+double bst_compute_118_m128_padding( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
     int n, i, r, l_end, j;
     double t, e_tmp;
@@ -49,13 +52,16 @@ double bst_compute_117_index_opt( void*_bst_obj, double* p, double* q, size_t nn
     // mem->n = nn;
     n = nn; // subtractions with n potentially negative. say hello to all the bugs
 
-    int idx1, idx2, idx3;
+    int idx1, idx2, idx3, pad, pad_r;
     
-    idx1 = IDX(n,n);
+    idx1 = (n+1)*(n+2)/2 + n/2;
     e[idx1] = q[n];
     idx1++;
+    pad = 1;
+    // pad contains the padding for row i+1
+    // for row n it's always 1
     for (i = n-1; i >= 0; --i) {
-        idx1 -= 2*(n-i)+1;
+        idx1 -= 2*(n-i)+1 + pad;
         idx2 = idx1 + 1;
         e[idx1] = q[i];
         w[idx1] = q[i];
@@ -63,8 +69,13 @@ double bst_compute_117_index_opt( void*_bst_obj, double* p, double* q, size_t nn
             e[idx2] = INFINITY;
             w[idx2] = w[idx2-1] + p[j-1] + q[j];
         }
-        idx3 = idx1; 
+        // idx2 now points to the beginning of the next line.
+        idx2 += pad; // padding of line i+1
+
+        idx3 = idx1;
+        pad_r = pad; // padding of line r
         for (r = i; r < n; ++r) {
+            pad_r = !pad_r; // padding of line r+1
             // idx2 = IDX(r+1, r+1);
             idx1 = idx3;
             l_end = idx2 + (n-r);
@@ -78,15 +89,19 @@ double bst_compute_117_index_opt( void*_bst_obj, double* p, double* q, size_t nn
                 }
                 idx1++;
             }
+            idx2 += pad_r;
             idx3++;
         }
+        pad = !pad;
+        // every other line as padding 0, or 1, respectively
     }
 
-
-    return e[IDX(0,n)];
+    // if n is even, the total number of entries in the first
+    // row of the table is odd, so we need padding
+    return e[n + !(n&1)];
 }
 
-size_t bst_get_root_117_index_opt( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_118_m128_padding( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -95,7 +110,7 @@ size_t bst_get_root_117_index_opt( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-void bst_free_117_index_opt( void* _mem ) {
+void bst_free_118_m128_padding( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
 
     /*
@@ -114,7 +129,7 @@ void bst_free_117_index_opt( void* _mem ) {
     free( mem );
 }
 
-size_t bst_flops_117_index_opt( size_t n ) {
+size_t bst_flops_118_m128_padding( size_t n ) {
     double n3 = n*n*n;
     double n2 = n*n;
     return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
