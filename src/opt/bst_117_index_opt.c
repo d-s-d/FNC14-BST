@@ -27,8 +27,9 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc_116_further_stren_red( size_t n ) {
+void* bst_alloc_117_index_opt( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
+    size_t sz = (n+1)*(n+1);
     size_t sz2 = (n+1)*(n+2)/2;
     // XXX: for testing: calloc
     mem->e = (double*) calloc(1,  sz2 * sizeof(double) );
@@ -39,10 +40,10 @@ void* bst_alloc_116_further_stren_red( size_t n ) {
     return mem;
 }
 
-double bst_compute_116_further_stren_red( void*_bst_obj, double* p, double* q, size_t nn ) {
+double bst_compute_117_index_opt( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
-    int n, i, r, j;
-    double t;
+    int n, i, r, l_end, j;
+    double t, e_tmp;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
     // initialization
@@ -59,19 +60,19 @@ double bst_compute_116_further_stren_red( void*_bst_obj, double* p, double* q, s
         idx2 = idx1 + 1;
         e[idx1] = q[i];
         w[idx1] = q[i];
-        for (j = i+1; j < n+1; ++j) {
+        for (j = i+1; j < n+1; ++j,++idx2) {
             e[idx2] = INFINITY;
             w[idx2] = w[idx2-1] + p[j-1] + q[j];
-            idx2++;
         }
         idx3 = idx1; 
         for (r = i; r < n; ++r) {
             // idx2 = IDX(r+1, r+1);
             idx1 = idx3;
-            double e_tmp = e[idx1++];
-            for (j = r+1; j < n+1; ++j) {
+            l_end = idx2 + (n-r);
+            e_tmp = e[idx1++];
+            for( ; idx2 < l_end; ++idx2 ) {
                 // printf("idx1: %d, idx2: %d\n", idx1, idx2);
-                t = e_tmp + e[idx2++] + w[idx1];
+                t = e_tmp + e[idx2] + w[idx1];
                 if (t < e[idx1]) {
                     e[idx1] = t;
                     root[idx1] = r;
@@ -86,7 +87,7 @@ double bst_compute_116_further_stren_red( void*_bst_obj, double* p, double* q, s
     return e[IDX(0,n)];
 }
 
-size_t bst_get_root_116_further_stren_red( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_117_index_opt( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -95,7 +96,7 @@ size_t bst_get_root_116_further_stren_red( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-void bst_free_116_further_stren_red( void* _mem ) {
+void bst_free_117_index_opt( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
 
     /*
@@ -114,7 +115,7 @@ void bst_free_116_further_stren_red( void* _mem ) {
     free( mem );
 }
 
-size_t bst_flops_116_further_stren_red( size_t n ) {
+size_t bst_flops_117_index_opt( size_t n ) {
     double n3 = n*n*n;
     double n2 = n*n;
     return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
