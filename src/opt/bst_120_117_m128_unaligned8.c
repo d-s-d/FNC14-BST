@@ -26,7 +26,7 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc_119_117_m128unaligned( size_t n ) {
+void* bst_alloc_120_117_m128_unaligned8( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
     size_t sz2 = (n+1)*(n+2)/2;
     // XXX: for testing: calloc
@@ -38,7 +38,7 @@ void* bst_alloc_119_117_m128unaligned( size_t n ) {
     return mem;
 }
 
-double bst_compute_119_117_m128unaligned( void*_bst_obj, double* p, double* q, size_t nn ) {
+double bst_compute_120_117_m128_unaligned8( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
     int n, i, r, l_end, j, l_end_pre;
     double t, e_tmp;
@@ -47,7 +47,9 @@ double bst_compute_119_117_m128unaligned( void*_bst_obj, double* p, double* q, s
     __m128d v_tmp;
     __m128d v00, v01, v02, v03;
     __m128d v10, v11, v12, v13;
-    __m128i v_cur_roots, v_old_roots, v_new_roots;
+    __m128d v20, v21, v22, v23;
+    __m128d v30, v31, v32, v33;
+    __m128i v_cur_roots, v_new_roots, v_old_roots0, v_old_roots1;
     __m128 v_rootmask;
     // initialization
     // mem->n = nn;
@@ -76,7 +78,7 @@ double bst_compute_119_117_m128unaligned( void*_bst_obj, double* p, double* q, s
             e_tmp = e[idx1++];
             // calculate until a multiple of 8 doubles is left
             // 8 = 4 * 2 128-bit vectors
-            l_end_pre = idx2 + ((n-r)&3);
+            l_end_pre = idx2 + ((n-r)&7);
             for( ; (idx2 < l_end_pre) && (idx2 < l_end); ++idx2 ) {
                 t = e_tmp + e[idx2] + w[idx1];
                 if (t < e[idx1]) {
@@ -89,44 +91,77 @@ double bst_compute_119_117_m128unaligned( void*_bst_obj, double* p, double* q, s
             v_tmp = _mm_set_pd( e_tmp, e_tmp );
             // execute the shit for 4 vectors of size 2
             v_cur_roots = _mm_set_epi32(r, r, r, r);
-            for( ; idx2 < l_end; idx2 += 4 ) {
+            for( ; idx2 < l_end; idx2 += 8 ) {
                 v01 = _mm_loadu_pd( &w[idx1  ] );
                 v11 = _mm_loadu_pd( &w[idx1+2] );
+                v21 = _mm_loadu_pd( &w[idx1+4] );
+                v31 = _mm_loadu_pd( &w[idx1+6] );
 
                 v00 = _mm_loadu_pd( &e[idx2  ] );
-                v01 = _mm_add_pd( v01, v_tmp ); // supoptimal for raw-dependency
+                v01 = _mm_add_pd( v01, v_tmp ); 
                 v10 = _mm_loadu_pd( &e[idx2+2] );
                 v11 = _mm_add_pd( v11, v_tmp );
+                v20 = _mm_loadu_pd( &e[idx2+4] );
+                v21 = _mm_add_pd( v21, v_tmp );
+                v30 = _mm_loadu_pd( &e[idx2+6] );
+                v31 = _mm_add_pd( v31, v_tmp );
+
+                v_old_roots0 = _mm_lddqu_si128( &root[idx1] );
+                v_old_roots1 = _mm_lddqu_si128( &root[idx1] );
 
                 v01 = _mm_add_pd( v01, v00 );
                 v03 = _mm_loadu_pd( &e[idx1  ] );
                 v11 = _mm_add_pd( v11, v10 );
                 v13 = _mm_loadu_pd( &e[idx1+2] );
+                v21 = _mm_add_pd( v21, v20 );
+                v23 = _mm_loadu_pd( &e[idx1+4] );
+                v31 = _mm_add_pd( v31, v30 );
+                v33 = _mm_loadu_pd( &e[idx1+6] );
 
                 v02 = _mm_cmplt_pd( v01, v03 );
                 v12 = _mm_cmplt_pd( v11, v13 );
+                v22 = _mm_cmplt_pd( v21, v23 );
+                v32 = _mm_cmplt_pd( v31, v33 );
 
                 v00 = _mm_or_pd( _mm_and_pd( v02, v01 ), _mm_andnot_pd( v02, v03 ));
                 v10 = _mm_or_pd( _mm_and_pd( v12, v11 ), _mm_andnot_pd( v12, v13 ));
+                v20 = _mm_or_pd( _mm_and_pd( v22, v21 ), _mm_andnot_pd( v22, v23 ));
+                v30 = _mm_or_pd( _mm_and_pd( v32, v31 ), _mm_andnot_pd( v32, v33 ));
 
                 _mm_storeu_pd( &e[idx1  ], v00 );
                 _mm_storeu_pd( &e[idx1+2], v10 );
+                _mm_storeu_pd( &e[idx1+4], v20 );
+                _mm_storeu_pd( &e[idx1+6], v30 );
 
                 v_rootmask = _mm_shuffle_ps(
                         _mm_castpd_ps( v02 ),
                         _mm_castpd_ps( v12 ),
                         _MM_SHUFFLE(0,2,0,2) );
 
-                v_old_roots = _mm_lddqu_si128( &root[idx1] );
                 v_new_roots = _mm_or_si128(
                         _mm_and_si128(    v_cur_roots, 
                             _mm_castps_si128( v_rootmask ) ),
-                        _mm_andnot_si128( v_old_roots,
+                        _mm_andnot_si128( v_old_roots0,
                             _mm_castps_si128( v_rootmask ) )
                         );
+
                 _mm_storeu_si128( &root[idx1], v_new_roots );
 
-                idx1 += 4;
+                v_rootmask = _mm_shuffle_ps(
+                        _mm_castpd_ps( v12 ),
+                        _mm_castpd_ps( v22 ),
+                        _MM_SHUFFLE(0,2,0,2) );
+
+                v_new_roots = _mm_or_si128(
+                        _mm_and_si128(    v_cur_roots, 
+                            _mm_castps_si128( v_rootmask ) ),
+                        _mm_andnot_si128( v_old_roots1,
+                            _mm_castps_si128( v_rootmask ) )
+                        );
+
+                _mm_storeu_si128( &root[idx1+4], v_new_roots );
+                
+                idx1 += 8;
             }
             idx3++;
         }
@@ -136,7 +171,7 @@ double bst_compute_119_117_m128unaligned( void*_bst_obj, double* p, double* q, s
     return e[IDX(0,n)];
 }
 
-size_t bst_get_root_119_117_m128unaligned( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_120_117_m128_unaligned8( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -145,7 +180,7 @@ size_t bst_get_root_119_117_m128unaligned( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-void bst_free_119_117_m128unaligned( void* _mem ) {
+void bst_free_120_117_m128_unaligned8( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
 
     /*
@@ -164,7 +199,7 @@ void bst_free_119_117_m128unaligned( void* _mem ) {
     free( mem );
 }
 
-size_t bst_flops_119_117_m128unaligned( size_t n ) {
+size_t bst_flops_120_117_m128_unaligned8( size_t n ) {
     double n3 = n*n*n;
     double n2 = n*n;
     return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
