@@ -49,8 +49,8 @@ double bst_compute_120_117_m128_unaligned8( void*_bst_obj, double* p, double* q,
     __m128d v10, v11, v12, v13;
     __m128d v20, v21, v22, v23;
     __m128d v30, v31, v32, v33;
-    __m128i v_cur_roots, v_new_roots, v_old_roots0, v_old_roots1;
-    __m128 v_rootmask;
+    __m128i v_cur_roots, v_old_roots0, v_old_roots1, v_new_roots0, v_new_roots1;
+    __m128 v_rootmask0, v_rootmask1;
     // initialization
     // mem->n = nn;
     n = nn; // subtractions with n potentially negative. say hello to all the bugs
@@ -133,33 +133,31 @@ double bst_compute_120_117_m128_unaligned8( void*_bst_obj, double* p, double* q,
                 _mm_storeu_pd( &e[idx1+4], v20 );
                 _mm_storeu_pd( &e[idx1+6], v30 );
 
-                v_rootmask = _mm_shuffle_ps(
+                v_rootmask0 = _mm_shuffle_ps(
                         _mm_castpd_ps( v02 ),
                         _mm_castpd_ps( v12 ),
                         _MM_SHUFFLE(0,2,0,2) );
-
-                v_new_roots = _mm_or_si128(
-                        _mm_and_si128(    v_cur_roots, 
-                            _mm_castps_si128( v_rootmask ) ),
-                        _mm_andnot_si128( v_old_roots0,
-                            _mm_castps_si128( v_rootmask ) )
-                        );
-
-                _mm_storeu_si128( &root[idx1], v_new_roots );
-
-                v_rootmask = _mm_shuffle_ps(
+                v_rootmask1 = _mm_shuffle_ps(
                         _mm_castpd_ps( v12 ),
                         _mm_castpd_ps( v22 ),
                         _MM_SHUFFLE(0,2,0,2) );
 
-                v_new_roots = _mm_or_si128(
+                v_new_roots0 = _mm_or_si128(
                         _mm_and_si128(    v_cur_roots, 
-                            _mm_castps_si128( v_rootmask ) ),
-                        _mm_andnot_si128( v_old_roots1,
-                            _mm_castps_si128( v_rootmask ) )
+                            _mm_castps_si128( v_rootmask0 ) ),
+                        _mm_andnot_si128( v_old_roots0,
+                            _mm_castps_si128( v_rootmask0 ) )
                         );
 
-                _mm_storeu_si128( &root[idx1+4], v_new_roots );
+                v_new_roots1 = _mm_or_si128(
+                        _mm_and_si128(    v_cur_roots, 
+                            _mm_castps_si128( v_rootmask1 ) ),
+                        _mm_andnot_si128( v_old_roots1,
+                            _mm_castps_si128( v_rootmask1 ) )
+                        );
+
+                _mm_storeu_si128( &root[idx1],   v_new_roots0 );
+                _mm_storeu_si128( &root[idx1+4], v_new_roots1 );
                 
                 idx1 += 8;
             }
