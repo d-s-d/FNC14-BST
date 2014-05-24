@@ -1,0 +1,377 @@
+{
+  "from" : 100,
+  "to" : 2000,
+  "step" : 100,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -fno-tree-vectorize -Wall -mavx",
+  "git-revision" : "34cbd2a first (non-root-saving) 256bit vect version",
+  "runs" : {
+    "opt/bst_123_m128_unaligned8_maskstore.c:1" : [
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 693416,
+        "cache-misses" : 11
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 4715668,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 15958188,
+        "cache-misses" : 133
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 36760014,
+        "cache-misses" : 1619
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 70801476,
+        "cache-misses" : 3465
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 120494163,
+        "cache-misses" : 3425
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 191853736,
+        "cache-misses" : 18986
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 288788411,
+        "cache-misses" : 105419
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 408831544,
+        "cache-misses" : 78833
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 558768847,
+        "cache-misses" : 341442
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 745628592,
+        "cache-misses" : 405545
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 976073962,
+        "cache-misses" : 683651
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 1245366932,
+        "cache-misses" : 1006459
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 1549463991,
+        "cache-misses" : 1467531
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1913453705,
+        "cache-misses" : 1894517
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 2317441469,
+        "cache-misses" : 2472115
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 2747428232,
+        "cache-misses" : 3671235
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 3247555818,
+        "cache-misses" : 4045151
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 3820674720,
+        "cache-misses" : 5204746
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 4467515561,
+        "cache-misses" : 6084852
+      }
+    ],
+    "opt/bst_124_m128_aligned8_maskstore.c:1" : [
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 653522,
+        "cache-misses" : 807
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 3889605,
+        "cache-misses" : 1572
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 12231138,
+        "cache-misses" : 2904
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 28083834,
+        "cache-misses" : 5076
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 54152510,
+        "cache-misses" : 8431
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 91748762,
+        "cache-misses" : 6816
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 143913866,
+        "cache-misses" : 9598
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 214254574,
+        "cache-misses" : 37450
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 308931862,
+        "cache-misses" : 108994
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 430958436,
+        "cache-misses" : 304541
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 580944440,
+        "cache-misses" : 651218
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 755263851,
+        "cache-misses" : 1133807
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 963970867,
+        "cache-misses" : 1888055
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 1214804053,
+        "cache-misses" : 2171129
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1487297592,
+        "cache-misses" : 3164711
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 1824318146,
+        "cache-misses" : 4057754
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 2190702677,
+        "cache-misses" : 5314884
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 2610861324,
+        "cache-misses" : 6929729
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 2972918019,
+        "cache-misses" : 8755544
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 3455983128,
+        "cache-misses" : 10748915
+      }
+    ],
+    "opt/bst_123_m128_unaligned8_maskstore.c:1" : [
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 696168,
+        "cache-misses" : 205
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 4714715,
+        "cache-misses" : 280
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 15245758,
+        "cache-misses" : 1505
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 35657856,
+        "cache-misses" : 1269
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 68772997,
+        "cache-misses" : 4329
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 118357070,
+        "cache-misses" : 4172
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 185860398,
+        "cache-misses" : 8555
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 277424670,
+        "cache-misses" : 15683
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 395732637,
+        "cache-misses" : 42224
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 548485873,
+        "cache-misses" : 119289
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 731753341,
+        "cache-misses" : 287621
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 959011938,
+        "cache-misses" : 563501
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 1218385254,
+        "cache-misses" : 909904
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 1530987699,
+        "cache-misses" : 1313125
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1879625984,
+        "cache-misses" : 1918944
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 2330145644,
+        "cache-misses" : 2591083
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 2803159575,
+        "cache-misses" : 3352330
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 3349172212,
+        "cache-misses" : 4255280
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 3878513545,
+        "cache-misses" : 4685456
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 4489401311,
+        "cache-misses" : 5801166
+      }
+    ]
+  }
+}
