@@ -121,28 +121,28 @@ double bst_compute_129_m256_maskstore_root_aligned( void*_bst_obj, double* p, do
             // execute the shit for 4 vectors of size 2
             v_cur_roots = _mm256_set_epi32(r, r, r, r, r, r, r, r);
             for( ; idx2 < l_end; idx2 += 16 ) {
-                v01 = _mm256_loadu_pd( &w[idx1   ] );
-                v11 = _mm256_loadu_pd( &w[idx1+ 4] );
-                v21 = _mm256_loadu_pd( &w[idx1+ 8] );
-                v31 = _mm256_loadu_pd( &w[idx1+12] );
+                v01 = _mm256_load_pd( &w[idx1   ] );
+                v11 = _mm256_load_pd( &w[idx1+ 4] );
+                v21 = _mm256_load_pd( &w[idx1+ 8] );
+                v31 = _mm256_load_pd( &w[idx1+12] );
 
-                v00 = _mm256_loadu_pd( &e[idx2   ] );
+                v00 = _mm256_load_pd( &e[idx2   ] );
                 v01 = _mm256_add_pd( v01, v_tmp ); 
-                v10 = _mm256_loadu_pd( &e[idx2+ 4] );
+                v10 = _mm256_load_pd( &e[idx2+ 4] );
                 v11 = _mm256_add_pd( v11, v_tmp );
-                v20 = _mm256_loadu_pd( &e[idx2+ 8] );
+                v20 = _mm256_load_pd( &e[idx2+ 8] );
                 v21 = _mm256_add_pd( v21, v_tmp );
-                v30 = _mm256_loadu_pd( &e[idx2+12] );
+                v30 = _mm256_load_pd( &e[idx2+12] );
                 v31 = _mm256_add_pd( v31, v_tmp );
 
                 v01 = _mm256_add_pd( v01, v00 );
-                v03 = _mm256_loadu_pd( &e[idx1   ] );
+                v03 = _mm256_load_pd( &e[idx1   ] );
                 v11 = _mm256_add_pd( v11, v10 );
-                v13 = _mm256_loadu_pd( &e[idx1+ 4] );
+                v13 = _mm256_load_pd( &e[idx1+ 4] );
                 v21 = _mm256_add_pd( v21, v20 );
-                v23 = _mm256_loadu_pd( &e[idx1+ 8] );
+                v23 = _mm256_load_pd( &e[idx1+ 8] );
                 v31 = _mm256_add_pd( v31, v30 );
-                v33 = _mm256_loadu_pd( &e[idx1+12] );
+                v33 = _mm256_load_pd( &e[idx1+12] );
 
                 v02 = _mm256_cmp_pd( v01, v03, _CMP_LT_OQ );
                 v12 = _mm256_cmp_pd( v11, v13, _CMP_LT_OQ );
@@ -164,7 +164,6 @@ double bst_compute_129_m256_maskstore_root_aligned( void*_bst_obj, double* p, do
                         _mm256_castpd_si256( v22 ), v21 );
                 _mm256_maskstore_pd( &e[idx1+12], 
                         _mm256_castpd_si256( v32 ), v31 );
-
                 v_rootmask1 = _mm256_insertf128_ps(
                         _mm256_castps128_ps256(
                             _mm256_cvtpd_ps(v22)),
@@ -177,7 +176,6 @@ double bst_compute_129_m256_maskstore_root_aligned( void*_bst_obj, double* p, do
                 _mm256_maskstore_ps( &root[idx1_root + 8],
                         _mm256_castps_si256( v_rootmask1 ),
                         _mm256_castsi256_ps( v_cur_roots ) );
-
                 idx1      += 16;
                 idx1_root += 16;
             }
