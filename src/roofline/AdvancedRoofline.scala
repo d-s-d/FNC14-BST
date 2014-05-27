@@ -2,14 +2,24 @@ import scala.collection.SeqLike
 import perfplot._
 import HWCounters.IvyBridge;
 import java.io._
+import java.util.regex.Pattern
+import java.util.regex.Matcher
 
 object AdvancedRoofline {
 	def main( args: Array[String] ) {
+		def extractName( raw_name:String ) = {
+			val pattern = Pattern.compile("bst_\\d+");
+			val m = pattern.matcher(raw_name)
+			if( m.find() ) m.group() 
+			else "bst_000"
+		}
+
 		val src = scala.io.Source.fromFile("names_sizes.txt");
 		val lines = src.mkString.split("\n");
 		src.close
 		val raw_impl_map = 
-		(for( i <- 0 to lines.size-1 ) yield (i, ((x:Array[String]) => (x(0), x(1).toLong)) (lines(i).split(" ")))).groupBy( _._2._1 )
+		(for( i <- 0 to lines.size-1 ) yield (i, ((x:Array[String]) => (extractName(x(0)), x(1).toLong)) (lines(i).split(" ")))).groupBy( _._2._1 )
+
 
 		def getSizeFromTo( l: Seq[(Int, (String, Long))] ) = {
 			val sortedLines = l.sortWith(_._1 > _._1)
