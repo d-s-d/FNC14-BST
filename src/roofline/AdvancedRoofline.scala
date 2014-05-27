@@ -10,7 +10,7 @@ object AdvancedRoofline {
 		def extractName( raw_name:String ) = {
 			val pattern = Pattern.compile("bst_\\d+");
 			val m = pattern.matcher(raw_name)
-			if( m.find() ) m.group() 
+			if( m.find() ) m.group().replace("_","") 
 			else "bst_000"
 		}
 
@@ -47,6 +47,8 @@ object AdvancedRoofline {
 
 
 		def getFromTo ( f: (Int) => Long ) = for( i <- From to To ) yield f(i)
+
+		for( i <- From to To ) {print( counters.getCounters(i) ); print("\n")}
 
 		val outVals =
 		getFromTo( (x) => (counters.getCounters(x),mask).zipped map(_*_) sum) ::

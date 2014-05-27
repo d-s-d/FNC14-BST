@@ -178,9 +178,9 @@ void run_configuration()
             0x531010, ///< FP_COMP_OPS_EXE.SSE_FP_PACKED_DOUBLE
             0x530211, ///< SIMD_FP_256.PACKED_DOUBLE
             0x530110, // whatever
-            0x530110,
-            0x530110,
-            0x530110 };
+            0x538010,
+            0x531010,
+            0x530211 };
 
     printf("starting measurement\n");
     measurement_init( custom_counters, 0, 0 );

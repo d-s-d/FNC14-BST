@@ -147,6 +147,7 @@ for serie,i in zip(series,range(len(series))):
     	for line in lines:
         	split_line = line.rstrip('\n').split(' ')
         	nCycles.append(split_line)
+                print( split_line )
 
     	file_in.close()
 
@@ -156,6 +157,7 @@ for serie,i in zip(series,range(len(series))):
     	for line in lines:
             	split_line = line.rstrip('\n').split(' ')
             	nFLOPS.append(split_line)
+                print( split_line )
 
     	file_in.close()
 	
