@@ -173,14 +173,14 @@ void run_configuration()
         1, ENV_GITREV_LEN-3 );
     // some output log
     long custom_counters[]
-        = { 0x530110, ///< FP_COMP_OPS_EXE.X87
-            0x538010, ///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
-            0x531010, ///< FP_COMP_OPS_EXE.SSE_FP_PACKED_DOUBLE
-            0x530211, ///< SIMD_FP_256.PACKED_DOUBLE
-            0x530110, // whatever
-            0x538010,
-            0x531010,
-            0x530211 };
+        = { 0x10, ///< FP_COMP_OPS_EXE.X87
+            0x01, 
+            0x10, ///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
+            0x80, 
+            0x10, ///< FP_COMP_OPS_EXE.SSE_FP_PACKED_DOUBLE
+            0x10,
+            0x11, ///< SIMD_FP_256.PACKED_DOUBLE
+            0x02 };
 
     printf("starting measurement\n");
     measurement_init( custom_counters, 0, 0 );
