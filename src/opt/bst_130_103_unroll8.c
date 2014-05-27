@@ -29,7 +29,7 @@ typedef struct {
     size_t n;
 } segments_t;
 
-void* bst_alloc_200( size_t n ) {
+void* bst_alloc_130_103_unroll8( size_t n ) {
     segments_t* mem = (segments_t*) malloc( sizeof(segments_t) );
     size_t sz = (n+1)*(n+1);
     // 32B alignment for AVX.
@@ -41,7 +41,7 @@ void* bst_alloc_200( size_t n ) {
     return mem;
 }
 
-double bst_compute_200( void*_bst_obj, double* p, double* q, size_t nn ) {
+double bst_compute_130_103_unroll8( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
     int n;
     int i, l, r, j;
@@ -76,7 +76,7 @@ double bst_compute_200( void*_bst_obj, double* p, double* q, size_t nn ) {
             double ir = e[IDX(i,r)];
             int idx_rj = IDX(r+1, j);
             int idx_ij = IDX(i, j);
-            for (; j < (n+1-7); j += 8) {
+            for (; j < (n+1-7); j += 8, idx_rj += 8, idx_ij += 8) {
                 // for (int jx = j; jx < (j+8); ++jx) {
                 //     t = e[IDX(i,r)] + e[IDX(r+1,jx)] + w[IDX(i,jx)];
                 //     if (t < e[IDX(i,jx)]) {
@@ -119,7 +119,7 @@ double bst_compute_200( void*_bst_obj, double* p, double* q, size_t nn ) {
     return e[IDX(0,n)];
 }
 
-size_t bst_get_root_200( void* _bst_obj, size_t i, size_t j )
+size_t bst_get_root_130_103_unroll8( void* _bst_obj, size_t i, size_t j )
 {
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
@@ -128,7 +128,7 @@ size_t bst_get_root_200( void* _bst_obj, size_t i, size_t j )
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
-void bst_free_200( void* _mem ) {
+void bst_free_130_103_unroll8( void* _mem ) {
     segments_t* mem = (segments_t*) _mem;
 
     /*
@@ -147,7 +147,7 @@ void bst_free_200( void* _mem ) {
     free( mem );
 }
 
-size_t bst_flops_200( size_t n ) {
+size_t bst_flops_130_103_unroll8( size_t n ) {
     size_t n3 = n*n*n;
     size_t n2 = n*n;
     return (size_t) ( n3/3.0 + 2*n2 + 5.0*n/3 );
