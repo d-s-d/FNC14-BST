@@ -1,0 +1,125 @@
+{
+  "from" : 6000,
+  "to" : 7000,
+  "step" : 200,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"nargin\" -march=corei7-avx -fno-tree-vectorize -O2",
+  "git-revision" : "9e841ef slow AVX code",
+  "runs" : {
+    "opt/bst_129_m256_maskstore_root_aligned.c:1" : [
+      {
+        "N" : 6000,
+        "flops" : 72072010000,
+        "cycles" : 75774891335,
+        "cache-misses" : 1001840888
+      },
+      {
+        "N" : 6200,
+        "flops" : 79519557000,
+        "cycles" : 86299188023,
+        "cache-misses" : 1095215152
+      },
+      {
+        "N" : 6400,
+        "flops" : 87463264000,
+        "cycles" : 92238294669,
+        "cache-misses" : 1123968165
+      },
+      {
+        "N" : 6600,
+        "flops" : 95919131000,
+        "cycles" : 98284722143,
+        "cache-misses" : 1290931146
+      },
+      {
+        "N" : 6800,
+        "flops" : 104903158000,
+        "cycles" : 108288781688,
+        "cache-misses" : 1392281091
+      },
+      {
+        "N" : 7000,
+        "flops" : 114431345000,
+        "cycles" : 117756455358,
+        "cache-misses" : 1544112672
+      }
+    ],
+    "opt/bst_116_further_stren_red.c:1" : [
+      {
+        "N" : 6000,
+        "flops" : 72072010000,
+        "cycles" : 120150251043,
+        "cache-misses" : 234002377
+      },
+      {
+        "N" : 6200,
+        "flops" : 79519557000,
+        "cycles" : 131820278667,
+        "cache-misses" : 250097234
+      },
+      {
+        "N" : 6400,
+        "flops" : 87463264000,
+        "cycles" : 144508641520,
+        "cache-misses" : 279998703
+      },
+      {
+        "N" : 6600,
+        "flops" : 95919131000,
+        "cycles" : 160966814624,
+        "cache-misses" : 306838604
+      },
+      {
+        "N" : 6800,
+        "flops" : 104903158000,
+        "cycles" : 174033404704,
+        "cache-misses" : 336169127
+      },
+      {
+        "N" : 7000,
+        "flops" : 114431345000,
+        "cycles" : 191884665050,
+        "cache-misses" : 374382293
+      }
+    ],
+    "opt/bst_133_132_rescheduled.c:1" : [
+      {
+        "N" : 6000,
+        "flops" : 72072010000,
+        "cycles" : 98836631038,
+        "cache-misses" : 690490087
+      },
+      {
+        "N" : 6200,
+        "flops" : 79519557000,
+        "cycles" : 110690208246,
+        "cache-misses" : 731279453
+      },
+      {
+        "N" : 6400,
+        "flops" : 87463264000,
+        "cycles" : 118361081169,
+        "cache-misses" : 832774685
+      },
+      {
+        "N" : 6600,
+        "flops" : 95919131000,
+        "cycles" : 131027568604,
+        "cache-misses" : 916143690
+      },
+      {
+        "N" : 6800,
+        "flops" : 104903158000,
+        "cycles" : 142329536192,
+        "cache-misses" : 989533463
+      },
+      {
+        "N" : 7000,
+        "flops" : 114431345000,
+        "cycles" : 156053244430,
+        "cache-misses" : 1054769819
+      }
+    ]
+  }
+}
