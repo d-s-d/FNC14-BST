@@ -109,7 +109,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
         for (int i=0; i<num_runs; ++i) {
             e = impl->compute(bst_data, config.p, config.q, n);
         }
-        measurement_stop(1);
+        measurement_stop(num_runs);
     } else {
         measurement_start();
         e = impl->compute(bst_data, config.p, config.q, n);
@@ -159,7 +159,7 @@ size_t escape_character( char *restrict trgt_str, const char *restrict str,
     return i;
 }
 
-void run_configuration()
+void run_configuration()///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
 {
     size_t ENV_USERFLAGS_LEN =
         sizeof(def_str(M_ENV_USERFLAGS))/sizeof(def_str(M_ENV_USERFLAGS)[0]);
@@ -168,7 +168,7 @@ void run_configuration()
     char str_env_userflags[2*ENV_USERFLAGS_LEN];
     char str_env_gitrev[2*ENV_GITREV_LEN];
     escape_character( str_env_userflags, def_str(M_ENV_USERFLAGS), '"', 
-        1, ENV_USERFLAGS_LEN-3 );
+        1, ENV_USERFLAGS_LEN-3 );///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
     escape_character( str_env_gitrev, def_str(M_ENV_GITREV), '"',
         1, ENV_GITREV_LEN-3 );
     // some output log
