@@ -54,15 +54,15 @@ def addBWLine(BW, label):
 
 
 X_MIN=0.1
-X_MAX=20.0
+X_MAX=5.0
 Y_MIN=0.1
 Y_MAX=20.0
 #PEAK_PERF=8.0
 #PEAK_BW=11.95
 PEAK_PERF=[1.0, 2.0, 4.0]
 PEAK_PERF_LABELS=['Scalar Peak Perf.', 'SSE Peak Perf.', 'AVX Peak Perf.']
-PEAK_BW=[2.0,6.3]
-PEAK_BW_LABELS = ['MemLoad', 'Random']
+PEAK_BW=[4.0]
+PEAK_BW_LABELS = ['MemLoad']
 
 INVERSE_GOLDEN_RATIO=0.618
 OUTPUT_FILE="data-rooflinePlot.pdf"

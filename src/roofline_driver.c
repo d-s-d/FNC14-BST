@@ -114,6 +114,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
         measurement_start();
         e = impl->compute(bst_data, config.p, config.q, n);
         measurement_stop(1);
+        LOG(" e = %lf\n", e);
     }
 
 #ifdef DEBUG
