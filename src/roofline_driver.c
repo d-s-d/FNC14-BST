@@ -172,7 +172,7 @@ void run_configuration()///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
     escape_character( str_env_gitrev, def_str(M_ENV_GITREV), '"',
         1, ENV_GITREV_LEN-3 );
     // some output log
-    long custom_counters[]
+    long long custom_counters[]
         = { 0x10, ///< FP_COMP_OPS_EXE.X87
             0x01, 
             0x10, ///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
@@ -182,14 +182,15 @@ void run_configuration()///< FP_COMP_OPS_EXE.SSE_SCALAR_DOUBLE
             0x11, ///< SIMD_FP_256.PACKED_DOUBLE
             0x02 };
 
-    printf("starting measurement\n");
+    // printf("starting measurement\n");
     measurement_init( custom_counters, 0, 0 );
     // debug output
+    /*
     LOG("%zd implementations available:\n", impl_size);
     for (size_t i=0; i<impl_size; ++i) {
         LOG("  %s\n", implementations[i].name);
     }
-
+    */
     // run over all implementations in config.tests
     for (char **impl_name=config.tests; *impl_name; ++impl_name) {
 

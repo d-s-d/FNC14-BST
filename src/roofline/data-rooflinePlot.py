@@ -42,7 +42,7 @@ def addPerfLine(peakPerf, label):
 	ax.axhline(y=peakPerf, linewidth=0.75, color='black')
 	#ax.text(X_MAX/10.0, PEAK_PERF+(PEAK_PERF)/10, "Peak Performance ("+str(PEAK_PERF)+" F/C)", fontsize=8)
 	yCoordinateTransformed = (log(peakPerf)-log(Y_MIN))/(log(Y_MAX/Y_MIN))
-	ax.text(0.76,yCoordinateTransformed+0.01, label+" ("+str(peakPerf)+" F/C)", fontsize=8, transform=ax.transAxes)
+	ax.text(0.76,yCoordinateTransformed+0.01, label+" ("+str(peakPerf)+" add/C)", fontsize=8, transform=ax.transAxes)
 
 
 def addBWLine(BW, label):
@@ -53,14 +53,14 @@ def addBWLine(BW, label):
 	ax.text(0.01,yCoordinateTransformed+0.05+0.0075*(len(str(BW))-1), label+' ('+str(BW)+' B/C)',fontsize=8, rotation=45, transform=ax.transAxes)
 
 
-X_MIN=0.01
-X_MAX=100.0
-Y_MIN=0.01
-Y_MAX=50.0
+X_MIN=0.1
+X_MAX=20.0
+Y_MIN=0.1
+Y_MAX=20.0
 #PEAK_PERF=8.0
 #PEAK_BW=11.95
-PEAK_PERF=[8.0, 10.0]
-PEAK_PERF_LABELS=['Peak Performance', 'Peak Performance']
+PEAK_PERF=[1.0, 2.0, 4.0]
+PEAK_PERF_LABELS=['Scalar Peak Perf.', 'SSE Peak Perf.', 'AVX Peak Perf.']
 PEAK_BW=[2.0,6.3]
 PEAK_BW_LABELS = ['MemLoad', 'Random']
 
@@ -108,8 +108,11 @@ minloc =int(log10(X_MIN))
 maxloc =int(log10(X_MAX) +1)
 newlocs = []
 newlabels = []
+
+print(minloc,maxloc)
 for i in range(minloc,maxloc):
     newlocs.append(10**i)
+    # newlocs.append(2)
     # Do not plot the first label, it is ugly in the corner
     if i==minloc:
 		newlabels.append('')
@@ -126,6 +129,7 @@ minloc =int(log10(Y_MIN))
 maxloc =int(log10(Y_MAX) +1)
 newlocs = []
 newlabels = []
+print (minloc, maxloc)
 for i in range(minloc,maxloc):
 	newlocs.append(10**i)
 	if i==minloc:
@@ -146,8 +150,7 @@ for serie,i in zip(series,range(len(series))):
     	lines = file_in.readlines()
     	for line in lines:
         	split_line = line.rstrip('\n').split(' ')
-        	nCycles.append(split_line)
-                print( split_line )
+        	nCycles += split_line 
 
     	file_in.close()
 
@@ -156,8 +159,7 @@ for serie,i in zip(series,range(len(series))):
     	lines = file_in.readlines()
     	for line in lines:
             	split_line = line.rstrip('\n').split(' ')
-            	nFLOPS.append(split_line)
-                print( split_line )
+            	nFLOPS += split_line
 
     	file_in.close()
 	
@@ -166,23 +168,33 @@ for serie,i in zip(series,range(len(series))):
         lines = file_in.readlines()
         for line in lines:
                 split_line = line.rstrip('\n').split(' ')
-                bytesTransferred.append(split_line)
+                bytesTransferred += split_line 
 
         file_in.close()
 
     	yData =[]
-    	for f,c in zip(nFLOPS,nCycles):
-        	yData.append([float(vf)/float(vc) for vf, vc in zip(f,c) if vf != '' and vc != ''])
+    	# for f,c in zip(nFLOPS,nCycles):
+        #	yData.append([float(vf)/float(vc) for vf, vc in zip(f,c) if vf != '' and vc != ''])
+
+        yData = [float(vf)/float(vc) for vf, vc in zip(nFLOPS,nCycles) if vf != '' and vc != '']
 
 	xData =[]
-    	for f,b in zip(nFLOPS,bytesTransferred):
-			xDataTmp = []
-			for vf, vb in zip(f,b):
-				if vf != '' and vb != '' and float(vb)!= 0:
-					xDataTmp.append(float(vf)/float(vb))	
-				if float(vb)== 0:
-					xDataTmp.append(float(vf)/X_MAX)
-			xData.append(xDataTmp)
+#    	for f,b in zip(nFLOPS,bytesTransferred):
+#			xDataTmp = []
+#                        print("f,b", f, b)
+#			for vf, vb in zip(f,b):
+#				if vf != '' and vb != '' and float(vb)!= 0:
+#					xDataTmp.append(float(vf)/float(vb))	
+#				if float(vb)== 0:
+#					xDataTmp.append(float(vf)/X_MAX)
+#                        print("xDataTmp", xDataTmp)
+#			xData = xData + xDataTmp
+
+        for vf, vb in zip(nFLOPS, bytesTransferred):
+                    if vf != '' and vb != '' and float(vb)!= 0:
+                            xData.append(float(vf)/float(vb))	
+                    if float(vb)== 0:
+                            xData.append(float(vf)/X_MAX)
 
 	x=[]
 	xerr_low=[]
@@ -213,10 +225,10 @@ for serie,i in zip(series,range(len(series))):
 	#print yerr_low
 	#print yerr_high
 
-	p, =ax.plot(x, y, '-', color=colors[i],label=serie)
+	p, = ax.plot(x, y, 'o-', color=colors[i],label=serie)
 	pp.append(p)
 	ss.append(serie);
-	ax.errorbar(x, y, yerr=[yerr_low, yerr_high], xerr=[xerr_low, xerr_high], fmt='b.',elinewidth=0.4, ecolor = 'Black', capsize=0, color=colors[i])  
+	# ax.errorbar(x, y, yerr=[yerr_low, yerr_high], xerr=[xerr_low, xerr_high], fmt='b.',elinewidth=0.4, ecolor = 'Black', capsize=0, color=colors[i])  
 
 	# Read sizes	
 	sizes = []
@@ -225,7 +237,6 @@ for serie,i in zip(series,range(len(series))):
 	for line in lines:
 		split_line = line.rstrip('\n').split(' ')
 		sizes.append(split_line)
-
 	file_in.close()
 
 	if ANNOTATE_POINTS:
@@ -238,7 +249,7 @@ for serie,i in zip(series,range(len(series))):
         xytext=(+3, +1), textcoords='offset points', fontsize=8)
 
 # Work around to get rid of the problem with frameon=False and the extra space generated in the plot
-ax.legend(pp,ss, numpoints=1, loc='best',fontsize =6).get_frame().set_visible(False)
+ax.legend(pp,ss, numpoints=1, loc='best',fontsize =14).get_frame().set_visible(False)
 #ax.legend(pp,ss, numpoints=1, loc='best',fontsize =6,frameon = False )
 
 

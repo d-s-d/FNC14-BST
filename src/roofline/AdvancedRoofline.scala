@@ -8,10 +8,10 @@ import java.util.regex.Matcher
 object AdvancedRoofline {
 	def main( args: Array[String] ) {
 		def extractName( raw_name:String ) = {
-			val pattern = Pattern.compile("bst_\\d+");
+			val pattern = Pattern.compile("bst_\\d+")
 			val m = pattern.matcher(raw_name)
 			if( m.find() ) m.group().replace("_","") 
-			else "bst_000"
+			else "bst000"
 		}
 
 		val src = scala.io.Source.fromFile("names_sizes.txt");
@@ -22,10 +22,10 @@ object AdvancedRoofline {
 
 
 		def getSizeFromTo( l: Seq[(Int, (String, Long))] ) = {
-			val sortedLines = l.sortWith(_._1 > _._1)
+			val sortedLines = l.sortWith(_._1 < _._1)
 			val sizes = sortedLines map (_._2._2)
-			val max = sortedLines.head._1
-			val min = sortedLines.last._1
+			val max = sortedLines.last._1
+			val min = sortedLines.first._1
 			(min, max, sizes)
 		}
 
@@ -35,11 +35,13 @@ object AdvancedRoofline {
 
 		impl_map foreach ( (t) => { val k = t._1; val v = t._2; run_kernel( counters, v._3, k, v._1, v._2 ) } )
 
-		print( (for( i <- 0 to 10 ) yield counters.getFlops(i)) mkString "," )
 	}
 
   def run_kernel (counters: CommandService.Counters, sizes: Seq[Long], impl_name: String, From: Int, To: Int)
   {
+
+		def cost( n: Long ) = (n*n*n)/3.0 + 2*n*n + 5.0*n/3 
+
 		val mask = List(1,1,2,4)
 
 		val outFilenames = "flop" :: "tsc" :: "size" :: "bytes_transferred" :: "Counter3" :: "bytes_read" :: "bytes_write" :: Nil
@@ -52,6 +54,7 @@ object AdvancedRoofline {
 
 		val outVals =
 		getFromTo( (x) => (counters.getCounters(x),mask).zipped map(_*_) sum) ::
+		// sizes.map( (x) => "%.16f".format(cost(x)) ) ::
 		getFromTo( counters.getTSC(_) ) ::
 		sizes ::
 		getFromTo( counters.getbytes_transferred(_) )::
