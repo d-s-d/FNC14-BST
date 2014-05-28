@@ -1,0 +1,1463 @@
+{
+  "from" : 50,
+  "to" : 2000,
+  "step" : 50,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"nargin\" -march=corei7-avx -fno-tree-vectorize -O2",
+  "git-revision" : "b3ab94a plus log",
+  "runs" : {
+    "opt/bst_141_140_unroll.c:1" : [
+      {
+        "N" : 50,
+        "flops" : 46750,
+        "cycles" : 125700,
+        "cache-misses" : 179
+      },
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 670842,
+        "cache-misses" : 190
+      },
+      {
+        "N" : 150,
+        "flops" : 1170250,
+        "cycles" : 2135417,
+        "cache-misses" : 676
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 4746755,
+        "cache-misses" : 724
+      },
+      {
+        "N" : 250,
+        "flops" : 5333750,
+        "cycles" : 9056291,
+        "cache-misses" : 969
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 15281191,
+        "cache-misses" : 1724
+      },
+      {
+        "N" : 350,
+        "flops" : 14537250,
+        "cycles" : 24142419,
+        "cache-misses" : 4822
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 39860008,
+        "cache-misses" : 11201
+      },
+      {
+        "N" : 450,
+        "flops" : 30780750,
+        "cycles" : 49833187,
+        "cache-misses" : 6323
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 72372956,
+        "cache-misses" : 13150
+      },
+      {
+        "N" : 550,
+        "flops" : 56064250,
+        "cycles" : 94241802,
+        "cache-misses" : 18215
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 120528194,
+        "cache-misses" : 22810
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "cycles" : 151103733,
+        "cache-misses" : 25507
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 188067591,
+        "cache-misses" : 42589
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "cycles" : 231897720,
+        "cache-misses" : 92198
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 278397653,
+        "cache-misses" : 111079
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "cycles" : 333194761,
+        "cache-misses" : 142614
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 398822261,
+        "cache-misses" : 258083
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "cycles" : 465800467,
+        "cache-misses" : 325789
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 549184062,
+        "cache-misses" : 619291
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "cycles" : 636831784,
+        "cache-misses" : 740396
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 736523944,
+        "cache-misses" : 1041085
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "cycles" : 837458181,
+        "cache-misses" : 1124351
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 963007426,
+        "cache-misses" : 1697857
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "cycles" : 1094350117,
+        "cache-misses" : 2229197
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 1224269749,
+        "cache-misses" : 2502354
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "cycles" : 1370034275,
+        "cache-misses" : 2813149
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 1537534421,
+        "cache-misses" : 3575965
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "cycles" : 1704886865,
+        "cache-misses" : 3964912
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1894135225,
+        "cache-misses" : 4855761
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "cycles" : 2137171116,
+        "cache-misses" : 6960182
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 2308677924,
+        "cache-misses" : 6286191
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "cycles" : 2507695550,
+        "cache-misses" : 5887570
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 2792097506,
+        "cache-misses" : 6980018
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "cycles" : 3007317465,
+        "cache-misses" : 7843697
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 3292523107,
+        "cache-misses" : 8721135
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "cycles" : 3522235563,
+        "cache-misses" : 8264558
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 3842036677,
+        "cache-misses" : 9537316
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "cycles" : 4192380981,
+        "cache-misses" : 11287901
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 4515789390,
+        "cache-misses" : 12197393
+      }
+    ],
+    "opt/bst_142_141_sse.c:1" : [
+      {
+        "N" : 50,
+        "flops" : 46750,
+        "cycles" : 111470,
+        "cache-misses" : 439
+      },
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 467290,
+        "cache-misses" : 508
+      },
+      {
+        "N" : 150,
+        "flops" : 1170250,
+        "cycles" : 1361156,
+        "cache-misses" : 892
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 2821950,
+        "cache-misses" : 1038
+      },
+      {
+        "N" : 250,
+        "flops" : 5333750,
+        "cycles" : 5357181,
+        "cache-misses" : 894
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 8722039,
+        "cache-misses" : 775
+      },
+      {
+        "N" : 350,
+        "flops" : 14537250,
+        "cycles" : 13705017,
+        "cache-misses" : 862
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 20024832,
+        "cache-misses" : 6798
+      },
+      {
+        "N" : 450,
+        "flops" : 30780750,
+        "cycles" : 28045739,
+        "cache-misses" : 8380
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 45181350,
+        "cache-misses" : 26167
+      },
+      {
+        "N" : 550,
+        "flops" : 56064250,
+        "cycles" : 51842786,
+        "cache-misses" : 14822
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 70521545,
+        "cache-misses" : 29226
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "cycles" : 90916556,
+        "cache-misses" : 48119
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 109472483,
+        "cache-misses" : 60801
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "cycles" : 131226386,
+        "cache-misses" : 59524
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 160203988,
+        "cache-misses" : 137234
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "cycles" : 188607477,
+        "cache-misses" : 136989
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 229090864,
+        "cache-misses" : 292900
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "cycles" : 270872628,
+        "cache-misses" : 403744
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 310842759,
+        "cache-misses" : 578708
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "cycles" : 370457699,
+        "cache-misses" : 870892
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 425295268,
+        "cache-misses" : 1138011
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "cycles" : 503741179,
+        "cache-misses" : 1602393
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 567626683,
+        "cache-misses" : 1876861
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "cycles" : 651119168,
+        "cache-misses" : 2323579
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 747182782,
+        "cache-misses" : 3036286
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "cycles" : 893256459,
+        "cache-misses" : 4249194
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 945520796,
+        "cache-misses" : 4279568
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "cycles" : 1134940029,
+        "cache-misses" : 5749264
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1223419097,
+        "cache-misses" : 6413350
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "cycles" : 1423051654,
+        "cache-misses" : 7137228
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 1576186339,
+        "cache-misses" : 8632385
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "cycles" : 1661400820,
+        "cache-misses" : 8407975
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 1829464726,
+        "cache-misses" : 9476115
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "cycles" : 2006815316,
+        "cache-misses" : 10962291
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 2204114103,
+        "cache-misses" : 11764085
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "cycles" : 2474940444,
+        "cache-misses" : 13565894
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 2632065743,
+        "cache-misses" : 14584118
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "cycles" : 2942314943,
+        "cache-misses" : 16539723
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 3148777538,
+        "cache-misses" : 18691539
+      }
+    ],
+    "opt/bst_116_further_stren_red.c:1" : [
+      {
+        "N" : 50,
+        "flops" : 46750,
+        "cycles" : 129000,
+        "cache-misses" : 23
+      },
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 767838,
+        "cache-misses" : 19
+      },
+      {
+        "N" : 150,
+        "flops" : 1170250,
+        "cycles" : 2374859,
+        "cache-misses" : 2
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 5580809,
+        "cache-misses" : 9
+      },
+      {
+        "N" : 250,
+        "flops" : 5333750,
+        "cycles" : 10184981,
+        "cache-misses" : 4
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 16360631,
+        "cache-misses" : 20
+      },
+      {
+        "N" : 350,
+        "flops" : 14537250,
+        "cycles" : 26439117,
+        "cache-misses" : 1843
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 44433119,
+        "cache-misses" : 5275
+      },
+      {
+        "N" : 450,
+        "flops" : 30780750,
+        "cycles" : 53476825,
+        "cache-misses" : 529
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 79309667,
+        "cache-misses" : 8311
+      },
+      {
+        "N" : 550,
+        "flops" : 56064250,
+        "cycles" : 102208967,
+        "cache-misses" : 11455
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 130835888,
+        "cache-misses" : 9258
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "cycles" : 162500314,
+        "cache-misses" : 16239
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 201043779,
+        "cache-misses" : 19062
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "cycles" : 244817229,
+        "cache-misses" : 27672
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 295421382,
+        "cache-misses" : 32669
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "cycles" : 352146759,
+        "cache-misses" : 37364
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 414445093,
+        "cache-misses" : 51480
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "cycles" : 483230699,
+        "cache-misses" : 84182
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 563502785,
+        "cache-misses" : 125611
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "cycles" : 651899589,
+        "cache-misses" : 194510
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 749592771,
+        "cache-misses" : 211491
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "cycles" : 854885387,
+        "cache-misses" : 290380
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 969912681,
+        "cache-misses" : 441450
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "cycles" : 1098142419,
+        "cache-misses" : 582757
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 1232452389,
+        "cache-misses" : 739980
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "cycles" : 1377459893,
+        "cache-misses" : 915427
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 1547937195,
+        "cache-misses" : 1203921
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "cycles" : 1705279708,
+        "cache-misses" : 1395703
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1886264320,
+        "cache-misses" : 1705823
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "cycles" : 2083450265,
+        "cache-misses" : 2057674
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 2285653155,
+        "cache-misses" : 2324022
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "cycles" : 2504548541,
+        "cache-misses" : 2833883
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 2740462966,
+        "cache-misses" : 3045922
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "cycles" : 2992654899,
+        "cache-misses" : 3593172
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 3252978127,
+        "cache-misses" : 4186416
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "cycles" : 3538855550,
+        "cache-misses" : 4770472
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 3835112972,
+        "cache-misses" : 5289896
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "cycles" : 4144524797,
+        "cache-misses" : 5571537
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 4547425302,
+        "cache-misses" : 6274013
+      }
+    ],
+    "opt/bst_125_m128_aligned4_maskstore.c:1" : [
+      {
+        "N" : 50,
+        "flops" : 46750,
+        "cycles" : 99773,
+        "cache-misses" : 95
+      },
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 552026,
+        "cache-misses" : 454
+      },
+      {
+        "N" : 150,
+        "flops" : 1170250,
+        "cycles" : 1657647,
+        "cache-misses" : 1051
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 3656881,
+        "cache-misses" : 1207
+      },
+      {
+        "N" : 250,
+        "flops" : 5333750,
+        "cycles" : 6977990,
+        "cache-misses" : 1934
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 11807936,
+        "cache-misses" : 2431
+      },
+      {
+        "N" : 350,
+        "flops" : 14537250,
+        "cycles" : 18717496,
+        "cache-misses" : 3633
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 27050677,
+        "cache-misses" : 5203
+      },
+      {
+        "N" : 450,
+        "flops" : 30780750,
+        "cycles" : 44175316,
+        "cache-misses" : 8138
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 52545401,
+        "cache-misses" : 7035
+      },
+      {
+        "N" : 550,
+        "flops" : 56064250,
+        "cycles" : 74856483,
+        "cache-misses" : 9778
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 95568613,
+        "cache-misses" : 12614
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "cycles" : 117975759,
+        "cache-misses" : 15077
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 146295112,
+        "cache-misses" : 16775
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "cycles" : 177460073,
+        "cache-misses" : 22245
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 213519006,
+        "cache-misses" : 27920
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "cycles" : 253457691,
+        "cache-misses" : 34914
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 303181002,
+        "cache-misses" : 50829
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "cycles" : 352328162,
+        "cache-misses" : 113716
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 414179188,
+        "cache-misses" : 175628
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "cycles" : 473417929,
+        "cache-misses" : 329157
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 553048741,
+        "cache-misses" : 335591
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "cycles" : 627859496,
+        "cache-misses" : 491124
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 722441963,
+        "cache-misses" : 722803
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "cycles" : 810989433,
+        "cache-misses" : 1046027
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 921193027,
+        "cache-misses" : 1372102
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "cycles" : 1035107599,
+        "cache-misses" : 1774018
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 1198690810,
+        "cache-misses" : 2346421
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "cycles" : 1280919231,
+        "cache-misses" : 2827065
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1434242849,
+        "cache-misses" : 3450066
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "cycles" : 1562067075,
+        "cache-misses" : 4151486
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 1744763462,
+        "cache-misses" : 4877603
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "cycles" : 1896156287,
+        "cache-misses" : 6262321
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 2106291760,
+        "cache-misses" : 6576609
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "cycles" : 2277356198,
+        "cache-misses" : 8385009
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 2509804157,
+        "cache-misses" : 9308774
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "cycles" : 2701985188,
+        "cache-misses" : 11055425
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 2963806554,
+        "cache-misses" : 12203307
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "cycles" : 3183450514,
+        "cache-misses" : 12661306
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 3474699725,
+        "cache-misses" : 14045141
+      }
+    ],
+    "opt/bst_143_141_avx.c:1" : [
+      {
+        "N" : 50,
+        "flops" : 46750,
+        "cycles" : 115408,
+        "cache-misses" : 258
+      },
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 402108,
+        "cache-misses" : 666
+      },
+      {
+        "N" : 150,
+        "flops" : 1170250,
+        "cycles" : 1093464,
+        "cache-misses" : 1358
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 2058967,
+        "cache-misses" : 1598
+      },
+      {
+        "N" : 250,
+        "flops" : 5333750,
+        "cycles" : 3892771,
+        "cache-misses" : 1493
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 6169531,
+        "cache-misses" : 1388
+      },
+      {
+        "N" : 350,
+        "flops" : 14537250,
+        "cycles" : 9542006,
+        "cache-misses" : 2054
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 13617564,
+        "cache-misses" : 5901
+      },
+      {
+        "N" : 450,
+        "flops" : 30780750,
+        "cycles" : 18743588,
+        "cache-misses" : 10075
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 25713564,
+        "cache-misses" : 15341
+      },
+      {
+        "N" : 550,
+        "flops" : 56064250,
+        "cycles" : 42455308,
+        "cache-misses" : 24181
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 40420035,
+        "cache-misses" : 21307
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "cycles" : 58692037,
+        "cache-misses" : 29993
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 71494104,
+        "cache-misses" : 58121
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "cycles" : 87564416,
+        "cache-misses" : 89779
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 105743572,
+        "cache-misses" : 145124
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "cycles" : 126439127,
+        "cache-misses" : 205021
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 148468366,
+        "cache-misses" : 334680
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "cycles" : 185958686,
+        "cache-misses" : 554777
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 220646368,
+        "cache-misses" : 808266
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "cycles" : 260159225,
+        "cache-misses" : 1097321
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 308058711,
+        "cache-misses" : 1516834
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "cycles" : 361795181,
+        "cache-misses" : 1939302
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 419638852,
+        "cache-misses" : 2488594
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "cycles" : 490374324,
+        "cache-misses" : 3159360
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 569183642,
+        "cache-misses" : 3916736
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "cycles" : 660660958,
+        "cache-misses" : 4636359
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 753155241,
+        "cache-misses" : 5531449
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "cycles" : 871869112,
+        "cache-misses" : 6657766
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1002885936,
+        "cache-misses" : 8182258
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "cycles" : 1146912611,
+        "cache-misses" : 8793359
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 1259190409,
+        "cache-misses" : 10184807
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "cycles" : 1403335872,
+        "cache-misses" : 11252199
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 1560277674,
+        "cache-misses" : 12599184
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "cycles" : 1723346509,
+        "cache-misses" : 14132902
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 1906347067,
+        "cache-misses" : 15212042
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "cycles" : 2106458643,
+        "cache-misses" : 18087590
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 2231539857,
+        "cache-misses" : 19107007
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "cycles" : 2458107132,
+        "cache-misses" : 20904294
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 2745754491,
+        "cache-misses" : 24334421
+      }
+    ],
+    "opt/bst_129_m256_maskstore_root_aligned.c:1" : [
+      {
+        "N" : 50,
+        "flops" : 46750,
+        "cycles" : 127501,
+        "cache-misses" : 124
+      },
+      {
+        "N" : 100,
+        "flops" : 353500,
+        "cycles" : 539480,
+        "cache-misses" : 266
+      },
+      {
+        "N" : 150,
+        "flops" : 1170250,
+        "cycles" : 1447054,
+        "cache-misses" : 90
+      },
+      {
+        "N" : 200,
+        "flops" : 2747000,
+        "cycles" : 3020954,
+        "cache-misses" : 17
+      },
+      {
+        "N" : 250,
+        "flops" : 5333750,
+        "cycles" : 5432337,
+        "cache-misses" : 11
+      },
+      {
+        "N" : 300,
+        "flops" : 9180500,
+        "cycles" : 8940964,
+        "cache-misses" : 35
+      },
+      {
+        "N" : 350,
+        "flops" : 14537250,
+        "cycles" : 13630594,
+        "cache-misses" : 74
+      },
+      {
+        "N" : 400,
+        "flops" : 21654000,
+        "cycles" : 19983081,
+        "cache-misses" : 3390
+      },
+      {
+        "N" : 450,
+        "flops" : 30780750,
+        "cycles" : 27576376,
+        "cache-misses" : 1744
+      },
+      {
+        "N" : 500,
+        "flops" : 42167500,
+        "cycles" : 43504139,
+        "cache-misses" : 10081
+      },
+      {
+        "N" : 550,
+        "flops" : 56064250,
+        "cycles" : 48368333,
+        "cache-misses" : 3445
+      },
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "cycles" : 69013671,
+        "cache-misses" : 14402
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "cycles" : 85476345,
+        "cache-misses" : 12160
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "cycles" : 103765786,
+        "cache-misses" : 13643
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "cycles" : 124842789,
+        "cache-misses" : 18116
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "cycles" : 149598778,
+        "cache-misses" : 29576
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "cycles" : 175259284,
+        "cache-misses" : 34359
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "cycles" : 207459938,
+        "cache-misses" : 59652
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "cycles" : 246529355,
+        "cache-misses" : 112837
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "cycles" : 281154328,
+        "cache-misses" : 294451
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "cycles" : 328909232,
+        "cache-misses" : 442190
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "cycles" : 380229259,
+        "cache-misses" : 638956
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "cycles" : 443362578,
+        "cache-misses" : 1113912
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "cycles" : 498327164,
+        "cache-misses" : 1422698
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "cycles" : 572423235,
+        "cache-misses" : 1907642
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "cycles" : 650951478,
+        "cache-misses" : 2561126
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "cycles" : 735463653,
+        "cache-misses" : 3361885
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "cycles" : 829871684,
+        "cache-misses" : 4588017
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "cycles" : 933667715,
+        "cache-misses" : 5786039
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "cycles" : 1048162549,
+        "cache-misses" : 6880605
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "cycles" : 1175580769,
+        "cache-misses" : 9054928
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "cycles" : 1291696481,
+        "cache-misses" : 10150371
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "cycles" : 1431117481,
+        "cache-misses" : 11862957
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "cycles" : 1580988267,
+        "cache-misses" : 13126792
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "cycles" : 1735955362,
+        "cache-misses" : 15097777
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "cycles" : 1892904451,
+        "cache-misses" : 17260883
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "cycles" : 2060326245,
+        "cache-misses" : 18848199
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "cycles" : 2239157994,
+        "cache-misses" : 20104348
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "cycles" : 2420617797,
+        "cache-misses" : 21927686
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "cycles" : 2588695437,
+        "cache-misses" : 25030962
+      }
+    ]
+  }
+}
