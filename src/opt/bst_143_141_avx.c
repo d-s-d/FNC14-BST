@@ -181,14 +181,10 @@ double bst_compute_143_141_avx( void*_bst_obj, double* p, double* q, size_t nn )
 
             // run in chunks of 4
             int idx_ir_here = idx_ii+ib-i;
-            double e_ir0 = e[idx_ir_here+0];
-            double e_ir1 = e[idx_ir_here+1];
-            double e_ir2 = e[idx_ir_here+2];
-            double e_ir3 = e[idx_ir_here+3];
-            __m256d v_e_ir0 = _mm256_set_pd(e_ir0, e_ir0, e_ir0, e_ir0);
-            __m256d v_e_ir1 = _mm256_set_pd(e_ir1, e_ir1, e_ir1, e_ir1);
-            __m256d v_e_ir2 = _mm256_set_pd(e_ir2, e_ir2, e_ir2, e_ir2);
-            __m256d v_e_ir3 = _mm256_set_pd(e_ir3, e_ir3, e_ir3, e_ir3);
+            __m256d v_e_ir0 = _mm256_set1_pd(e[idx_ir_here+0]);
+            __m256d v_e_ir1 = _mm256_set1_pd(e[idx_ir_here+1]);
+            __m256d v_e_ir2 = _mm256_set1_pd(e[idx_ir_here+2]);
+            __m256d v_e_ir3 = _mm256_set1_pd(e[idx_ir_here+3]);
             __m256i v_r0    = _mm256_set1_epi64x(ib+0);
             __m256i v_r1    = _mm256_set1_epi64x(ib+1);
             __m256i v_r2    = _mm256_set1_epi64x(ib+2);
