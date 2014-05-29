@@ -214,9 +214,9 @@ void bst_free_129_m256_maskstore_root_aligned( void* _mem ) {
     }
     */
 
-    free( mem->e );
-    free( mem->w );
-    free( mem->r );
+    _mm_free( mem->e );
+    _mm_free( mem->w );
+    _mm_free( mem->r );
     free( mem );
 }
 

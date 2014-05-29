@@ -2,6 +2,11 @@
 #include<math.h>
 #include<string.h>
 #include<x86intrin.h>
+#include<malloc.h>
+
+#ifdef __INTEL_COMPILER
+#include<malloc.h>
+#endif
 
 /*
  * Disclaimer: The indices differ from the high-level pseudo-code description
