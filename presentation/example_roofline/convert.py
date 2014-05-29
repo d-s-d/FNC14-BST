@@ -15,7 +15,7 @@ if __name__ == "__main__":
 	performance = [float(fl)/float(c) for (fl,c) in zip(flops, cycles)]
 	opint = [float(fl)/float(b) for (fl,b) in zip(flops, transferred)]
 
-	f_res = open("roofline_data_"+name+".txt", "w")
+	f_res = open("roofline_data_generated_"+name+".csv", "w")
 	print >> f_res, "OpInt [X] %s;Perf [Y] %s" % (name, name)
 	for i in range(len(opint)):
 		print >> f_res, "%lf;%lf" % (opint[i], performance[i])
