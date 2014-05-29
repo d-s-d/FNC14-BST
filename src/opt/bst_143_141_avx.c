@@ -3,6 +3,7 @@
 #include<string.h>
 #include <assert.h>
 #include <x86intrin.h>
+#include <stdint.h>
 
 
 /*
@@ -25,7 +26,7 @@
 typedef struct {
     double* e;
     double* w;
-    int* r;
+    int64_t* r;
     size_t n;
 } segments_t;
 
@@ -35,9 +36,9 @@ void* bst_alloc_143_141_avx( size_t n ) {
     // 32B alignment for AVX.
     mem->e = _mm_malloc(sz * sizeof(double), 32); assert(mem->e);
     mem->w = _mm_malloc(sz * sizeof(double), 32); assert(mem->w);
-    mem->r = _mm_malloc(sz * sizeof(int), 32);    assert(mem->r);
+    mem->r = _mm_malloc(sz * sizeof(int64_t), 32);    assert(mem->r);
     mem->n = n;
-    memset( mem->r, -1, sz * sizeof(int) );
+    memset( mem->r, -1, sz * sizeof(int64_t) );
     return mem;
 }
 
@@ -48,11 +49,12 @@ void* bst_alloc_143_141_avx( size_t n ) {
 double bst_compute_143_141_avx( void*_bst_obj, double* p, double* q, size_t nn ) {
     segments_t* mem = (segments_t*) _bst_obj;
     int n;
-    int i, l, r, j;
+    int i, l, j;
+    int64_t r;
     double t, t_min, w_cur;
-    int r_min;
+    int64_t r_min;
     double* e = mem->e, *w = mem->w;
-    int* root = mem->r;
+    int64_t* root = mem->r;
     // initialization
     mem->n = nn;
     n = nn; // subtractions with n potentially negative. say hello to all the bugs
@@ -187,6 +189,10 @@ double bst_compute_143_141_avx( void*_bst_obj, double* p, double* q, size_t nn )
             __m256d v_e_ir1 = _mm256_set_pd(e_ir1, e_ir1, e_ir1, e_ir1);
             __m256d v_e_ir2 = _mm256_set_pd(e_ir2, e_ir2, e_ir2, e_ir2);
             __m256d v_e_ir3 = _mm256_set_pd(e_ir3, e_ir3, e_ir3, e_ir3);
+            __m256i v_r0    = _mm256_set1_epi64x(ib+0);
+            __m256i v_r1    = _mm256_set1_epi64x(ib+1);
+            __m256i v_r2    = _mm256_set1_epi64x(ib+2);
+            __m256i v_r3    = _mm256_set1_epi64x(ib+3);
             for (; j < (n+1-3); j += 4, idx_ij += 4) {
                 // for (int jx = 0; jx < 4; ++jx) {
                 //     t_min = e[idx_ij+jx];
@@ -282,6 +288,7 @@ double bst_compute_143_141_avx( void*_bst_obj, double* p, double* q, size_t nn )
 
                 // all the loads
                 __m256d t_min0 = _mm256_loadu_pd( &e[idx_ij+0] );
+                __m256i r_min0 = _mm256_lddqu_si256( &root[idx_ij+0] );
                 __m256d w0     = _mm256_loadu_pd( &w[idx_ij+0] );
 
                 int ir_start_0 = idx_ib_x + STRIDE + j - ib;
@@ -307,13 +314,22 @@ double bst_compute_143_141_avx( void*_bst_obj, double* p, double* q, size_t nn )
                 __m256d t30_2 = _mm256_add_pd(t30_1, e_ir30);
 
                 // mins
-                __m256d t_min01 = _mm256_blendv_pd(t_min0,  t00_2, _mm256_cmp_pd(t00_2, t_min0 , _CMP_LT_OQ));
-                __m256d t_min02 = _mm256_blendv_pd(t_min01, t10_2, _mm256_cmp_pd(t10_2, t_min01, _CMP_LT_OQ));
-                __m256d t_min03 = _mm256_blendv_pd(t_min02, t20_2, _mm256_cmp_pd(t20_2, t_min02, _CMP_LT_OQ));
-                __m256d t_min04 = _mm256_blendv_pd(t_min03, t30_2, _mm256_cmp_pd(t30_2, t_min03, _CMP_LT_OQ));
+                __m256d cmp0    = _mm256_cmp_pd(t00_2, t_min0 , _CMP_LT_OQ);
+                __m256d t_min01 = _mm256_blendv_pd(t_min0,  t00_2, cmp0);
+                __m256i r_min01 = _mm256_castpd_si256(_mm256_blendv_pd(_mm256_castsi256_pd(r_min0),  _mm256_castsi256_pd(v_r0), cmp0));
+                __m256d cmp1    = _mm256_cmp_pd(t10_2, t_min01, _CMP_LT_OQ);
+                __m256d t_min02 = _mm256_blendv_pd(t_min01, t10_2, cmp1);
+                __m256i r_min02 = _mm256_castpd_si256(_mm256_blendv_pd(_mm256_castsi256_pd(r_min01),  _mm256_castsi256_pd(v_r1), cmp1));
+                __m256d cmp2    = _mm256_cmp_pd(t20_2, t_min02, _CMP_LT_OQ);
+                __m256d t_min03 = _mm256_blendv_pd(t_min02, t20_2, cmp2);
+                __m256i r_min03 = _mm256_castpd_si256(_mm256_blendv_pd(_mm256_castsi256_pd(r_min02),  _mm256_castsi256_pd(v_r2), cmp2));
+                __m256d cmp3    = _mm256_cmp_pd(t30_2, t_min03, _CMP_LT_OQ);
+                __m256d t_min04 = _mm256_blendv_pd(t_min03, t30_2, cmp3);
+                __m256i r_min04 = _mm256_castpd_si256(_mm256_blendv_pd(_mm256_castsi256_pd(r_min03),  _mm256_castsi256_pd(v_r3), cmp3));
 
                 // writeback
                 _mm256_storeu_pd( &e[idx_ij+0], t_min04);
+                _mm256_storeu_si256( &root[idx_ij+0], r_min04);
             }
 
 
@@ -363,7 +379,7 @@ size_t bst_get_root_143_141_avx( void* _bst_obj, size_t i, size_t j )
     // [i,j], in table: [i-1, j]+1
     segments_t *mem = _bst_obj;
     size_t n = mem->n;
-    int *root = mem->r;
+    int64_t *root = mem->r;
     return (size_t) root[(i-1)*(n+1)+j]+1;
 }
 
