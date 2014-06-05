@@ -47,6 +47,7 @@ double bst_compute_103_why_would_you_block( void*_bst_obj, double* p, double* q,
     int r_min;
     double* e = mem->e, *w = mem->w;
     int* root = mem->r;
+    double e_ir;
     // initialization
     // mem->n = nn;
     n = nn; // subtractions with n potentially negative. say hello to all the bugs
@@ -61,8 +62,9 @@ double bst_compute_103_why_would_you_block( void*_bst_obj, double* p, double* q,
         }
 
         for (r = i; r < n; ++r) {
+            e_ir = e[IDX(i,r)];
             for (j = r+1; j < n+1; ++j) {
-                t = e[IDX(i,r)] + e[IDX(r+1,j)] + w[IDX(i,j)];
+                t = e_ir + e[IDX(r+1,j)] + w[IDX(i,j)];
                 if (t < e[IDX(i,j)]) {
                     e[IDX(i,j)] = t;
                     root[IDX(i,j)] = r;
