@@ -4,7 +4,8 @@
 % --------------------------------------------------------------------------
 
 \documentclass[letterpaper]{article}
-\usepackage{spconf,amsmath,amssymb,graphicx}
+\usepackage{spconf,amsmath,amssymb,graphicx,listings,hyperref}
+\lstset{basicstyle=\ttfamily\footnotesize,numbers=left,stepnumber=2,frame=single,language=c,captionpos=b}
 \usepackage[utf8]{inputenc} % UTF-8 was invented to be used.
 
 % Example definitions.
@@ -55,6 +56,26 @@
 \maketitle
 %
 
+\begin{lstlisting}[
+  caption={Basline Implementation},
+  label=lst:baseline
+]
+for (l = 1; l < n+1; l++)
+  for (i = 0; i < n-l+1; i++)
+    j = i+l;
+    e[IDX(i,j)] = INFINITY;
+    w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
+    for (r = i; r < j; r++ )
+      t = e[IDX(i,r)] + e[IDX(r+1,j)]
+          + w[IDX(i,j)];
+      if (t < e[IDX(i,j)])
+        e[IDX(i,j)]    = t;
+        root[IDX(i,j)] = r;
+\end{lstlisting}
+
+You can see our reference implementation in \autoref{lst:baseline}. To
+learn more about this exciting code, read on!
+
 The hard page limit is 6 pages in this style. Do not reduce font size
 or use other tricks to squeeze. This pdf is formatted in the American letter format, so may look a bit strange when printed out.
 
@@ -92,6 +113,9 @@ Hence, the cost function is defined as:
 \begin{align*}
 C(n) = \left(\frac{1}{3}(n^3+3n^2+2n), \frac{1}{6}(n^3 - n)\right)
 \end{align*}
+
+\subsection{bla}
+this is my text
 
 \section{Introduction}\label{sec:intro}
 
