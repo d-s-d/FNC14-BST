@@ -1,0 +1,28 @@
+
+\section{Background}
+\mypar{Formal Problem Description}
+
+\mypar{Baseline algorithm}
+You can see our reference implementation in \autoref{lst:baseline}. To
+learn more about this exciting code, read on!
+
+\begin{lstlisting}[
+  caption={Basline Implementation},
+  label=lst:baseline
+]
+for (l = 1; l < n+1; l++)
+  for (i = 0; i < n-l+1; i++)
+    j = i+l;
+    e[IDX(i,j)] = INFINITY;
+    w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
+    for (r = i; r < j; r++ )
+      t = e[IDX(i,r)] + e[IDX(r+1,j)]
+          + w[IDX(i,j)];
+      if (t < e[IDX(i,j)])
+        e[IDX(i,j)]    = t;
+        root[IDX(i,j)] = r;
+\end{lstlisting}
+
+\mypar{Cost Analysis}
+
+

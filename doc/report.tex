@@ -61,74 +61,11 @@
 	blabla.
 \end{abstract}
 
-\section{Introduction}\label{sec:intro}
-A binary search tree is a simple and easy to understand, recursive data
-structure. It solves this and that problem, and is vitaly important for this and
-that. 
-
-\[Give informal defintion.\] Every tree that follows this definition is a valid
-binary search tree. However, it is easy to see that for the same set of keys,
-there are different valid binary search trees and all of these trees have
-different characteristics concerning the cost needed to access specific nodes in
-the tree. The value of a concrete algorithm thus lies in its ability to choose
-the optimal structure of a search tree for a given set of keys.
-
-Optimality is reached if the lookup cost, which is equal to the depth of the
-node being searched, is minimal. In the case of dynamic binary search trees, a
-number of algorithms have been developed to balance the tree upon insertion and
-deletion such that tree remains balanced \[ref AVL, SPLAY, etc.\].
-
-In the case of static binary search trees, which are the subject of this paper,
-the set of keys that the tree holds is known in advance. Hence, the tree is
-constructed once and only used for lookups subsequently. Additionally, we assume
-that, for each key, the probability with which this key is accessed is known a
-priori.
-
-\section{Background}
-\mypar{Formal Problem Description}
-
-\mypar{Baseline algorithm}
-You can see our reference implementation in \autoref{lst:baseline}. To
-learn more about this exciting code, read on!
-
-\begin{lstlisting}[
-  caption={Basline Implementation},
-  label=lst:baseline
-]
-for (l = 1; l < n+1; l++)
-  for (i = 0; i < n-l+1; i++)
-    j = i+l;
-    e[IDX(i,j)] = INFINITY;
-    w[IDX(i,j)] = w[IDX(i,j-1)] + p[j-1] + q[j];
-    for (r = i; r < j; r++ )
-      t = e[IDX(i,r)] + e[IDX(r+1,j)]
-          + w[IDX(i,j)];
-      if (t < e[IDX(i,j)])
-        e[IDX(i,j)]    = t;
-        root[IDX(i,j)] = r;
-\end{lstlisting}
-
-\mypar{Cost Analysis}
-
-\section{Optimization}
-
-\mypar{Quantifying Locality}
-
-\mypar{Removing Column Accesses} If we only consider memory accesses within the
-inntermost loop, half of them are of stride $1$ and half of them of stride $n+1$. 
-
-\mypar{Bottom-Up} asdf
-\mypar{Partial Results (Swap innermost loops)}
-\mypar{Compressed memory layout}
-\mypar{Blocking}
-\mypar{Vectorization}
-\mypar{Scheduling}
-\mypar{Alignment}
-
-\section{Experimental Results}
-
-\section{Conclusions}
-
+\input{01_introduction.tex}
+\input{02_background.tex}
+\input{03_method.tex}
+\input{04_results.tex}
+\input{05_conclusions.tex}
 
 The hard page limit is 6 pages in this style. Do not reduce font size
 or use other tricks to squeeze. This pdf is formatted in the American letter format, so may look a bit strange when printed out.

@@ -1,0 +1,24 @@
+
+\section{Introduction}\label{sec:intro}
+A binary search tree is a simple and easy to understand, recursive data
+structure. It solves this and that problem, and is vitaly important for this and
+that. 
+
+\[Give informal defintion.\] Every tree that follows this definition is a valid
+binary search tree. However, it is easy to see that for the same set of keys,
+there are different valid binary search trees and all of these trees have
+different characteristics concerning the cost needed to access specific nodes in
+the tree. The value of a concrete algorithm thus lies in its ability to choose
+the optimal structure of a search tree for a given set of keys.
+
+Optimality is reached if the lookup cost, which is equal to the depth of the
+node being searched, is minimal. In the case of dynamic binary search trees, a
+number of algorithms have been developed to balance the tree upon insertion and
+deletion such that tree remains balanced \[ref AVL, SPLAY, etc.\].
+
+In the case of static binary search trees, which are the subject of this paper,
+the set of keys that the tree holds is known in advance. Hence, the tree is
+constructed once and only used for lookups subsequently. Additionally, we assume
+that, for each key, the probability with which this key is accessed is known a
+priori.
+
