@@ -25,9 +25,10 @@ int nb1;
 struct {
     // Test Setup
     urange_t N;
-    char   **tests;  ///< NULL-terminated list of implementations to test
-    unsigned int seed; ///< seed for random number generator
-    int      calibrate;
+    char     **tests;   ///< NULL-terminated list of implementations to test
+    unsigned int seed;  ///< seed for random number generator
+    int      calibrate; ///< wether to repeat experiment for minimum # of cycles
+    unsigned int average; ///< Minimum number of averating runs
 
     urange_t nb1_range; ///< range for first blocking parameter
 
@@ -88,6 +89,7 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 
     double e;
     int num_runs = 1;
+
     if (config.calibrate) {
         // warm up cache
         impl->compute(bst_data, config.p, config.q, n);
@@ -106,21 +108,20 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 
             num_runs *=2;
         }
-
-        log_int("average-rounds", num_runs);
-
-        perf_reset(config.perf_data);
-        perf_start(config.perf_data);
-        for (int i=0; i<num_runs; ++i) {
-            e = impl->compute(bst_data, config.p, config.q, n);
-        }
-        perf_stop(config.perf_data);
-    } else {
-        perf_reset(config.perf_data);
-        perf_start(config.perf_data);
-        e = impl->compute(bst_data, config.p, config.q, n);
-        perf_stop(config.perf_data);
     }
+
+    if (num_runs < config.average) {
+        num_runs = config.average;
+    }
+
+    log_int("average-rounds", num_runs);
+
+    perf_reset(config.perf_data);
+    perf_start(config.perf_data);
+    for (int i=0; i<num_runs; ++i) {
+        e = impl->compute(bst_data, config.p, config.q, n);
+    }
+    perf_stop(config.perf_data);
 
 #ifdef DEBUG
     printf("Cost is: %lf. Root is %d.\n", e, impl->root(bst_data, 1, n));
@@ -140,8 +141,9 @@ int run_test(size_t n, bst_impl_t *impl, double ref, int verify)
 
     // log performance
     perf_update_values(config.perf_data);
+
     log_idouble("cycles",           config.perf_data[0].value / num_runs);
-    log_idouble("cache-misses",     config.perf_data[1].value);
+    log_idouble("cache-misses",     config.perf_data[1].value / num_runs);
 
     impl->free(bst_data);
     return pass;
@@ -387,6 +389,7 @@ int main(int argc, char *argv[])
             {"validate",  required_argument, 0, 'v'},
             {"calibrate", required_argument, 0, 'c'},
             {"nb1",       required_argument, 0, 'n'},
+            {"average",   required_argument, 0, 'a'},
             {0,0,0,0}
         };
 
@@ -420,6 +423,9 @@ int main(int argc, char *argv[])
                 ERROR_MSG("Error parsing argument: %s \n", optarg);
                 print_usage_and_exit();
             }
+        case 'a':
+            config.average = strtoul(optarg, NULL, 0);
+            break;
         case '?':
             printf("getopt: error on character %c\n", optopt);
             break;

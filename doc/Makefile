@@ -1,11 +1,16 @@
-all: $(patsubst %.tex,%.pdf,$(wildcard *.tex))
+TARGET   = report
+TEXFILES = $(wildcard *.tex)
 
 .PRECIOUS: %.pdf
+.PHONY: all pdf
 
-% : %.pdf
-	@echo -n ""
+all: $(TARGET).pdf
 
-%.dvi: %.tex
+pdf: $(TARGET).pdf
+
+$(TARGET).dvi: $(TARGET).tex $(TEXFILES)
+	latex $<
+	bibtex $(TARGET)
 	latex $<
 	latex $<
 
