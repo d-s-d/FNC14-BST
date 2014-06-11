@@ -1,6 +1,48 @@
-
 \section{Background}
-\mypar{Formal Problem Description}
+
+As a group we worked on the static optimal binary search tree problem.
+In this section we give a mathematical description of the optimal binary
+search tree problem. The algorithm implemented and optimized to solve the
+problem is presented and a cost measure introduced. The presentation is
+based on the algorithms book by Cormen et al.~\cite{MITBook}. We conclude
+by giving a short overview of two asymptotically faster algorithms.
+
+\mypar{Problem Statement} Let $K = \{k_1, k_2, \dots, k_n\}$ be a sequence
+of distinct ordered keys. For each key $k_i$, let $p_i$ be the probability
+that a given search is for key $k_i$. Such a search is called successfull.
+Furhter, let $D = \{d_0, d_1, \dots, d_n\}$ be the set of dummy keys
+returned for unsuccessfull searches as follows: $d_i$ represents searches
+for values between $k_i$ and $k_{i+1}$, $d_0$ represent the values smaller
+$k_0$ and $d_n$ the values larger $k_n$. For each dummy key $d_i$, let
+$q_i$ be the probability that a given search returns $d_i$.
+A valid solution to the static binary search tree problem is any binary
+search tree $T$ that has $K$ as nodes and $D$ as leaves.
+The cost of a search in a such a tree $T$ is defined as the depth of the key
+found plus one. Since $K$ and $D$ cover all possible searches,
+$\sum_{i=1}^n p_i + \sum_{j=0}^n q_j = 1$ and we can compute the expected
+cost of a search in $T$ as:
+
+\begin{align}
+  %\mathbb{E}[\text{search cost in } T] =
+  %\nonumber\\
+  %\mathcal{E}_T &=
+  \sum_{i=1}^n (\depth_T(k_i) + 1) \cdot p_i
+   + \sum_{i=0}^n (\depth_T(d_i) + 1) \cdot q_i
+  \nonumber\\
+  % I just can't fit the formula to width :-(
+  = 1 + \sum_{i=1}^n \depth_T(k_i) \cdot p_i
+      + \sum_{i=0}^n \depth_T(d_i) \cdot q_i
+  \label{eqn:cost}
+\end{align}
+
+A static binary search tree is called optimal if its expected search cost
+is minimal amongst all valid solution trees.
+We can now formulate the static optimal binary search tree problem as
+follows: Given $K$, $P$ and $Q$, find the optimal binary search tree.
+
+% ------------------------------------------------------------------------
+
+\mypar{end of useful text}
 
 \mypar{Baseline algorithm}
 You can see our reference implementation in \autoref{lst:baseline}. To
@@ -23,6 +65,8 @@ for (l = 1; l < n+1; l++)
         root[IDX(i,j)] = r;
 \end{lstlisting}
 
-\mypar{Cost Analysis}
-
-
+Background information -> self-contained.
+Formal Definition.
+Algorithmic Approach.
+Problem Complexity, Cost Analysis
+Knuth's better solution
