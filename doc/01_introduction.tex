@@ -1,24 +1,26 @@
 
 \section{Introduction}\label{sec:intro}
-A binary search tree is a simple and easy to understand, recursive data
-structure. It solves this and that problem, and is vitaly important for this and
-that. 
+Given the simple and recursive structure of a binary search tree, it is easy to
+deduce an algorithm to find a specific key in the tree. However, as every binary
+search tree can be restructured arbitrarily yielding a new valid binary search
+tree holding the same set of keys and, in general, there are great variances
+among these tree structures concerning the lookup cost, the "naked"
+binary search tree must be accompanied by an algorithm, the sophistication of
+which lies in its capability to structure the tree optimally with respect to the
+lookup cost.
 
-\[Give informal defintion.\] Every tree that follows this definition is a valid
-binary search tree. However, it is easy to see that for the same set of keys,
-there are different valid binary search trees and all of these trees have
-different characteristics concerning the cost needed to access specific nodes in
-the tree. The value of a concrete algorithm thus lies in its ability to choose
-the optimal structure of a search tree for a given set of keys.
+For dynamic binary search trees, various algorithms have been developed to
+balance the tree on inseration and deletion (references). In the case of static
+binary search trees, on the other hand, the set of keys is given a priori, along
+with a probability distribution that indicates the likeliness of an individual
+key being searched for. Based upon this, one can construct an optimal binary
+search tree, that is, a search tree which has a minimal expected lookup cost.
 
-Optimality is reached if the lookup cost, which is equal to the depth of the
-node being searched, is minimal. In the case of dynamic binary search trees, a
-number of algorithms have been developed to balance the tree upon insertion and
-deletion such that tree remains balanced \[ref AVL, SPLAY, etc.\].
+In the following we introduce a dynamic programming algorithm, which solves the
+problem by examining combinations of optimal subtrees. Our objective then is to
+optimally implement this algorithm on a modern Intel-based hardware platform.
 
-In the case of static binary search trees, which are the subject of this paper,
-the set of keys that the tree holds is known in advance. Hence, the tree is
-constructed once and only used for lookups subsequently. Additionally, we assume
-that, for each key, the probability with which this key is accessed is known a
-priori.
-
+Our interest in the algorithm emerges from the fact that the algorithm, in its
+bare form, has a straight-forward design which makes its properties apparant:
+Similar to matrix-matrix multiplication, its runtime is $O(n^3)$, whereas the
+total memory being accessed is $O(n^2)$.
