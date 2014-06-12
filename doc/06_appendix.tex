@@ -1,0 +1,33 @@
+\appendix
+\section{Platform Details}
+
+Measurements were done on a Lenovo ThinkPad T430s with the following hardware
+configuration.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{>{\bfseries}ll}
+Manufacturer         & Intel Corp.\\
+CPU Name             & Core i7-3520M\\
+L1-Cache             & 32 KB\\
+L2-Cache             & 256 KB\\
+L3-Cache             & 4 MB\\
+No. of cores         & 2\\
+CPU-core frequency   & 2901 MHz\\
+FP-Add Cycles/issue  & 1\\
+FP-Mult Cycles/issue & 1\\
+Peak Performance     & 5.8 GFLops/s $\hat{=}$ 2 flops/cycle
+\end{tabular}
+\end{center}
+\caption{Solution to Exercise 2.}
+\label{tblProc}
+\end{table}
+
+The operating system being used is the 64-bit variant of Kubuntu 14.04. The
+compiler being used is the GNU C Compiler, version 4.8.2. The following flags
+were used for compilation:
+
+\begin{verbatim}
+-O3 -m64 -march=corei7-avx -Wall\
+  -mavx -fno-tree-vectorize
+\end{verbatim}
