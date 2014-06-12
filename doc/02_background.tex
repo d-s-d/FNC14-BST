@@ -40,6 +40,15 @@ is minimal amongst all valid solution trees.
 We can now formulate the static optimal binary search tree problem as
 follows: Given $K$, $P$ and $Q$, find the optimal binary search tree.
 
+\mypar{Algorithm} Devising an algorithm to solve the problem requires a
+crucial insight on the problem structure: Given an optimal tree $T$ for
+keys $k_1$ to $k_n$ with root $k_r$, its left subtree $T_L$ is an optimal
+solution for the keys $k_1$ to $k_{r-1}$. Clearly, it has to be a binary
+search tree for these keys. Then, if it were not optimal, one could replace
+$T_L$ by an optimal binary search tree for the keys $k_1,\dots,k_{r-1}$
+obtaining a better solution $T'$ for the original problem. However, this
+contradicts the optimality of $T$ and hence $T_L$ is optimal as well.
+
 % ------------------------------------------------------------------------
 
 \mypar{end of useful text}
