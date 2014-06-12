@@ -21,7 +21,6 @@ The cost of a search in a such a tree $T$ is defined as the depth of the key
 found plus one. Since $K$ and $D$ cover all possible searches,
 $\sum_{i=1}^n p_i + \sum_{j=0}^n q_j = 1$ and we can compute the expected
 cost of a search in $T$ as:
-
 \begin{align}
   %\mathbb{E}[\text{search cost in } T] =
   %\nonumber\\
@@ -34,7 +33,6 @@ cost of a search in $T$ as:
       + \sum_{i=0}^n \depth_T(d_i) \cdot q_i
   \label{eqn:cost}
 \end{align}
-
 A static binary search tree is called optimal if its expected search cost
 is minimal amongst all valid solution trees.
 We can now formulate the static optimal binary search tree problem as
@@ -47,19 +45,56 @@ solution for the keys $k_1$ to $k_{r-1}$. Clearly, it has to be a binary
 search tree for these keys. Then, if it were not optimal, one could replace
 $T_L$ by an optimal binary search tree for the keys $k_1,\dots,k_{r-1}$
 obtaining a better solution $T'$ for the original problem. However, this
-contradicts the optimality of $T$ and hence $T_L$ is optimal as well.
+contradicts the optimality of $T$ and hence $T_L$ is optimal as well. This
+argument holds anologous for all subtrees in $T$.
 
-% ------------------------------------------------------------------------
-
-\mypar{end of useful text}
-
-\mypar{Baseline algorithm}
-You can see our reference implementation in \autoref{lst:baseline}. To
-learn more about this exciting code, read on!
-
+From this insight we can construct an algorithm. Let $e[i,j]$ denote the
+expected search cost in the optimal binary search tree continaing keys
+$k_i$ through $k_j$. If such a tree is used as a left or right subtree to
+construct a tree containing more keys, the depth of its nodes increases by
+one. Following \autoref{eqn:cost}, the subtree's expected search cost
+increases by
+\begin{align}
+  w(i,j) &= \sum_{l=1}^j p_l + \sum_{l=i-1}^j q_l \nonumber\\
+         &= w(i,r-1) + p_r + w(r+1,j)
+  \label{eqn:w}
+\end{align}
+where the second expression reflects the recursive structure of the problem
+again. This allows to express the search cost of a binary search tree over
+$k_i$ to $k_j$ with root $k_r$ constructed from its subtrees as
+\begin{align}
+  e[i,j] = e[i,r-1] + e[r+1,j] + w(i,j)
+  \label{eqn:e-intermediate}
+\end{align}
+Knowing the optimal expected search costs for all possible subtrees, we can
+construct the optimal binary search tree by choosing the key as root that
+minimizes \autoref{eqn:e-intermediate}, i.e
+\footnote{Note that for simplicity, we do not include border cases here.
+For a complete discussion of the algorithm and its mathematics refer to
+\cite{MITBook}.}
+\begin{align}
+  e[i,j] = \min_{i\leq r\leq j} \{e[i,r-1] + e[r+1,j] + w(i,j)\}
+  \label{eqn:e}
+\end{align}
+This expression can now direclty be translated into code, as is shown in
+\autoref{lst:baseline}. The cost of the subtrees is computed using dynamic
+programming. The table \texttt{e[IDX(i,j)]} is used to store the
+expected search cost for the optimal search tree covering keys in $k_i$
+through $k_j$\footnote{Note that the code actually uses zero-indexing.}. We
+fill the table \texttt{e} diagonal by diagonal. This corresponds to
+computing first all the subrees continaing one key, then containing two
+keys and so forth, as indicated by the length variable \texttt{l}. The
+innermost \texttt{r}-loop iterates over all valid roots for the subtree to
+find the optimal binary search tree for the current keys. We refer to the
+expected cost \texttt{e[IDX(i,j)]} to be computed as the \emph{target
+cell}. A second table called \texttt{root} is used to keep track which root
+was chosen for the current subtree to be able to reconstruct the overall
+optimal tree in the end. In the code section, we have omitted the
+initialization code. The computation is dominated by the triple loop shown.
 \begin{lstlisting}[
   caption={Basline Implementation},
-  label=lst:baseline
+  label=lst:baseline,
+  float
 ]
 for (l = 1; l < n+1; l++)
   for (i = 0; i < n-l+1; i++)
@@ -74,10 +109,26 @@ for (l = 1; l < n+1; l++)
         root[IDX(i,j)] = r;
 \end{lstlisting}
 
-\emph{Remark:} Establish the notion of target cell, i-,j- and r-loop.
+\mypar{Cost Analysis} The presented algorithm has runtime $O(n^3)$. As can
+be seen in \autoref{lst:baseline}, the computation involves additions and
+comparisions only. We define the cost function of the algorithm as the
+number of floating point additions and floating point comparisons:
+\begin{align*}
+C(n) = (\#\text{adds}(n), \#\text{comps}(n))
+\end{align*}
+The body of the second loop is executed a total of
+\begin{align*}
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\end{align*}
+times. The body of the innermost loop is executed a total of
+\begin{align*}
+\sum_{i=1}^{n} l\cdot(n-l) = \frac{1}{6}(n^3-n)
+\end{align*}
+times.  Hence, the cost function is defined as:
+\begin{align*}
+C(n) = \left(\frac{1}{3}(n^3+3n^2+2n), \frac{1}{6}(n^3 - n)\right)
+\end{align*}
 
-Background information -> self-contained.
-Formal Definition.
-Algorithmic Approach.
-Problem Complexity, Cost Analysis
+\mypar{Alternative Algorithms}
 Knuth's better solution
+O(1) algorithm
