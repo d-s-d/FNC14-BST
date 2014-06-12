@@ -129,6 +129,11 @@ times.  Hence, the cost function is defined as:
 C(n) = \left(\frac{1}{3}(n^3+3n^2+2n), \frac{1}{6}(n^3 - n)\right)
 \end{align*}
 
-\mypar{Alternative Algorithms}
-Knuth's better solution
-O(1) algorithm
+\mypar{Alternative Algorithms} The presented algorithm was originally
+published by Knuth. He provides further analysis yielding that under
+certain conditions the root will not change, allowing to neglect some of
+the \texttt{r}-iterations of the algorithm. The final algorithm has runtime
+$O(n^2)$. Details are found in \cite{Knuth70}. If an approximation of the
+result is sufficient, Mehlhorn \cite{Mehlhorn75} showed that balancing
+probabilities in the left and right subtrees already yields results close
+to optimal.
