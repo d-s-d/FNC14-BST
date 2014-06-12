@@ -15,10 +15,20 @@ and after line $10$, we would insert
 \begin{center}
 	\verb:e[IDX(j,i)] = t;:.
 \end{center}
-\mypar{Bottom-Up} Figure TODO visualizes the order in which the values are
-calculated. For each value that is being calculated, a minimum value across
+\mypar{Bottom-Up} The order in which individual values are calculated is along
+the diagonals, as visualized in Figure TODO. We notice that, for two distinct
+cells on a diagonal, their corresponding rows and colums intersect exactly in
+one cell. By changing the outermost two loops such that the table is being built
+up row-wise and bottom-up (as visualized in Figure TODO) we can thus improve the
+tomporal locality with respect to the accesses to the row that is currently
+being built-up.
 
-\mypar{Partial Results (Swap innermost loops)}
+\mypar{Partial Results} We can further increase the temporal locality by
+swapping the innermost two loops. Conceptually speaking, instead of calculating
+the minimum value over a full row and column, we store intermediate values for
+an entire row. That is, we take the first value, let it be $q_i$, add it to
+all the values stored in the row $i+1$, compare it to the .
+
 \mypar{Compressed memory layout}
 \mypar{Blocking}
 \mypar{Vectorization}
