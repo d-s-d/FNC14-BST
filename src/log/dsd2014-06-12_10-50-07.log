@@ -1,0 +1,3291 @@
+{
+  "from" : 600,
+  "to" : 2000,
+  "step" : 50,
+  "seed" : 42,
+  "calibration" : "off",
+  "userflags" : "-DNDEBUG -DLOG_PREFIX=\"dsd\" -O3 -m64 -march=corei7-avx -Wall -mavx -fno-tree-vectorize",
+  "git-revision" : "b1550f5 Merge branch 'master' of https://www.github.com/d-s-d/FNC14-BST",
+  "runs" : {
+    "ref/bst_ref.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 108901200,
+        "average-rounds" : 10,
+        "cycles" : 379935656,
+        "cache-misses" : 233099
+      },
+      {
+        "N" : 650,
+        "flops" : 138370050,
+        "average-rounds" : 10,
+        "cycles" : 481559369,
+        "cache-misses" : 276513
+      },
+      {
+        "N" : 700,
+        "flops" : 172726400,
+        "average-rounds" : 10,
+        "cycles" : 527994413,
+        "cache-misses" : 323882
+      },
+      {
+        "N" : 750,
+        "flops" : 212345250,
+        "average-rounds" : 10,
+        "cycles" : 657920779,
+        "cache-misses" : 374210
+      },
+      {
+        "N" : 800,
+        "flops" : 257601600,
+        "average-rounds" : 10,
+        "cycles" : 799349238,
+        "cache-misses" : 502101
+      },
+      {
+        "N" : 850,
+        "flops" : 308870450,
+        "average-rounds" : 10,
+        "cycles" : 1094897162,
+        "cache-misses" : 907584
+      },
+      {
+        "N" : 900,
+        "flops" : 366526800,
+        "average-rounds" : 10,
+        "cycles" : 1159567848,
+        "cache-misses" : 1120397
+      },
+      {
+        "N" : 950,
+        "flops" : 430945650,
+        "average-rounds" : 10,
+        "cycles" : 1420779535,
+        "cache-misses" : 1938729
+      },
+      {
+        "N" : 1000,
+        "flops" : 502502000,
+        "average-rounds" : 10,
+        "cycles" : 1684373898,
+        "cache-misses" : 3058059
+      },
+      {
+        "N" : 1050,
+        "flops" : 581570850,
+        "average-rounds" : 10,
+        "cycles" : 1995083709,
+        "cache-misses" : 4775392
+      },
+      {
+        "N" : 1100,
+        "flops" : 668527200,
+        "average-rounds" : 10,
+        "cycles" : 2341332148,
+        "cache-misses" : 6339204
+      },
+      {
+        "N" : 1150,
+        "flops" : 763746050,
+        "average-rounds" : 10,
+        "cycles" : 2853913900,
+        "cache-misses" : 10712542
+      },
+      {
+        "N" : 1200,
+        "flops" : 867602400,
+        "average-rounds" : 10,
+        "cycles" : 3327248697,
+        "cache-misses" : 12909546
+      },
+      {
+        "N" : 1250,
+        "flops" : 980471250,
+        "average-rounds" : 10,
+        "cycles" : 4284022886,
+        "cache-misses" : 23990345
+      },
+      {
+        "N" : 1300,
+        "flops" : 1102727600,
+        "average-rounds" : 10,
+        "cycles" : 4571028803,
+        "cache-misses" : 22749350
+      },
+      {
+        "N" : 1350,
+        "flops" : 1234746450,
+        "average-rounds" : 10,
+        "cycles" : 5327310043,
+        "cache-misses" : 30428579
+      },
+      {
+        "N" : 1400,
+        "flops" : 1376902800,
+        "average-rounds" : 10,
+        "cycles" : 6499742223,
+        "cache-misses" : 47723701
+      },
+      {
+        "N" : 1450,
+        "flops" : 1529571650,
+        "average-rounds" : 10,
+        "cycles" : 7547298076,
+        "cache-misses" : 60217836
+      },
+      {
+        "N" : 1500,
+        "flops" : 1693128000,
+        "average-rounds" : 10,
+        "cycles" : 10821072196,
+        "cache-misses" : 70365138
+      },
+      {
+        "N" : 1550,
+        "flops" : 1867946850,
+        "average-rounds" : 10,
+        "cycles" : 9262977505,
+        "cache-misses" : 74525422
+      },
+      {
+        "N" : 1600,
+        "flops" : 2054403200,
+        "average-rounds" : 10,
+        "cycles" : 10254209582,
+        "cache-misses" : 86169321
+      },
+      {
+        "N" : 1650,
+        "flops" : 2252872050,
+        "average-rounds" : 10,
+        "cycles" : 11447467963,
+        "cache-misses" : 100557001
+      },
+      {
+        "N" : 1700,
+        "flops" : 2463728400,
+        "average-rounds" : 10,
+        "cycles" : 12685423011,
+        "cache-misses" : 113877508
+      },
+      {
+        "N" : 1750,
+        "flops" : 2687347250,
+        "average-rounds" : 10,
+        "cycles" : 14289127689,
+        "cache-misses" : 135203771
+      },
+      {
+        "N" : 1800,
+        "flops" : 2924103600,
+        "average-rounds" : 10,
+        "cycles" : 15483088786,
+        "cache-misses" : 144216679
+      },
+      {
+        "N" : 1850,
+        "flops" : 3174372450,
+        "average-rounds" : 10,
+        "cycles" : 16892235093,
+        "cache-misses" : 159158676
+      },
+      {
+        "N" : 1900,
+        "flops" : 3438528800,
+        "average-rounds" : 10,
+        "cycles" : 18551963705,
+        "cache-misses" : 175445445
+      },
+      {
+        "N" : 1950,
+        "flops" : 3716947650,
+        "average-rounds" : 10,
+        "cycles" : 20027085588,
+        "cache-misses" : 191983717
+      },
+      {
+        "N" : 2000,
+        "flops" : 4010004000,
+        "average-rounds" : 10,
+        "cycles" : 21294034754,
+        "cache-misses" : 211865651
+      }
+    ],
+    "opt/bst_001_transposed.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 225142020,
+        "cache-misses" : 113028
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 288646958,
+        "cache-misses" : 233187
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 368617831,
+        "cache-misses" : 467742
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 491034892,
+        "cache-misses" : 877136
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 563762654,
+        "cache-misses" : 1191822
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 699063349,
+        "cache-misses" : 1740654
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 794783179,
+        "cache-misses" : 1989608
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 931142203,
+        "cache-misses" : 2619380
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 1101373230,
+        "cache-misses" : 3621479
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 1276405985,
+        "cache-misses" : 4652126
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 1507281016,
+        "cache-misses" : 5672619
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 1670595136,
+        "cache-misses" : 6912413
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1873872112,
+        "cache-misses" : 8161251
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 2182392084,
+        "cache-misses" : 9632724
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 2337932597,
+        "cache-misses" : 10425855
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 2596024699,
+        "cache-misses" : 11998028
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 2870215032,
+        "cache-misses" : 13732707
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 3187345125,
+        "cache-misses" : 15544828
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 3528684740,
+        "cache-misses" : 17322452
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 3949444595,
+        "cache-misses" : 19725809
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 4293047989,
+        "cache-misses" : 21859861
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 4665634481,
+        "cache-misses" : 23785058
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 5079336598,
+        "cache-misses" : 26001898
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 5522282878,
+        "cache-misses" : 28600170
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 5987505335,
+        "cache-misses" : 30910530
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 6127092263,
+        "cache-misses" : 31506267
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 6555592909,
+        "cache-misses" : 33671168
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 7068319720,
+        "cache-misses" : 36707178
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 7606813948,
+        "cache-misses" : 39107306
+      }
+    ],
+    "opt/bst_106_scalar_rep_transp.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 159147937,
+        "cache-misses" : 35897
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 200932595,
+        "cache-misses" : 52086
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 251371973,
+        "cache-misses" : 100236
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 306875982,
+        "cache-misses" : 143342
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 373293216,
+        "cache-misses" : 243164
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 450450595,
+        "cache-misses" : 373019
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 547691677,
+        "cache-misses" : 685456
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 647221461,
+        "cache-misses" : 948570
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 761020235,
+        "cache-misses" : 1290981
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 883693127,
+        "cache-misses" : 1652371
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 1032001348,
+        "cache-misses" : 2072432
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 1178495930,
+        "cache-misses" : 2662487
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1349967593,
+        "cache-misses" : 3475460
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1504573837,
+        "cache-misses" : 4088773
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1694230062,
+        "cache-misses" : 4836988
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1894289874,
+        "cache-misses" : 5532589
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 2118769665,
+        "cache-misses" : 6221043
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 2382913931,
+        "cache-misses" : 7218204
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 2615562751,
+        "cache-misses" : 8120663
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2887534745,
+        "cache-misses" : 9270330
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 3193288721,
+        "cache-misses" : 10214852
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 3453673418,
+        "cache-misses" : 11130616
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 3800908191,
+        "cache-misses" : 12178472
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 4125580444,
+        "cache-misses" : 13486827
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 4426458871,
+        "cache-misses" : 14749141
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 4722806517,
+        "cache-misses" : 15212599
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 5086690555,
+        "cache-misses" : 16369253
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 5502837751,
+        "cache-misses" : 17942596
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 5909679889,
+        "cache-misses" : 19130474
+      }
+    ],
+    "opt/bst_103_why_would_you_block.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 158780874,
+        "cache-misses" : 30095
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 200786015,
+        "cache-misses" : 42316
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 251157914,
+        "cache-misses" : 78895
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 310321591,
+        "cache-misses" : 131992
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 385503110,
+        "cache-misses" : 261757
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 464736065,
+        "cache-misses" : 369620
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 557177843,
+        "cache-misses" : 628920
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 658168053,
+        "cache-misses" : 880198
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 777189151,
+        "cache-misses" : 1250310
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 918867699,
+        "cache-misses" : 1646616
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 1054114656,
+        "cache-misses" : 2055100
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 1200439649,
+        "cache-misses" : 2561990
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1363473111,
+        "cache-misses" : 3051588
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1556379744,
+        "cache-misses" : 3563430
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1730687426,
+        "cache-misses" : 4177800
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1930205230,
+        "cache-misses" : 4652698
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 2152999028,
+        "cache-misses" : 5568520
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 2388186613,
+        "cache-misses" : 6356799
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 2664187371,
+        "cache-misses" : 7119658
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2900157559,
+        "cache-misses" : 7817487
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 3167977202,
+        "cache-misses" : 8836345
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 3494466463,
+        "cache-misses" : 9654231
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 3866467743,
+        "cache-misses" : 10669639
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 4143295031,
+        "cache-misses" : 11394254
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 4489662294,
+        "cache-misses" : 13000210
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 4804387098,
+        "cache-misses" : 12453847
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 5234525508,
+        "cache-misses" : 13471187
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 5608155244,
+        "cache-misses" : 14737835
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 6068066134,
+        "cache-misses" : 15623504
+      }
+    ],
+    "opt/bst_117_index_opt.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 141226111,
+        "cache-misses" : 7999
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 177955496,
+        "cache-misses" : 8220
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 222608102,
+        "cache-misses" : 14083
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 271537706,
+        "cache-misses" : 18697
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 329331442,
+        "cache-misses" : 35190
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 394525698,
+        "cache-misses" : 61192
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 467192415,
+        "cache-misses" : 83374
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 567609600,
+        "cache-misses" : 151400
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 644427230,
+        "cache-misses" : 243714
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 743573406,
+        "cache-misses" : 352593
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 854396058,
+        "cache-misses" : 432804
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 977668051,
+        "cache-misses" : 562536
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1110264278,
+        "cache-misses" : 693688
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1258114161,
+        "cache-misses" : 861100
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1415904706,
+        "cache-misses" : 1049289
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1594667964,
+        "cache-misses" : 1224940
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1794388211,
+        "cache-misses" : 1452702
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1995447191,
+        "cache-misses" : 1697687
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 2151816360,
+        "cache-misses" : 2042796
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2373531734,
+        "cache-misses" : 2327080
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 2622331389,
+        "cache-misses" : 2640870
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 2873569249,
+        "cache-misses" : 2951688
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 3131868753,
+        "cache-misses" : 3573600
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 3400528406,
+        "cache-misses" : 4038401
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 3789701583,
+        "cache-misses" : 4357837
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 4043296298,
+        "cache-misses" : 4979028
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 4391076993,
+        "cache-misses" : 5486334
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 4774655062,
+        "cache-misses" : 6008527
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 5106775144,
+        "cache-misses" : 6615267
+      }
+    ],
+    "opt/bst_130_103_unroll8.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 146091769,
+        "cache-misses" : 30775
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 184019054,
+        "cache-misses" : 37474
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 232504748,
+        "cache-misses" : 88687
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 283387779,
+        "cache-misses" : 142568
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 353666013,
+        "cache-misses" : 258935
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 426638815,
+        "cache-misses" : 426831
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 507512394,
+        "cache-misses" : 615887
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 598498339,
+        "cache-misses" : 891743
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 711930986,
+        "cache-misses" : 1197365
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 822679038,
+        "cache-misses" : 1560092
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 946935473,
+        "cache-misses" : 1986195
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 1073329171,
+        "cache-misses" : 2486183
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1236784455,
+        "cache-misses" : 2770698
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1399999277,
+        "cache-misses" : 3427441
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1567359908,
+        "cache-misses" : 4013110
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1753453798,
+        "cache-misses" : 4646734
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1973891812,
+        "cache-misses" : 5261138
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 2186488941,
+        "cache-misses" : 5947701
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 2400352458,
+        "cache-misses" : 6780046
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2641107953,
+        "cache-misses" : 7456797
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 2936233413,
+        "cache-misses" : 8211353
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 3159543783,
+        "cache-misses" : 8755126
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 3458493390,
+        "cache-misses" : 9620250
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 3730036807,
+        "cache-misses" : 10736327
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 4104051752,
+        "cache-misses" : 11224947
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 4328541988,
+        "cache-misses" : 11967041
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 4673798626,
+        "cache-misses" : 13085168
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 5027652515,
+        "cache-misses" : 14296022
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 5493031786,
+        "cache-misses" : 14827455
+      }
+    ],
+    "opt/bst_132_131_double.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 165879642,
+        "cache-misses" : 23211
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 211239740,
+        "cache-misses" : 28177
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 264557468,
+        "cache-misses" : 44613
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 325525861,
+        "cache-misses" : 71714
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 406107926,
+        "cache-misses" : 221940
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 488729701,
+        "cache-misses" : 234241
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 592976707,
+        "cache-misses" : 485358
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 713270156,
+        "cache-misses" : 930385
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 829888834,
+        "cache-misses" : 1145891
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 960750341,
+        "cache-misses" : 1446866
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 1115308059,
+        "cache-misses" : 1989990
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 1285749805,
+        "cache-misses" : 2910648
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1473993886,
+        "cache-misses" : 3457794
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1667906845,
+        "cache-misses" : 4199857
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1894973791,
+        "cache-misses" : 5032484
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 2091991029,
+        "cache-misses" : 5470954
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 2347624010,
+        "cache-misses" : 6591312
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 2590708664,
+        "cache-misses" : 7452490
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 2875078714,
+        "cache-misses" : 8560940
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 3161268446,
+        "cache-misses" : 9501494
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 3485310990,
+        "cache-misses" : 10992321
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 3818758183,
+        "cache-misses" : 11880109
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 4182118799,
+        "cache-misses" : 13043590
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 4544337945,
+        "cache-misses" : 14210537
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 4960389021,
+        "cache-misses" : 16013096
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 5050793361,
+        "cache-misses" : 15114146
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 5467839889,
+        "cache-misses" : 15814245
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 5903306012,
+        "cache-misses" : 17779245
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 6350347227,
+        "cache-misses" : 19150351
+      }
+    ],
+    "opt/bst_133_132_rescheduled.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 116365755,
+        "cache-misses" : 19525
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 148324354,
+        "cache-misses" : 23920
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 184743889,
+        "cache-misses" : 36110
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 227874390,
+        "cache-misses" : 55038
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 278846632,
+        "cache-misses" : 110338
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 353554153,
+        "cache-misses" : 406902
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 414775890,
+        "cache-misses" : 361773
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 495790565,
+        "cache-misses" : 634537
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 582902537,
+        "cache-misses" : 980063
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 684190120,
+        "cache-misses" : 1364587
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 798069465,
+        "cache-misses" : 1834601
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 915403501,
+        "cache-misses" : 2468297
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1036974465,
+        "cache-misses" : 3118490
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1176156655,
+        "cache-misses" : 4009265
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1338999337,
+        "cache-misses" : 4847862
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1511834445,
+        "cache-misses" : 5651976
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1662741446,
+        "cache-misses" : 7136577
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1859862187,
+        "cache-misses" : 8405088
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 2067970974,
+        "cache-misses" : 9105001
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2303682122,
+        "cache-misses" : 10793915
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 2498443315,
+        "cache-misses" : 11706118
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 2732051022,
+        "cache-misses" : 13176281
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 3015758936,
+        "cache-misses" : 14315043
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 3293850319,
+        "cache-misses" : 16003842
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 3546519355,
+        "cache-misses" : 17917513
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 3628167781,
+        "cache-misses" : 17590831
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 3955125856,
+        "cache-misses" : 19203321
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 4299722092,
+        "cache-misses" : 21651215
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 4564926036,
+        "cache-misses" : 22789855
+      }
+    ],
+    "opt/bst_123_m128_unaligned8_maskstore.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 119606427,
+        "cache-misses" : 4969
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 150851995,
+        "cache-misses" : 7393
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 187978694,
+        "cache-misses" : 7974
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 231743782,
+        "cache-misses" : 11841
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 282164197,
+        "cache-misses" : 18956
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 338105526,
+        "cache-misses" : 30451
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 401976568,
+        "cache-misses" : 44931
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 475143245,
+        "cache-misses" : 81112
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 557099045,
+        "cache-misses" : 130968
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 643999936,
+        "cache-misses" : 209919
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 745107713,
+        "cache-misses" : 312852
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 856029322,
+        "cache-misses" : 420646
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 974685398,
+        "cache-misses" : 547474
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1100187980,
+        "cache-misses" : 722866
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1240599644,
+        "cache-misses" : 900624
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1395133640,
+        "cache-misses" : 1108682
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1560169009,
+        "cache-misses" : 1335019
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1725562718,
+        "cache-misses" : 1572940
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1913000043,
+        "cache-misses" : 1835607
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2118332953,
+        "cache-misses" : 2169944
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 2331662767,
+        "cache-misses" : 2489892
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 2549322325,
+        "cache-misses" : 2871025
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 2790700787,
+        "cache-misses" : 3222610
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 3056281716,
+        "cache-misses" : 3564269
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 3327373057,
+        "cache-misses" : 3996922
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 3600338442,
+        "cache-misses" : 4416345
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 3914642899,
+        "cache-misses" : 4855915
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 4234138612,
+        "cache-misses" : 5430842
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 4572858331,
+        "cache-misses" : 5989726
+      }
+    ],
+    "opt/bst_125_m128_aligned4_maskstore.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 90477803,
+        "cache-misses" : 5334
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 113415554,
+        "cache-misses" : 7253
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 141914928,
+        "cache-misses" : 9175
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 172522717,
+        "cache-misses" : 12144
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 210996649,
+        "cache-misses" : 21296
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 253816529,
+        "cache-misses" : 37230
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 306218104,
+        "cache-misses" : 57513
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 357291456,
+        "cache-misses" : 119041
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 421326588,
+        "cache-misses" : 197306
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 487150175,
+        "cache-misses" : 332633
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 568225709,
+        "cache-misses" : 487351
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 647543827,
+        "cache-misses" : 673492
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 741169878,
+        "cache-misses" : 911061
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 835341361,
+        "cache-misses" : 1206926
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 950956303,
+        "cache-misses" : 1587925
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1058710945,
+        "cache-misses" : 1939558
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1189235506,
+        "cache-misses" : 2465066
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1316976350,
+        "cache-misses" : 2882239
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1462195112,
+        "cache-misses" : 3534598
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 1608918394,
+        "cache-misses" : 4116602
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 1789716402,
+        "cache-misses" : 4897741
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 1941912371,
+        "cache-misses" : 5546636
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 2146092614,
+        "cache-misses" : 6573127
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 2334855869,
+        "cache-misses" : 7048967
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 2525795309,
+        "cache-misses" : 8229959
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 2689103019,
+        "cache-misses" : 8986852
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 2940817805,
+        "cache-misses" : 10358268
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 3162890157,
+        "cache-misses" : 11172247
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 3438405008,
+        "cache-misses" : 12736429
+      }
+    ],
+    "opt/bst_129_m256_maskstore_root_aligned.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 69456351,
+        "cache-misses" : 5387
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 86888387,
+        "cache-misses" : 5862
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 108581795,
+        "cache-misses" : 8797
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 132218218,
+        "cache-misses" : 14510
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 159544021,
+        "cache-misses" : 25078
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 192408619,
+        "cache-misses" : 42838
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 228859698,
+        "cache-misses" : 73306
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 274143932,
+        "cache-misses" : 157537
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 317113200,
+        "cache-misses" : 268478
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 369839652,
+        "cache-misses" : 453618
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 430021892,
+        "cache-misses" : 691483
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 493323701,
+        "cache-misses" : 974178
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 560141018,
+        "cache-misses" : 1319896
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 637087411,
+        "cache-misses" : 1757406
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 723936640,
+        "cache-misses" : 2282543
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 812724944,
+        "cache-misses" : 2868545
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 913958566,
+        "cache-misses" : 3584896
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1019850547,
+        "cache-misses" : 4264542
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1144157485,
+        "cache-misses" : 5094612
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 1266145762,
+        "cache-misses" : 6043033
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 1397758434,
+        "cache-misses" : 7031436
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 1538723176,
+        "cache-misses" : 8210410
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 1694016929,
+        "cache-misses" : 9402179
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 1857268680,
+        "cache-misses" : 10504730
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 2030114544,
+        "cache-misses" : 11776742
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 2222084301,
+        "cache-misses" : 13189993
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 2414822599,
+        "cache-misses" : 14744018
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 2639057800,
+        "cache-misses" : 16337158
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 2913808589,
+        "cache-misses" : 17882042
+      }
+    ],
+    "opt/bst_140_102_opt.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 124379364,
+        "cache-misses" : 16611
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 157446238,
+        "cache-misses" : 24488
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 196408099,
+        "cache-misses" : 34124
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 241615699,
+        "cache-misses" : 54342
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 294723508,
+        "cache-misses" : 83369
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 353841098,
+        "cache-misses" : 150743
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 421260404,
+        "cache-misses" : 249689
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 494904052,
+        "cache-misses" : 357601
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 581844176,
+        "cache-misses" : 529801
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 674518073,
+        "cache-misses" : 801135
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 776968910,
+        "cache-misses" : 982977
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 881791409,
+        "cache-misses" : 1051548
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 1020234818,
+        "cache-misses" : 1435207
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1148202876,
+        "cache-misses" : 1785390
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1293083195,
+        "cache-misses" : 2205894
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1447049121,
+        "cache-misses" : 2435305
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1616802272,
+        "cache-misses" : 2905669
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1797682769,
+        "cache-misses" : 3451698
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1992288421,
+        "cache-misses" : 4304505
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2207157025,
+        "cache-misses" : 4840432
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 2417184234,
+        "cache-misses" : 5020915
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 2663457847,
+        "cache-misses" : 5529852
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 2950228020,
+        "cache-misses" : 6397720
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 3311444210,
+        "cache-misses" : 7350317
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 3475069338,
+        "cache-misses" : 7162399
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 3655888122,
+        "cache-misses" : 7043579
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 3972759905,
+        "cache-misses" : 8400564
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 4263462118,
+        "cache-misses" : 12989040
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 4605145681,
+        "cache-misses" : 9434701
+      }
+    ],
+    "opt/bst_141_140_unroll.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 116109451,
+        "cache-misses" : 16441
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 147469018,
+        "cache-misses" : 22943
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 183242431,
+        "cache-misses" : 29120
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 225778276,
+        "cache-misses" : 43089
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 274337131,
+        "cache-misses" : 71704
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 331193326,
+        "cache-misses" : 126770
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 394151162,
+        "cache-misses" : 228520
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 465388911,
+        "cache-misses" : 348620
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 545223580,
+        "cache-misses" : 559994
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 635435509,
+        "cache-misses" : 832093
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 730896547,
+        "cache-misses" : 1061544
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 849465761,
+        "cache-misses" : 1418927
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 954685008,
+        "cache-misses" : 1663184
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 1078853192,
+        "cache-misses" : 2073253
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 1211934638,
+        "cache-misses" : 2447259
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 1357325440,
+        "cache-misses" : 2735784
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 1512823075,
+        "cache-misses" : 3222784
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1699009896,
+        "cache-misses" : 3893558
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1867171008,
+        "cache-misses" : 4665109
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 2058438368,
+        "cache-misses" : 5278438
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 2260822400,
+        "cache-misses" : 5511039
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 2482668075,
+        "cache-misses" : 6164811
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 2730942006,
+        "cache-misses" : 6877826
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 2953395065,
+        "cache-misses" : 7357482
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 3225161125,
+        "cache-misses" : 7904239
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 3419455077,
+        "cache-misses" : 7664529
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 3700926987,
+        "cache-misses" : 8720554
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 3998752891,
+        "cache-misses" : 11429039
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 4308688409,
+        "cache-misses" : 10044661
+      }
+    ],
+    "opt/bst_142_141_sse.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 64434403,
+        "cache-misses" : 16467
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 81993899,
+        "cache-misses" : 20117
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 100645766,
+        "cache-misses" : 26768
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 124331260,
+        "cache-misses" : 37723
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 150713421,
+        "cache-misses" : 62995
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 184827873,
+        "cache-misses" : 125677
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 219553324,
+        "cache-misses" : 204789
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 261859519,
+        "cache-misses" : 338481
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 307639930,
+        "cache-misses" : 562200
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 361993080,
+        "cache-misses" : 810894
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 413520496,
+        "cache-misses" : 962114
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 469358877,
+        "cache-misses" : 1216793
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 542068509,
+        "cache-misses" : 1580814
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 620005127,
+        "cache-misses" : 1996255
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 699754973,
+        "cache-misses" : 2529552
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 786755697,
+        "cache-misses" : 2940136
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 874798165,
+        "cache-misses" : 3633914
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1008978925,
+        "cache-misses" : 4389083
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1095969474,
+        "cache-misses" : 5915184
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 1232445465,
+        "cache-misses" : 7555883
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 1322690944,
+        "cache-misses" : 7026691
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 1450948468,
+        "cache-misses" : 7266226
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 1598432377,
+        "cache-misses" : 8647274
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 1737364990,
+        "cache-misses" : 9291961
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 1895507757,
+        "cache-misses" : 10457137
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 1935308125,
+        "cache-misses" : 9927052
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 2097940290,
+        "cache-misses" : 12326840
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 2307613458,
+        "cache-misses" : 15192222
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 2441576537,
+        "cache-misses" : 15149615
+      }
+    ],
+    "opt/bst_143_141_avx.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 65860566,
+        "cache-misses" : 18683
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 82942570,
+        "cache-misses" : 22313
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 102508608,
+        "cache-misses" : 31275
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 125599155,
+        "cache-misses" : 41133
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 153699111,
+        "cache-misses" : 74643
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 188181947,
+        "cache-misses" : 133879
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 228034026,
+        "cache-misses" : 229331
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 263638056,
+        "cache-misses" : 346283
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 316291645,
+        "cache-misses" : 584459
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 368984749,
+        "cache-misses" : 852402
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 428783869,
+        "cache-misses" : 1027074
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 486140196,
+        "cache-misses" : 1359596
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 570904599,
+        "cache-misses" : 1693004
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 644709958,
+        "cache-misses" : 2155369
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 729366526,
+        "cache-misses" : 2736517
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 831022060,
+        "cache-misses" : 3292371
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 936509636,
+        "cache-misses" : 3934607
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1052862789,
+        "cache-misses" : 4468440
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1178318741,
+        "cache-misses" : 5796697
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 1395555665,
+        "cache-misses" : 6856049
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 1446886192,
+        "cache-misses" : 7430057
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 1560495255,
+        "cache-misses" : 7568279
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 1635321566,
+        "cache-misses" : 7883928
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 1783555052,
+        "cache-misses" : 8698354
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 2019622108,
+        "cache-misses" : 9774382
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 2122790650,
+        "cache-misses" : 10509725
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 2385236623,
+        "cache-misses" : 11640076
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 2524495233,
+        "cache-misses" : 13660436
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 2691148422,
+        "cache-misses" : 13801946
+      }
+    ],
+    "opt/bst_144_141_avx_8x4.c:1" : [
+      {
+        "N" : 600,
+        "flops" : 72721000,
+        "average-rounds" : 10,
+        "cycles" : 65985223,
+        "cache-misses" : 18681
+      },
+      {
+        "N" : 650,
+        "flops" : 92387750,
+        "average-rounds" : 10,
+        "cycles" : 84250736,
+        "cache-misses" : 23584
+      },
+      {
+        "N" : 700,
+        "flops" : 115314500,
+        "average-rounds" : 10,
+        "cycles" : 101497885,
+        "cache-misses" : 31204
+      },
+      {
+        "N" : 750,
+        "flops" : 141751250,
+        "average-rounds" : 10,
+        "cycles" : 125481210,
+        "cache-misses" : 41227
+      },
+      {
+        "N" : 800,
+        "flops" : 171948000,
+        "average-rounds" : 10,
+        "cycles" : 152494670,
+        "cache-misses" : 66333
+      },
+      {
+        "N" : 850,
+        "flops" : 206154750,
+        "average-rounds" : 10,
+        "cycles" : 185912429,
+        "cache-misses" : 101103
+      },
+      {
+        "N" : 900,
+        "flops" : 244621500,
+        "average-rounds" : 10,
+        "cycles" : 219994649,
+        "cache-misses" : 156542
+      },
+      {
+        "N" : 950,
+        "flops" : 287598250,
+        "average-rounds" : 10,
+        "cycles" : 259253458,
+        "cache-misses" : 261056
+      },
+      {
+        "N" : 1000,
+        "flops" : 335335000,
+        "average-rounds" : 10,
+        "cycles" : 306553386,
+        "cache-misses" : 438564
+      },
+      {
+        "N" : 1050,
+        "flops" : 388081750,
+        "average-rounds" : 10,
+        "cycles" : 357784853,
+        "cache-misses" : 596362
+      },
+      {
+        "N" : 1100,
+        "flops" : 446088500,
+        "average-rounds" : 10,
+        "cycles" : 409006365,
+        "cache-misses" : 814639
+      },
+      {
+        "N" : 1150,
+        "flops" : 509605250,
+        "average-rounds" : 10,
+        "cycles" : 470797240,
+        "cache-misses" : 961427
+      },
+      {
+        "N" : 1200,
+        "flops" : 578882000,
+        "average-rounds" : 10,
+        "cycles" : 553542232,
+        "cache-misses" : 1382299
+      },
+      {
+        "N" : 1250,
+        "flops" : 654168750,
+        "average-rounds" : 10,
+        "cycles" : 622623058,
+        "cache-misses" : 1585037
+      },
+      {
+        "N" : 1300,
+        "flops" : 735715500,
+        "average-rounds" : 10,
+        "cycles" : 700948832,
+        "cache-misses" : 1967146
+      },
+      {
+        "N" : 1350,
+        "flops" : 823772250,
+        "average-rounds" : 10,
+        "cycles" : 805142291,
+        "cache-misses" : 2395368
+      },
+      {
+        "N" : 1400,
+        "flops" : 918589000,
+        "average-rounds" : 10,
+        "cycles" : 902695367,
+        "cache-misses" : 2951694
+      },
+      {
+        "N" : 1450,
+        "flops" : 1020415750,
+        "average-rounds" : 10,
+        "cycles" : 1026761919,
+        "cache-misses" : 3293626
+      },
+      {
+        "N" : 1500,
+        "flops" : 1129502500,
+        "average-rounds" : 10,
+        "cycles" : 1104130039,
+        "cache-misses" : 4141559
+      },
+      {
+        "N" : 1550,
+        "flops" : 1246099250,
+        "average-rounds" : 10,
+        "cycles" : 1285014948,
+        "cache-misses" : 5350453
+      },
+      {
+        "N" : 1600,
+        "flops" : 1370456000,
+        "average-rounds" : 10,
+        "cycles" : 1356917862,
+        "cache-misses" : 4939370
+      },
+      {
+        "N" : 1650,
+        "flops" : 1502822750,
+        "average-rounds" : 10,
+        "cycles" : 1506956359,
+        "cache-misses" : 5845152
+      },
+      {
+        "N" : 1700,
+        "flops" : 1643449500,
+        "average-rounds" : 10,
+        "cycles" : 1579990103,
+        "cache-misses" : 6235959
+      },
+      {
+        "N" : 1750,
+        "flops" : 1792586250,
+        "average-rounds" : 10,
+        "cycles" : 1731096256,
+        "cache-misses" : 6593859
+      },
+      {
+        "N" : 1800,
+        "flops" : 1950483000,
+        "average-rounds" : 10,
+        "cycles" : 1903628750,
+        "cache-misses" : 7922353
+      },
+      {
+        "N" : 1850,
+        "flops" : 2117389750,
+        "average-rounds" : 10,
+        "cycles" : 2050046884,
+        "cache-misses" : 8070506
+      },
+      {
+        "N" : 1900,
+        "flops" : 2293556500,
+        "average-rounds" : 10,
+        "cycles" : 2205137912,
+        "cache-misses" : 8833139
+      },
+      {
+        "N" : 1950,
+        "flops" : 2479233250,
+        "average-rounds" : 10,
+        "cycles" : 2414364286,
+        "cache-misses" : 9730319
+      },
+      {
+        "N" : 2000,
+        "flops" : 2674670000,
+        "average-rounds" : 10,
+        "cycles" : 2701627088,
+        "cache-misses" : 11796549
+      }
+    ]
+  }
+}
