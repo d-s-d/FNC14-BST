@@ -73,19 +73,29 @@ performance which is equivalent to a performance gain of roughly 3x.
 
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{plot_data/triangular_vector_performance.png}
-  \caption{Vectorization based on Triangular.}
+  \caption{Vectorized Performance based on \emph{Triangle}.}
   \label{fig:perf-triangular}
 \end{figure}
-\mypar{Blocking Performance, triangular}
-
+\mypar{Vectorized Performance, triangular}
+\autoref{fig:perf-triangular} shows the performance of our SSE and AVX
+vector code based on the \emph{Triangle} scalar code. With 0.8 fl/c
+performance for the SSE code, the speedup through vectorization lies at
+1.6x below the theoretical maximum of 2x. From SSE to AVX, the speedup lies
+at 1.2x compared to the expected 2x. Overall, the speedup from the baseline
+lies at 4.6x.
 
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{plot_data/blocked_vector_performance.png}
-  \caption{Vectorization based on Blocking.}
+  \caption{Vectorization based on \emph{Blocking}.}
   \label{fig:perf-blocked}
 \end{figure}
-\mypar{Blocking Performance, blocked}
-
+\mypar{Vectorized Performance, blocked}
+\autoref{fig:perf-blocked} shows the performance of our SSE vector code
+based on the \emph{Blocked} approach. We did not find time to write an
+optimized AVX version. Having a performance of about 1.1 fl/c, the SSE code
+yields a 1.8x speedup compared to the best scalar code and a 5.5x speedup
+to the baseline implementation. Note that the blocking SSE code performs
+better than the triangular AVX code.
 
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_triangular.png}
