@@ -4,7 +4,7 @@
 % --------------------------------------------------------------------------
 
 \documentclass[letterpaper]{article}
-\usepackage{spconf,amsmath,amssymb,graphicx,listings,hyperref,array,float}
+\usepackage{spconf,amsmath,amssymb,graphicx,listings,hyperref,array,float,epstopdf}
 \lstset{basicstyle=\ttfamily\footnotesize,numbers=left,stepnumber=2,frame=single,language=c,captionpos=b}
 \usepackage[utf8]{inputenc} % UTF-8 was invented to be used.
 
@@ -239,14 +239,30 @@ jpeg, gif, bmp, tif. Use eps, which means encapsulate postscript, os pdf. This w
 scalable since it is a vector graphic description of your graph. E.g.,
 from Matlab, you can export to eps or pdf.
 
-Here is an example of how to get a plot into latex
-(Fig.~\ref{fftperf}). Note that the text should not be any smaller than shown.
+Here is an example of how to get a plot into latex.
+Note that the text should not be any smaller than shown.
+You might also like \autoref{fig:scalar}.
 
 \begin{figure}\centering
-  \includegraphics[scale=0.33]{dft-performance.eps}
-  \caption{Performance of four single precision implementations of the
-  discrete Fourier transform. The operations count is roughly the
-  same. {\em The labels in this plot are too small.}\label{fftperf}}
+  \includegraphics[width=\linewidth]{dft-performance.eps}
+  \caption{foo}
+  \label{foo}
+\end{figure}
+
+\begin{figure}\centering
+  \includegraphics[width=\linewidth]{plot_data/scalar_performance.png}
+  \caption{One code to rule 'em all.}
+  \label{fig:perf-scalar}
+\end{figure}
+\begin{figure}\centering
+  \includegraphics[width=\linewidth]{plot_data/triangular_vector_performance.png}
+  \caption{One code to rule 'em all.}
+  \label{fig:perf-triangular}
+\end{figure}
+\begin{figure}\centering
+  \includegraphics[width=\linewidth]{plot_data/blocked_vector_performance.png}
+  \caption{One code to rule 'em all.}
+  \label{fig:perf-blocked}
 \end{figure}
 
 
