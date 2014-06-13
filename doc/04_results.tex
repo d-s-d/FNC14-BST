@@ -51,7 +51,7 @@ analysis was used as a basis.
 We used randomized input data for our computation. To have reproducible
 results, the seed was fixed.
 
-\begin{figure}[htb]\centering
+\begin{figure}\centering
   \includegraphics[width=\linewidth]{plot_data/scalar_performance.png}
   \caption{Performance of the scalar implementations.}
   \label{fig:perf-scalar}
@@ -74,7 +74,7 @@ increased reuse in the CPU registers and fewer memory write-backs. The
 final scalar performance of our implementation lies at 62\% peak
 performance which is equivalent to a performance gain of roughly 3x.
 
-\begin{figure}[htb]\centering
+\begin{figure}\centering
   \includegraphics[width=\linewidth]{plot_data/triangular_vector_performance.png}
   \caption{Vectorized Performance based on \emph{Triangle}.}
   \label{fig:perf-triangular}
@@ -87,7 +87,7 @@ performance for the SSE code, the speedup through vectorization lies at
 at 1.2x compared to the expected 2x. Overall, the speedup from the baseline
 lies at 4.6x.
 
-\begin{figure}[htb]\centering
+\begin{figure}\centering
   \includegraphics[width=\linewidth]{plot_data/blocked_vector_performance.png}
   \caption{Vectorization based on \emph{Blocking}.}
   \label{fig:perf-blocked}
@@ -100,12 +100,12 @@ yields a 1.8x speedup compared to the best scalar code and a 5.5x speedup
 to the baseline implementation. Note that the blocking SSE code performs
 better than the triangular AVX code.
 
-\begin{figure}[htb]\centering
+\begin{figure}\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_triangular.png}
   \caption{Roofline Plot based on \emph{Triangle}.}
   \label{fig:roofline-triangular}
 \end{figure}
-\begin{figure}[htb]\centering
+\begin{figure}\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_blocked.png}
   \caption{Roofline Plot based on \emph{Blocked}.}
   \label{fig:roofline-blocked}
