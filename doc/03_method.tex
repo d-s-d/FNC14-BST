@@ -1,15 +1,8 @@
 \section{Optimization}
-In the following, we present high-level methods that we used to gradually
-improve the performance of the algorithm. We name the different implementations
-that we obtained according to the methods we employed. The following graph gives
-an overview over the development of the different versions:
-
-\begin{figure}[htb]
-\centering
-% \includegraphics[width=10cm]{AdvCompSetup}
-\caption{An example of a figure.}
-\label{fig:AdvCompSetup}
-\end{figure}
+In the following, we present the methods we used to gradually improve the
+performance of the algorithm. We name the different implementations that we
+obtained according to the methods we employed.  \autoref{fig:DecTree} gives
+an overview of the optimizations applied.
 
 \begin{figure}
 
@@ -17,7 +10,8 @@ an overview over the development of the different versions:
 \begin{tikzpicture}[-,shorten >=1pt,auto,node distance=1.8cm,
   thick,main node/.style={font=\sffamily\scriptsize\bfseries}]
 	
-  \node[main node] (1) {Transposed};
+  \node[main node] (0) {Baseline};
+  \node[main node] (1) [below=1em of 0] {Transposed};
 	\node[main node] (2) [below=1em of 1] {Bottom-Up};
 	\node[main node] (3) [below=1em of 2] {Partial-Results};
 	\node[main node] (4) [below left=1em and 1em of 3] {Triangular};
@@ -26,7 +20,8 @@ an overview over the development of the different versions:
 	\node[main node] (7) [below=1em of 6] {Vectorized, Blocking};
 
   \path[every node/.style={font=\sffamily\small}]
-	(1) edge node [below] {} (2)
+	(0) edge node [below] {} (1)
+	  (1) edge node [below] {} (2)
 		(2) edge node [below] {}(3)
 		(3) edge node [below] {}(4)
 		(4) edge node [below] {}(5)
@@ -34,9 +29,9 @@ an overview over the development of the different versions:
 		(6) edge node [below] {}(7)
 		;
 \end{tikzpicture}
-\label{fig:DecTree}
 \end{center}
 \caption{Overview of optimizations.}
+\label{fig:DecTree}
 \end{figure}
 
 \begin{figure}[htb]\centering

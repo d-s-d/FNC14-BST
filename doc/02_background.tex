@@ -1,10 +1,10 @@
 \section{Background}
 
 In this section we give a mathematical description of the optimal binary
-search tree problem. We start by presenting a formal description of the
-algorithm and provide a cost analysis. The presentation is based on the book by
-Cormen et al.~\cite{MITBook}. We conclude with a brief overview of two
-alternative algorithms.
+search tree problem. A discussion of the applied algorithm and its cost
+follows. The presentation is based on the book by Cormen et
+al.~\cite{MITBook}. We conclude with a brief overview of two alternative
+algorithms.
 
 \mypar{Problem Statement} Let $K = \{k_1, k_2, \dots, k_n\}$ be a sequence
 of distinct ordered keys. For each key $k_i$, let $p_i$ be the probability
@@ -80,16 +80,17 @@ This expression can now directly be translated into code, as is shown in
 programming. The table \texttt{e[IDX(i,j)]} is used to store the
 expected search cost for the optimal search tree covering keys in $k_i$
 through $k_j$\footnote{Note that the code actually uses zero-indexing.}. We
-fill the table \texttt{e} diagonal by diagonal. This corresponds to
-computing first all the subtrees containing one key, then containing two
-keys and so forth, as indicated by the length variable \texttt{l}. The
-innermost \texttt{r}-loop iterates over all valid roots for the subtree to
-find the optimal binary search tree for the current keys. We refer to the
-expected cost \texttt{e[IDX(i,j)]} to be computed as the \emph{target
-cell}. A second table called \texttt{root} is used to keep track which root
-was chosen for the current subtree to be able to reconstruct the overall
-optimal tree in the end. In the code section, we have omitted the
-initialization code. The computation is dominated by the triple loop shown.
+fill the table \texttt{e} diagonal by diagonal, as illustrated in
+\autoref{fig:reference}. This corresponds to computing first all the
+subtrees containing one key, then containing two keys and so forth, as
+indicated by the length variable \texttt{l}. The innermost \texttt{r}-loop
+iterates over all valid roots for the subtree to find the optimal binary
+search tree for the current keys. We refer to the expected cost
+\texttt{e[IDX(i,j)]} to be computed as the \emph{target cell}. A second
+table called \texttt{root} is used to keep track which root was chosen for
+the current subtree to be able to reconstruct the overall optimal tree in
+the end. In the code section, we have omitted the initialization code. The
+computation is dominated by the triple loop shown.
 \begin{lstlisting}[
   caption={Basline Implementation},
   label=lst:baseline,
