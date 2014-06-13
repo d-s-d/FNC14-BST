@@ -1,18 +1,6 @@
 \section{Experimental Results}
 
-\mypar{Experimental Setup} Measurements were done on a Lenovo ThinkPad T430s
-with 8 Gigabytes of RAM. The operating system being used is the 64-bit variant
-of Kubuntu 14.04. The compiler being used is the GNU C Compiler, version 4.8.2.
-The following flags were used for compilation:
-
-\begin{verbatim}
--O3 -m64 -march=corei7-avx -Wall\
-  -mavx -fno-tree-vectorize
-\end{verbatim}
-
-Details about the processor can be found in the table below:
-
-\begin{table}[H]
+\begin{table}
 \begin{center}
 \begin{tabular}{>{\bfseries}ll}
 Manufacturer         & Intel Corp.\\
@@ -20,32 +8,43 @@ CPU Name             & Core i7-3520M\\
 L1-Cache             & 32 KB\\
 L2-Cache             & 256 KB\\
 L3-Cache             & 4 MB\\
-No. of cores         & 2\\
 CPU-core frequency   & 2901 MHz\\
 Scalar FP-Add Cycles/issue  & 1\\
 Vect. FP-Add Cycles/issue (SSE) & 2\\
 Vect. FP-Add Cycles/issue (AVX) & 4\\
-Peak Performance     & 2.9 GFLops/s $\hat{=}$ 1 add/cycle
 \end{tabular}
 \end{center}
 \caption{Processor details.}
-\label{tblProc}
+\label{tab:processor}
 \end{table}
 
-In the above table, we only consider the peak performance with respect to
-floating point additions since our algorithm does not perform any other floating
-point operations.
+This section assesses the performance increase in the algorithm based on
+the methods described in the previous section. The test machine and
+software tools used are presented.
 
+\mypar{Measurement Setup}
+Measurements were performed on a Lenovo ThinkPad T430s with 8 GiB RAM and
+the processor shown in \autoref{tab:processor}. The operating system was
+Kubuntu 14.04 64-bit. The compiler used was the GNU C Compiler 4.8.2 with
+the flags:
+\begin{verbatim}
+-O3 -m64 -march=corei7-avx -mavx
+  -fno-tree-vectorize
+\end{verbatim}
+
+Peak performance is equal to the floating point additions cycles/issue of
+the processor, see \autoref{tab:processor}, since our algorithm does not
+perform any other floating point operations. That is, 1 fl/c for scalar
+code, 2 fl/c for SSE and 4 fl/c for AVX code.
 To asses the performance, libperfmon
 4\footnote{\url{http://perfmon2.sourceforge.net/}} was used to measure the
-number of cycles. The results were obtained by averaging over 10 consecutive
-executions for a given problem size.
-
+number of cycles. The results were obtained by averaging over 10
+consecutive executions for a given problem size.
 To obtain the measurement data for the roofline-plots, perfplot was used,
 together with libpcm 2.6.
 
 There is a crucial difference between the performance plots and the roofline
-plots: For the latter all floating point operations were counted, including
+plots: For the latter, all floating point operations were counted, including
 comparisons, whereas for the former, the number of additions from the cost
 analysis was used as a basis.
 
@@ -54,32 +53,48 @@ analysis was used as a basis.
   \caption{Performance of the scalar implementations.}
   \label{fig:perf-scalar}
 \end{figure}
-
-\autoref{fig:perf-scalar} compares the performance of the different scalar
-implementations. For the vectorized implementations, we consider the two
-\emph{branches}: the implementations based on Triangular- and those based the
-Blocking-approach.
+\mypar{Scalar Performance}
+\autoref{fig:perf-scalar} shows the performance of the different scalar
+implementations. Peak performance lies at 1 fl/c. The reference
+implementation has a performance of 0.2 fl/c for large input sizes. Using
+the \emph{transposed} approach improving spatial locality, we can already
+see stable performance for large input sizes that do no longer fit the last
+level cache. We can again see the expected performance boost when changing
+the access pattern of the table to \emph{bottom-up}, thanks to further
+improved spatial locality. With a performance of about 4.5 fl/c, this
+corresponds to a performance gain of more than 2x to the baseline. Changing
+to the triangular memory layout improves performance to up to 0.5 fl/c. We
+assume this is due to the increased performance of the CPU prefetcher.
+However, we were not able to verify this. The \emph{blocking} approach,
+based on the squared memory layout, gives another performance boost due to
+increased reuse in the CPU registers and fewer memory write-backs. The
+final scalar performance of our implementation lies at 62\% peak
+performance which is equivalent to a performance gain of roughly 3x.
 
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{plot_data/triangular_vector_performance.png}
   \caption{Vectorization based on Triangular.}
   \label{fig:perf-triangular}
 \end{figure}
+\mypar{Blocking Performance, triangular}
 
-The Triangular version 
 
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{plot_data/blocked_vector_performance.png}
-  \caption{One code to rule 'em all.}
+  \caption{Vectorization based on Blocking.}
   \label{fig:perf-blocked}
 \end{figure}
+\mypar{Blocking Performance, blocked}
+
+
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_triangular.png}
-  \caption{One code to rule 'em all.}
+  \caption{Roofline Plot of triangle-based optimizations.}
   \label{fig:roofline-triangular}
 \end{figure}
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_blocked.png}
-  \caption{One code to rule 'em all.}
+  \caption{Roofline Plot of blocking-based optimizations.}
   \label{fig:roofline-blocked}
 \end{figure}
+\mypar{Roofline Analysis}
