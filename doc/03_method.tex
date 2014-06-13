@@ -4,7 +4,7 @@ performance of the algorithm. We name the different implementations that we
 obtained according to the methods we employed.  \autoref{fig:DecTree} gives
 an overview of the optimizations applied.
 
-\begin{figure}
+\begin{figure}[htb]
 
 \begin{center}
 \begin{tikzpicture}[-,shorten >=1pt,auto,node distance=1.8cm,
@@ -46,7 +46,7 @@ can avoid strides of $n+1$ and replace them with accesses of stride $1$: We make
 use of the lower half of the square table in that we store newly calculated
 values not only at $(i,j)$ but also at $(j,i)$. That is, instead of accessing a
 column in the upper half, we access a row in the lower-half. This needs only two
-minor changes to the algorithm as described in listing \ref{lst:baseline}:
+minor changes to the algorithm as described in \autoref{lst:baseline}:
 First, line $7$ turns into
 \begin{center}
 \verb:t = e[IDX(i,r)] + e[IDX(j,r+1)]:, 
@@ -55,14 +55,15 @@ and after line $10$, we would insert
 \begin{center}
 	\verb:e[IDX(j,i)] = t;:.
 \end{center}
-\mypar{Bottom-Up} The order in which individual values are calculated is along
-the diagonals, as visualized in Figure \ref{fig:reference}. We notice that, for
-two distinct cells on a diagonal, their corresponding rows and columns intersect
-exactly in one cell. By changing the outermost two loops such that the table is
-being built up row-wise and bottom-up (as visualized in Figure
-\ref{fig:bottom-up}) we can thus
-improve the temporal locality with respect to the accesses to the row that is
-currently being built-up.
+
+\mypar{Bottom-Up} The order in which individual values are calculated is
+along the diagonals, as visualized in Figure \ref{fig:reference}. We notice
+that, for two distinct cells on a diagonal, their corresponding rows and
+columns intersect exactly in one cell. By changing the outermost two loops
+determining the target cell such that the table is built up row-wise and
+bottom-up, as visualized in Figure \ref{fig:bottom-up}, we can improve
+temporal locality with respect to the accesses to the row that is currently
+being built-up.
 
 \begin{figure}[htb]\centering
 	\includegraphics[width=0.33\textwidth]{img/bottom_up_access.png}
@@ -73,56 +74,53 @@ currently being built-up.
 and column, we can store intermediate values for an entire row by swapping the
 innermost two loops. That is, for row $i$, we add the value $e[i,r], i\leq r\leq
 n$ to all entries $e[r,j], r\leq j \leq n$ and store the minimum of that sum and
-$e[i,r]$ in $e[i,r]$. Figure visualize the pattern for one
+$e[i,r]$ in $e[i,r]$. \autoref{fig:partial} visualizes the pattern for one
 consecutive executions of the $r$-loop (which is now the second innermost loop):
 the value contained in the cell with the unfilled circle is added to all values
 contained in the cells with the filled circle and the minimum is stored in the
-cells that are empty.
+white cells. This allows to have sequential access in the innermost loop
+without the need to keep the transposed version of the data values in the
+lower left half of the triangle.
 
 \begin{figure}[htb]\centering
 	\includegraphics[width=0.33\textwidth]{img/intermediate_access.png}
   \caption{Storing Partial results.\label{fig:partial}}
 \end{figure}
 
-\mypar{Triangular} While the above approach itself does not improve the
-performance over the \emph{Bottom Up}-approach, we notice that employing this
-pattern, we can omit mirroring the table and still all but the first memory
-access in the innermost loop have stride $1$. Hence, we can \emph{compress} the
-memory layout by just concatenating the rows of the ``upper'' triangular table.
-We call this memory layout \emph{triangular}--as opposed to the \emph{square}
+\mypar{Triangular} While the above approach need not necessarily improve
+the performance over the \emph{Bottom Up}-approach, allocating the full
+square memory is no longer required. We can \emph{compress} the memory
+layout by concatenating the rows of the ``upper'' triangular table.  As for
+each target row $i$ we compute, the full triangle below it is accessed row
+after row, this yields unit stride access even at the end of each
+intermediate row being traversed. The unused sections between the left end
+of the square and the beginning of the triangle is now omitted. This
+potentially also improves the performance of the hardware prefetcher. We
+call this memory layout \emph{triangular}--as opposed to the \emph{square}
 layout.
 
-Experimental results show that this indeed increases the performance. We assume
-that this is due to the hardware prefetcher not loading unused parts of the
-table into cache, but we lack the necessary hardware equipment to verify this
-assumption.
-
-On the downside, using this memory layout significantly complicates the
-calculation of indices. For instance, the correct index-macro for this memory
-layout is defined as follows:
+Using this memory layout significantly complicates the index calculation.
+The correct index-macro for this memory layout is:
 \begin{center}
 	\scriptsize
 	\begin{verbatim}#define IDX(i,j)\
 	((n+1)*(n+2)/2 - (n-(i)+1)*(n-(i)+2)/2 + (j) - (i))\end{verbatim}
 \end{center}
-This problem can be alleviated by doing strength reduction. That is, we
-introduce separate index variables which hold the indices for the values being
-calculated and being read independently from the loop variables. In most cases,
-additions and subtractions are sufficient to update these variables.
+Strength reduction can be applied to alleviate the computation. Index
+variables with constant offset changes over loop iterations make the
+involved index computation obsolete.
 
 \mypar{Vectorized Triangular} Historically, our initial approaches at
-blocking (our final blocking approach is explained below) were unsuccessful.
-Thus, we focused on vectorizing the Triangular Layout, which is
-straight-forward: The current row is processed until the number of remaining
-cells is a multiple of the vector length. From then on, vector instructions are
-used.
+blocking, explained below, were unsuccessful. Thus, we focused on
+vectorizing the triangular layout, which is straight-forward: The current
+row is processed until the number of remaining cells is a multiple of the
+vector length. From then on, vector instructions are used.
 
-\mypar{Blocking} Based upon our \emph{Partial Results}-Approach, we employed a
-blocking strategy as follows: We basically unrolled the two innermost loops.
+\mypar{Blocking} Based upon our \emph{Partial Results} approach, we employed a
+blocking strategy as follows: We unrolled the two innermost loops.
 Thus, instead of storing the partial results in the target row for each
 subsequent row, we store calculate the minimum across multiple subsequent rows
 before storing the result.
-
 Figure \ref{fig:vec-blocking} visualizes the approach: The value stored in the
 cell with the unfilled circle is added to the corresponding values stored in the
 cells containing the filled circles. The minimum across the columns containing
