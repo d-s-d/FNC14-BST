@@ -91,20 +91,32 @@ lies at 4.6x.
 \end{figure}
 \mypar{Vectorized Performance, blocked}
 \autoref{fig:perf-blocked} shows the performance of our SSE vector code
-based on the \emph{Blocked} approach. We did not find time to write an
-optimized AVX version. Having a performance of about 1.1 fl/c, the SSE code
+based on the \emph{Blocked} approach. The AVX variant performance worse and
+is thus omitted. Having a performance of about 1.1 fl/c, the SSE code
 yields a 1.8x speedup compared to the best scalar code and a 5.5x speedup
 to the baseline implementation. Note that the blocking SSE code performs
 better than the triangular AVX code.
 
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_triangular.png}
-  \caption{Roofline Plot of triangle-based optimizations.}
+  \caption{Roofline Plot based on \emph{Triangle}.}
   \label{fig:roofline-triangular}
 \end{figure}
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{roofline-data/roofline_blocked.png}
-  \caption{Roofline Plot of blocking-based optimizations.}
+  \caption{Roofline Plot based on \emph{Blocked}.}
   \label{fig:roofline-blocked}
 \end{figure}
 \mypar{Roofline Analysis}
+\autoref{fig:roofline-triangular} and \autoref{fig:roofline-blocked} show
+the roofline plots of our respective solutions. Note that for the roofline
+plots, libpcm was used to measure all floating point operations including
+comparisions. Thus, performance numbers are different than in the
+performance plots. We can see in \autoref{fig:roofline-blocked}, scalar
+performance is almost at the peak of 1 fl/c. Also, the SSE code comes close
+to optimal. In contrast to the performance plots using our theoretical flop
+count, here the AVX variant performs slightly better than the SSE one. The
+blocked scalar and SSE versions are the fastest for their category. For the
+\emph{Triangle} case in \autoref{fig:roofline-triangular}, we have the best
+overall performance with the AVX variant yielding around 2 fl/c. This
+corresponds to an overall speedup achieved of roughly 6x.
