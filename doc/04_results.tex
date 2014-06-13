@@ -48,6 +48,9 @@ plots: For the latter, all floating point operations were counted, including
 comparisons, whereas for the former, the number of additions from the cost
 analysis was used as a basis.
 
+We used randomized input data for our computation. To have reproducible
+results, the seed was fixed.
+
 \begin{figure}[htb]\centering
   \includegraphics[width=\linewidth]{plot_data/scalar_performance.png}
   \caption{Performance of the scalar implementations.}
