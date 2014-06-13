@@ -1,17 +1,16 @@
 \section{Background}
 
-As a group we worked on the static optimal binary search tree problem.
 In this section we give a mathematical description of the optimal binary
-search tree problem. The algorithm implemented and optimized to solve the
-problem is presented and a cost measure introduced. The presentation is
-based on the algorithms book by Cormen et al.~\cite{MITBook}. We conclude
-by giving a short overview of two alternative algorithms.
+search tree problem. We start by presenting a formal description of the
+algorithm and provide a cost analysis. The presentation is based on the book by
+Cormen et al.~\cite{MITBook}. We conclude with a brief overview of two
+alternative algorithms.
 
 \mypar{Problem Statement} Let $K = \{k_1, k_2, \dots, k_n\}$ be a sequence
 of distinct ordered keys. For each key $k_i$, let $p_i$ be the probability
-that a given search is for key $k_i$. Such a search is called successfull.
-Furhter, let $D = \{d_0, d_1, \dots, d_n\}$ be the set of dummy keys
-returned for unsuccessfull searches as follows: $d_i$ represents searches
+that a given search is for key $k_i$. Such a search is called successful.
+Further, let $D = \{d_0, d_1, \dots, d_n\}$ be the set of dummy keys
+returned for unsuccessful searches as follows: $d_i$ represents searches
 for values between $k_i$ and $k_{i+1}$, $d_0$ represent the values smaller
 $k_0$ and $d_n$ the values larger $k_n$. For each dummy key $d_i$, let
 $q_i$ be the probability that a given search returns $d_i$.
@@ -46,10 +45,10 @@ search tree for these keys. Then, if it were not optimal, one could replace
 $T_L$ by an optimal binary search tree for the keys $k_1,\dots,k_{r-1}$
 obtaining a better solution $T'$ for the original problem. However, this
 contradicts the optimality of $T$ and hence $T_L$ is optimal as well. This
-argument holds anologous for all subtrees in $T$.
+argument holds analogous for all subtrees in $T$.
 
 From this insight we can construct an algorithm. Let $e[i,j]$ denote the
-expected search cost in the optimal binary search tree continaing keys
+expected search cost in the optimal binary search tree containing keys
 $k_i$ through $k_j$. If such a tree is used as a left or right subtree to
 construct a tree containing more keys, the depth of its nodes increases by
 one. Following \autoref{eqn:cost}, the subtree's expected search cost
@@ -76,13 +75,13 @@ For a complete discussion of the algorithm and its mathematics refer to
   e[i,j] = \min_{i\leq r\leq j} \{e[i,r-1] + e[r+1,j] + w(i,j)\}
   \label{eqn:e}
 \end{align}
-This expression can now direclty be translated into code, as is shown in
+This expression can now directly be translated into code, as is shown in
 \autoref{lst:baseline}. The cost of the subtrees is computed using dynamic
 programming. The table \texttt{e[IDX(i,j)]} is used to store the
 expected search cost for the optimal search tree covering keys in $k_i$
 through $k_j$\footnote{Note that the code actually uses zero-indexing.}. We
 fill the table \texttt{e} diagonal by diagonal. This corresponds to
-computing first all the subrees continaing one key, then containing two
+computing first all the subtrees containing one key, then containing two
 keys and so forth, as indicated by the length variable \texttt{l}. The
 innermost \texttt{r}-loop iterates over all valid roots for the subtree to
 find the optimal binary search tree for the current keys. We refer to the
@@ -111,7 +110,7 @@ for (l = 1; l < n+1; l++)
 
 \mypar{Cost Analysis} The presented algorithm has runtime $O(n^3)$. As can
 be seen in \autoref{lst:baseline}, the computation involves additions and
-comparisions only. We define the cost function of the algorithm as the
+comparisons only. We define the cost function of the algorithm as the
 number of floating point additions and floating point comparisons:
 \begin{align*}
 C(n) = (\#\text{adds}(n), \#\text{comps}(n))

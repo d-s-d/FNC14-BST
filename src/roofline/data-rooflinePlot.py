@@ -54,7 +54,7 @@ def addBWLine(BW, label):
 
 
 X_MIN=0.1
-X_MAX=5.0
+X_MAX=10.0
 Y_MIN=0.1
 Y_MAX=20.0
 #PEAK_PERF=8.0
@@ -177,7 +177,7 @@ for serie,i in zip(series,range(len(series))):
         #	yData.append([float(vf)/float(vc) for vf, vc in zip(f,c) if vf != '' and vc != ''])
 
         yData = [float(vf)/float(vc) for vf, vc in zip(nFLOPS,nCycles) if vf != '' and vc != '']
-
+        print(serie, yData)
 	xData =[]
 #    	for f,b in zip(nFLOPS,bytesTransferred):
 #			xDataTmp = []
