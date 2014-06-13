@@ -1,16 +1,24 @@
-
 \section{Introduction}\label{sec:intro}
-Given the simple and recursive structure of a binary search tree, it is easy to
-deduce an algorithm to find a specific key in the tree. However, as every binary
-search tree can be restructured arbitrarily yielding a new valid binary search
-tree holding the same set of keys and, in general, there are great variances
-among these tree structures concerning the lookup cost, the ``naked''
-binary search tree must be accompanied by an algorithm, the sophistication of
-which lies in its capability to structure the tree optimally with respect to the
-lookup cost.
+Binary search trees are amongst the most fundamental data structures in
+computer science. An ordered set of keys is held at the nodes of the tree
+where smaller keys reside in the left subtree, larger keys in the right
+subtree. This presents an ordered structure of the keys.  Given the simple
+and recursive structure of a binary search tree, it is easy to deduce an
+algorithm to find a specific key in the tree. The tree can be used as a set
+or as a key-value store, if references to data is stored in the nodes.
+
+The structure of the binary search tree is not fixed. Different keys can be
+chosen as root, resulting in different subtrees. There are great variances
+among these tree structures concerning the lookup, insertion and deletion
+cost. Depending on the application domain, algorithms enforcing different
+structures on the binary search tree should be used optimizing the cost for
+the most important operations on the tree. Such considerations include: Is
+the tree allowed to change once it is generated (dynamic vs. static)? What
+is the insertion, deletion and lookup cost?  What is the distribution of
+such operations in my application domain?
 
 For dynamic binary search trees, various algorithms have been developed to
-balance the tree on inseration and deletion (references). In the case of static
+balance the tree on inseration and deletion. In the case of static
 binary search trees, on the other hand, the set of keys is given a priori, along
 with a probability distribution that indicates the likeliness of an individual
 key being searched for. Based upon this, one can construct an optimal binary
