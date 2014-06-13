@@ -122,11 +122,11 @@ The body of the second loop is executed a total of
 \end{align*}
 times. The body of the innermost loop is executed a total of
 \begin{align*}
-\sum_{i=1}^{n} l\cdot(n-l) = \frac{1}{6}(n^3-n)
+	\sum_{i=1}^{n} i\cdot(n-i+1) = \frac{1}{6}(n^3+3n^2+2n)
 \end{align*}
-times.  Hence, the cost function is defined as:
+times. Hence, the cost function is defined as:
 \begin{align*}
-C(n) = \left(\frac{1}{3}(n^3+3n^2+2n), \frac{1}{6}(n^3 - n)\right)
+C(n) = \left(\frac{1}{3}(n^3+6n^2+5n), \frac{1}{6}(n^3+3n^2+2n)\right)
 \end{align*}
 
 \mypar{Alternative Algorithms} The presented algorithm was originally

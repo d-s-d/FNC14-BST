@@ -6,7 +6,7 @@ Since calculating tables by combining existing entries is inherent to dynamic
 programming, it is likely that the observations we made can be translated to
 other dynamic programming problems as well.
 
-We were further able to structure the scalar implementations of the algorithm in
-such a way, that the vectorization follows naturally.
-
-
+While in the case of the scalar implementations, very little is to gain by
+further optimizing the code, as we are close to the computational bound, the
+roofline-plots clearly indicate that in the case of vectorization, there is
+room for refinement.
